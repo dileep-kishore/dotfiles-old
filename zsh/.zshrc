@@ -66,7 +66,7 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitflow arch python z vi-mode zsh-autosuggestions colorize cp tmux extract)
+plugins=(git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract)
 
 # User configuration
 
