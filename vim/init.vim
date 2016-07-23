@@ -39,7 +39,7 @@ Plug 'suan/vim-instant-markdown'
 "Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'reedes/vim-pencil'
+"Plug 'reedes/vim-pencil'
 Plug 'christoomey/vim-system-copy' "Install xsel
 Plug 'luochen1990/rainbow'
 Plug 'xolox/vim-notes'
@@ -48,7 +48,6 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 "Plug 'christoomey/vim-tmux-navigator'
-" rman/golden-ratio.git
 call plug#end()
 
 set number
@@ -242,7 +241,7 @@ set textwidth=0
 " set formatoptions=cq
 set formatoptions=qrn1
 set wrap linebreak nolist
-set wrapmargin=80
+"set wrapmargin=80
 "set colorcolumn=+1
 " Remapping the Esc key
 :imap jk <Esc>
@@ -286,12 +285,12 @@ let g:SimpylFold_docstring_preview = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" Vim pencil settings
-augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
-augroup END
-let g:pencil#wrapModeDefault = 'soft'
+"" Vim pencil settings
+"augroup pencil
+    "autocmd!
+    "autocmd FileType markdown,mkd call pencil#init()
+"augroup END
+"let g:pencil#wrapModeDefault = 'soft'
 
 " vim markdown settings
 let g:vim_markdown_math=1
