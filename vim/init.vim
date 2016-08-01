@@ -7,7 +7,7 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'bling/vim-airline'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 function! DoRemote(arg)
@@ -47,6 +47,7 @@ Plug 'xolox/vim-misc'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
+Plug 'sickill/vim-pasta'
 "Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
