@@ -14,7 +14,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'godlygeek/tabular'
+Plug 'junegunn/vim-easy-align'
 Plug 'sjl/gundo.vim'
 Plug 'rking/ag.vim'
 Plug 'terryma/vim-multiple-cursors'
