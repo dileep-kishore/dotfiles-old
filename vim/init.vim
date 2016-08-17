@@ -18,7 +18,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'sjl/gundo.vim'
 Plug 'rking/ag.vim'
 Plug 'terryma/vim-multiple-cursors'
-"Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 Plug 'raimondi/delimitmate'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'takac/vim-hardtime'
@@ -213,11 +213,6 @@ nmap <F8> :TagbarToggle<CR>
 " Minimap Highlight
 let g:minimap_highlight='Visual'
 
-"" Indent Guide
-"let g:indent_guides_auto_colors = 0
-"autocmd VimEnter,Colorscheme brogrammer :hi IndentGuidesOdd  guibg=red   ctermbg=3
-"autocmd VimEnter,Colorscheme brogrammer :hi IndentGuidesEven guibg=green ctermbg=4
-
 " Colbycheeze settings
 " Autoload files
 set autoread
@@ -374,3 +369,7 @@ command! -nargs=* Ag call fzf#run({
 \            '--color hl:68,hl+:110',
 \ 'down':    '50%'
 \ })
+
+" Vim expand region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)

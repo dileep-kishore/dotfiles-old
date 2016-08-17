@@ -22,11 +22,12 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 #POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %d.%m.%y}"
 POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
-local user_symbol="$"
-if [[ $(print -P "%#") =~ "#" ]]; then
-	user_symbol = "#"
-fi
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}%{%B%F{black}%K{blue}%} $user_symbol%{%b%f%k%F{blue}%} %{%f%}"
+# local user_symbol="$"
+# if [[ $(print -P "%#") =~ "#" ]]; then
+# 	user_symbol = "#"
+# fi
+# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}%{%B%F{black}%K{blue}%} $user_symbol%{%b%f%k%F{blue}%} %{%f%}"
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}\ue0b0"
 #POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER" 
 
