@@ -14,6 +14,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/vim-easy-align'
 Plug 'sjl/gundo.vim'
 Plug 'rking/ag.vim'
@@ -28,8 +29,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'matze/vim-move'
 Plug 'eugen0329/vim-esearch'
-Plug 'rakr/vim-two-firewatch'
-Plug 'roosta/srcery'
 Plug 'tmhedberg/SimpylFold'
 Plug 'terryma/vim-expand-region'
 Plug 'wellle/targets.vim'
@@ -42,12 +41,15 @@ Plug 'junegunn/limelight.vim'
 "Plug 'reedes/vim-pencil'
 Plug 'christoomey/vim-system-copy' "Install xsel
 Plug 'luochen1990/rainbow'
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-misc'
+Plug 'vimwiki/vimwiki'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'sickill/vim-pasta'
+" Themes
+Plug 'rakr/vim-two-firewatch'
+Plug 'roosta/srcery'
+Plug 'jacoborus/tender'
 "Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
@@ -55,13 +57,14 @@ set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
-colorscheme srcery
-let g:srcery_italic=1
+colorscheme tender
+" colorscheme srcery
+" let g:srcery_italic=1
 highlight Comment cterm=italic
 "colorscheme two-firewatch
 "let g:two_firewatch_italics=1
 set background=dark
-" set termguicolors
+set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 "set expandtab
@@ -142,7 +145,7 @@ let g:airline#extensions#tabline#right_alt_sep = '>'
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='wombat'
+let g:airline_theme='tender'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -276,6 +279,7 @@ let g:SimpylFold_docstring_preview = 1
 " Limelight Goyo.vim integration
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+let g:goyo_linenr=1
 
 "" Vim pencil settings
 "augroup pencil
@@ -307,15 +311,6 @@ set t_ZR=[23m
 
 " Rainbow parentheses
 let g:rainbow_active=1
-
-" vim-notes settings
-let g:notes_directories=['~/Dropbox/Notes']
-let g:notes_suffix='.note'
-let g:notes_tab_indents=0
-let g:notes_conceal_code=0
-let g:notes_conceal_italic=0
-let g:notes_conceal_bold=0
-let g:notes_conceal_url=0
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -373,3 +368,11 @@ command! -nargs=* Ag call fzf#run({
 " Vim expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" Vim wiki settings
+let g:vimwiki_list = [{"path": '/home/dileep/Dropbox/Notes', "path_html": '/home/dileep/Dropbox/Notes/exports', "syntax": 'markdown', "template_path": '/home/dileep/Dropbox/vimwiki/', "template_default": 'default', "template_ext": '.tpl', "auto_export": 0}]
+let g:vimwiki_dir_link = 'index'
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_table_mappings = 0
+autocmd FileType vimwiki :RainbowToggleOff
