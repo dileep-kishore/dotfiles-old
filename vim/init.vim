@@ -40,32 +40,38 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 "Plug 'reedes/vim-pencil'
 Plug 'christoomey/vim-system-copy' "Install xsel
-Plug 'luochen1990/rainbow'
+Plug 'kien/rainbow_parentheses.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'sickill/vim-pasta'
+Plug 'mhinz/vim-startify'
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
-Plug 'jacoborus/tender'
-"Plug 'christoomey/vim-tmux-navigator'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'sjl/badwolf'
 call plug#end()
 
 set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
-colorscheme tender
+" set background=dark
+" colorscheme deep-space
+" let g:deepspace_italics=1
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 0
+colorscheme badwolf
+highlight Comment cterm=italic
+highlight Comment gui=italic
 " colorscheme srcery
 " let g:srcery_italic=1
-highlight Comment cterm=italic
 "colorscheme two-firewatch
 "let g:two_firewatch_italics=1
-set background=dark
 set termguicolors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 "set expandtab
 set noexpandtab
@@ -94,7 +100,7 @@ let mapleader="\<SPACE>"
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set list
 autocmd filetype html,xml set listchars-=tab:>.
 set pastetoggle=<F2>
@@ -145,7 +151,7 @@ let g:airline#extensions#tabline#right_alt_sep = '>'
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='tender'
+let g:airline_theme='badwolf'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -301,8 +307,8 @@ let g:instant_markdown_autostart = 0
 "augroup END
 
 "Syntax highlighting in Markdown
-au BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html']
+au BufNewFile,BufReadPost *.md *.Rmd *.rmd set filetype=markdown
+let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'r']
 
 " Overriding vim italics codes
 "  must be entered with <C-V><Esc>
@@ -310,7 +316,30 @@ set t_ZH=[3m
 set t_ZR=[23m
 
 " Rainbow parentheses
-let g:rainbow_active=1
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -375,4 +404,4 @@ let g:vimwiki_dir_link = 'index'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_table_mappings = 0
-autocmd FileType vimwiki :RainbowToggleOff
+autocmd FileType vimwiki :RainbowParenthesesToggle
