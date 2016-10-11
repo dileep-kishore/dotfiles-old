@@ -7,3 +7,4 @@
 * Change the wlo1 in the internet command to appropriate output of iw dev
 * Change the zip-code for weather
 * Delete mail and disk-root
+* Change the battery number

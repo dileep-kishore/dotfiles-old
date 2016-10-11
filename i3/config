@@ -323,12 +323,13 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
     font pango:Fantasque Sans Mono 12
+    separator_symbol " | "
 	# strip_workspace_numbers yes
 
 	colors {
     #	background $transparent
 		separator $base0B
-		background $base02
+		background #000000
 		statusline #f12a0e
                 		# border background text
 		focused_workspace $base0F $base09 $base01
