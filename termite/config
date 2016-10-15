@@ -1,0 +1,72 @@
+[options]
+    resize_grip = false
+    scroll_on_output = false
+    scroll_on_keystroke = true
+    audible_bell = true
+    visible_bell = false
+    mouse_autohide = true
+    allow_bold = true
+    dynamic_title = true
+    urgent_on_bell = true
+    clickable_url = true
+    font = hermit
+    scrollback_lines = 1000
+    search_wrap = true
+    #icon_name = terminal
+    #geometry = 640x480
+
+    # "system", "on" or "off"
+    cursor_blink = system
+
+    # "block", "underline" or "ibeam"
+    cursor_shape = block
+
+    # $BROWSER is used by default
+    browser = vivaldi-stable
+
+    # word characters used for word selection
+    # (default if unset: all graphic non-punctuation/space characters)
+    #word_chars = -A-Za-z0-9,./?%&#:_=+@~
+
+[hints]
+    # foreground = #55FFFF
+
+[colors]
+
+# special
+foreground      = #ddeedd
+foreground_bold = #ddeedd
+cursor          = #ddeedd
+background      = #1c1c1c
+
+# black
+color0  = #3d352a
+color8  = #554444
+
+# red
+color1  = #cd5c5c
+color9  = #cc5533
+
+# green
+color2  = #86af80
+color10 = #88aa22
+
+# yellow
+color3  = #e8ae5b
+color11 = #ffa75d
+
+# blue
+color4  = #6495ed
+color12 = #87ceeb
+
+# magenta
+color5  = #deb887
+color13 = #996600
+
+# cyan
+color6  = #b0c4de
+color14 = #b0c4de
+
+# white
+color7  = #bbaa99
+color15 = #ddccbb

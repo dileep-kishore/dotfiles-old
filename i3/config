@@ -190,6 +190,7 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 assign [class="termite" instance="ranger"] $ws1
 assign [class="vivaldi-stable"] $ws3
 assign [class="Pcmanfm"] $ws1
+assign [class="Spotify"] $ws5
 assign [class="Skype"] $ws4
 
 # Open specific applications in floating mode
@@ -328,13 +329,13 @@ bar {
 
 	colors {
     #	background $transparent
-		separator $base0B
-		background #000000
+		separator #1cd26b
+		background #f9f4f2
 		statusline #f12a0e
                 		# border background text
-		focused_workspace $base0F $base09 $base01
-		active_workspace $base0F $base0A $base01
-		inactive_workspace $base0E $base06 $base03
+		focused_workspace #400402 #d13418 $base01
+		active_workspace #400402 #c28e2a $base01
+		inactive_workspace #400402 $base06 $base02
 		urgent_workspace $base01 $base08 $base07
 	}
 }
@@ -345,8 +346,8 @@ bindsym $mod+m bar mode toggle
 
 # Widow Colours
               # border background text indicator
-client.focused #f16906 #f0800c $base07 $base0F
-client.focused_inactive #665a40 #a48659 $base03 $base0F
+client.focused #ff0000 #00ff91 #00bdff #ff0000
+client.focused_inactive #0036ff #ad9dd1 $base03 $base0F
 client.unfocused #583501 #3b2501 $base03 $base0F
 client.urgent $base0E $base08 $base00 $base0F
 
@@ -410,7 +411,7 @@ mode "$mode_gaps_outer" {
 
 # Startup stuff
 exec --no-startup-id dropbox start
-exec_always xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --off --output DP2 --off
+exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --off --output DP2 --off
 exec albert
 
 # Shortcuts
