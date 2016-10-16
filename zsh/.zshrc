@@ -104,8 +104,11 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias youtube="youtube-viewer"
+alias vimrc="nvim ~/.dotfiles/vim/init.vim"
+alias i3config="cd ~/.dotfiles/i3/"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 

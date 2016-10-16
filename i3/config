@@ -324,12 +324,14 @@ bar {
 	bindsym button4 nop
 	bindsym button5 nop
     font pango:Fantasque Sans Mono 12
-    separator_symbol " | "
+    # separator_symbol "<|<"
+    separator_symbol ""
 	# strip_workspace_numbers yes
 
 	colors {
     #	background $transparent
-		separator #04fe70
+		# separator #04fe70
+        separator #ffffff
 		background #000000
 		statusline #f12a0e
                 		# border background text
@@ -415,7 +417,7 @@ exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --r
 exec albert
 
 # Shortcuts
-bindsym $mod+Shift+f exec --no-startup-id termite -e ranger
+bindsym $mod+Shift+f exec --no-startup-id termite -d "`xcwd`" -e ranger
 bindsym $mod+Shift+x exec blurlock
 bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
