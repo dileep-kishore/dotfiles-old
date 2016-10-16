@@ -58,16 +58,16 @@ set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
-" set background=dark
+set background=dark
 " colorscheme deep-space
 " let g:deepspace_italics=1
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 0
-colorscheme badwolf
+" let g:badwolf_darkgutter = 1
+" let g:badwolf_tabline = 0
+" colorscheme badwolf
 highlight Comment cterm=italic
 highlight Comment gui=italic
-" colorscheme srcery
-" let g:srcery_italic=1
+let g:srcery_italic=1
+colorscheme srcery
 "colorscheme two-firewatch
 "let g:two_firewatch_italics=1
 set termguicolors

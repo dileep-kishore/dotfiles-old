@@ -17,20 +17,20 @@ POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator time context dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs vi_mode time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs background_jobs time vi_mode)
+# POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
+# POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M \uf073 %d.%m.%y}"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
 # local user_symbol="$"
 # if [[ $(print -P "%#") =~ "#" ]]; then
 # 	user_symbol = "#"
 # fi
-# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%}%{%B%F{black}%K{blue}%} $user_symbol%{%b%f%k%F{blue}%} %{%f%}"
 POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517\ue0b0%{%F{default}%}"
-#POWERLEVEL9K_STATUS_VERBOSE=false
+POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER" 
 
 # Uncomment the following line to use case-sensitive completion.
@@ -125,6 +125,7 @@ setopt CORRECT
 
 # make sure that if a program wants you to edit
 # text, that Vim is going to be there for you
+TERM=xterm-termite
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR

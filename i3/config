@@ -29,7 +29,7 @@ font pango:Fantasque Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec termite -d "`xcwd`"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -329,8 +329,8 @@ bar {
 
 	colors {
     #	background $transparent
-		separator #1cd26b
-		background #f9f4f2
+		separator #04fe70
+		background #000000
 		statusline #f12a0e
                 		# border background text
 		focused_workspace #400402 #d13418 $base01
@@ -347,7 +347,7 @@ bindsym $mod+m bar mode toggle
 # Widow Colours
               # border background text indicator
 client.focused #ff0000 #00ff91 #00bdff #ff0000
-client.focused_inactive #0036ff #ad9dd1 $base03 $base0F
+client.focused_inactive #603b04 #116607 $base03 $base0F
 client.unfocused #583501 #3b2501 $base03 $base0F
 client.urgent $base0E $base08 $base00 $base0F
 
