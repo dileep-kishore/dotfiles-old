@@ -150,9 +150,9 @@ bindsym $mod+Ctrl+Left workspace prev
 set $ws1 "1:Term "
 set $ws2 "2:Code "
 set $ws3 "3:Browser "
-set $ws4 "4:IM "
+set $ws4 "4:Social "
 set $ws5 "5:Music "
-set $ws6 "6:Tasks "
+set $ws6 "6:Mail "
 set $ws7 "7:Notes "
 set $ws8 8
 
@@ -189,7 +189,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # Open applications on specific workspaces
 assign [class="termite" instance="ranger"] $ws1
 assign [class="vivaldi-stable"] $ws3
-assign [class="Pcmanfm"] $ws1
+# assign [class="Pcmanfm"] $ws1
+assign [class="wmail"] $ws6
 assign [class="Spotify"] $ws5
 assign [class="Skype"] $ws4
 
@@ -331,7 +332,7 @@ bar {
 	colors {
     #	background $transparent
 		# separator #04fe70
-        separator #ffffff
+        separator #807878
 		background #000000
 		statusline #f12a0e
                 		# border background text
