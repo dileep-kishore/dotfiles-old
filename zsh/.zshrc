@@ -18,7 +18,10 @@ POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator time context dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vcs background_jobs time vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(anaconda vcs background_jobs time vi_mode)
+POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
+POWERLEVEL9K_ANACONDA_BACKGROUND="yellow"
+POWERLEVEL9K_ANACONDA_FOREGROUND="black"
 # POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
 # POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -73,7 +76,7 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract)
+plugins=(git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper)
 
 # User configuration
 
@@ -109,6 +112,13 @@ alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
 alias youtube="youtube-viewer"
 alias vimrc="nvim ~/.dotfiles/vim/init.vim"
 alias i3config="cd ~/.dotfiles/i3/"
+alias tmuxconf="nvim ~/.dotfiles/tmux/.tmux.conf"
+alias tnew="tmux new -s"
+alias tattach="tmux attach"
+alias tdetach="tmux detach"
+alias tkill="tmux tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
+alias tlist="tmux ls"
+alias condadir="cd /home/dileep/anaconda3/bin/"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
@@ -132,6 +142,10 @@ TERM=xterm-termite
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
+export BROWSER=vivaldi-stable
+
+# Anaconda path
+# export PATH="/home/dileep/anaconda3/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh

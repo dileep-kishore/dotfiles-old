@@ -349,8 +349,8 @@ bindsym $mod+m bar mode toggle
 
 # Widow Colours
               # border background text indicator
-client.focused #ff0000 #00ff91 #00bdff #ff0000
-client.focused_inactive #603b04 #116607 $base03 $base0F
+client.focused #ff0000 #ff0000 #00bdff #e26943
+client.focused_inactive #600404 #660707 $base03 #743232
 client.unfocused #583501 #3b2501 $base03 $base0F
 client.urgent $base0E $base08 $base00 $base0F
 
