@@ -151,7 +151,7 @@ let g:airline#extensions#tabline#right_alt_sep = '>'
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='badwolf'
+let g:airline_theme='molokai'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1

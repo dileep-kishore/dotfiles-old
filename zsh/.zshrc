@@ -116,9 +116,11 @@ alias tmuxconf="nvim ~/.dotfiles/tmux/.tmux.conf"
 alias tnew="tmux new -s"
 alias tattach="tmux attach"
 alias tdetach="tmux detach"
-alias tkill="tmux tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
+# alias tkill="tmux tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
+alias tkill="tmux kill-session -t"
 alias tlist="tmux ls"
 alias condadir="cd /home/dileep/anaconda3/bin/"
+alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
