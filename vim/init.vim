@@ -47,6 +47,8 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'sickill/vim-pasta'
 Plug 'mhinz/vim-startify'
+" Tmux
+Plug 'edkolev/tmuxline.vim'
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
@@ -141,17 +143,17 @@ nnoremap <leader>r :call NumberToggle()<CR>
 set laststatus=2
 " set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = '> '
-let g:airline#extensions#tabline#right_alt_sep = '>'
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#left_sep = '>'
+" let g:airline#extensions#tabline#left_alt_sep = '>'
+" let g:airline#extensions#tabline#right_sep = '>'
+" let g:airline#extensions#tabline#right_alt_sep = '>'
 "let g:airline_left_sep = ' '
 "let g:airline_left_alt_sep = '>'
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='molokai'
+let g:airline_theme='simple'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -405,3 +407,6 @@ let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_table_mappings = 0
 autocmd FileType vimwiki :RainbowParenthesesToggle
+
+" Tmuxline settings
+let g:tmuxline_preset = 'full'
