@@ -34,40 +34,39 @@
 [colors]
 
 # special
-foreground      = #daba8b
-foreground_bold = #daba8b
-cursor          = #daba8b
-background      = #191716
+foreground      = #e0dbb7
+foreground_bold = #e0dbb7
+cursor          = #e0dbb7
+background      = #2a1f1d
 
 # black
-color0  = #0f0e0d
-color8  = #383332
+color0  = #000000
+color8  = #9b6c4a
 
 # red
-color1  = #845336
-color9  = #8c4f4a
+color1  = #be2d26
+color9  = #e84627
 
 # green
-color2  = #57553c
-color10 = #898471
+color2  = #6ba18a
+color10 = #95d8ba
 
 # yellow
-color3  = #a17e3e
-color11 = #c8b491
+color3  = #e99d2a
+color11 = #d0d150
 
 # blue
-color4  = #43454f
-color12 = #65788f
+color4  = #5a86ad
+color12 = #b8d3ed
 
 # magenta
-color5  = #604848
-color13 = #755e4a
+color5  = #ac80a6
+color13 = #d19ecb
 
 # cyan
-color6  = #5c6652
-color14 = #718062
+color6  = #74a6ad
+color14 = #93cfd7
 
 # white
-color7  = #a18b62
-color15 = #bc9d66
-
+color7  = #e0dbb7
+color15 = #fff9d5
