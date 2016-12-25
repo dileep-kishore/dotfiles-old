@@ -3,7 +3,8 @@ xdpyinfo -ext XINERAMA | sed '/^  head #/!d;s///' |
 while IFS=' :x@,' read i w h x y; do
     import -window root -crop ${w}x$h+$x+$y /tmp/head_$i.png
 done
-ICON=/home/dileep/.dotfiles/i3/lock.png
+# ICON=/home/dileep/.dotfiles/i3/lock.png
+ICON=/home/dileep/.dotfiles/i3/arch.png
 TMPBG0=/tmp/head_0.png
 TMPBG1=/tmp/head_1.png
 TMPBG=/tmp/screen.png
