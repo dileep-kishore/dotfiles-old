@@ -1,10 +1,19 @@
 #!/bin/bash
+xdpyinfo -ext XINERAMA | sed '/^  head #/!d;s///' |
+while IFS=' :x@,' read i w h x y; do
+    import -window root -crop ${w}x$h+$x+$y /tmp/head_$i.png
+done
 ICON=/home/dileep/.dotfiles/i3/lock.png
+TMPBG0=/tmp/head_0.png
+TMPBG1=/tmp/head_1.png
 TMPBG=/tmp/screen.png
-scrot /tmp/screen.png
-convert $TMPBG -scale 10% -scale 1000% $TMPBG
-convert $TMPBG $ICON -gravity center -composite -matte $TMPBG
-i3lock -u -i $TMPBG
+# scrot /tmp/screen.png
+convert $TMPBG0 -scale 10% -scale 1000% $TMPBG0
+convert $TMPBG1 -scale 10% -scale 1000% $TMPBG1
+convert $TMPBG0 $ICON -gravity center -composite -matte $TMPBG0
+convert $TMPBG1 $ICON -gravity center -composite -matte $TMPBG1
+convert $TMPBG0 $TMPBG1 +append $TMPBG
+i3lock -e -n -i $TMPBG
 
 # if [[ -f $ICON ]] 
 # then
