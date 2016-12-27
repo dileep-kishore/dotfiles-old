@@ -7,73 +7,161 @@
 ;
 ;=====================================================
 
-[bar/mybar2]
-; monitor = eDP-1
-monitor = HDMI2
+[colors]
+background = #170101
+background-alt = #651d1d
+foreground = #dfdfdf
+foreground-alt = #55
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+white = #d1d1d1
+gray = #585858
+black = #090909
+red = #c79595
+blue = #95aec7
+yellow = #c7ae95
+green = #aec795
+purple = #ae95c7
+pink = #c795bc
+
+;=====================================================
+[bar/hp]
+monitor = HDMI-0
 dock = false
 ; bottom = true
 width = 100%
-height = 27
-offset-x = 2
-offset-y = 2
+height = 28
+clickareas = 100
+; offset-x = 16
+; offset-y = 68
 
-background = #ffffff
-foreground = #16957e
-; linecolor = ${bar/mybar2.background}
-linecolor = #d63f3b
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 2
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
 
 ; Borders
 ; Size to be used for all borders
 ; Default: 0
 ; border-size = 2
 ; Color to be used for all borders
-border-color = #ff9900
-; Per-border values
-border-top = 2
-; border-top-color = #ff9900
-border-bottom = 1
-;border-bottom-color = #5d00ff
-border-left = 2
-border-right = 2
-;border-right-color = #ff0059
+; border-color = #ff9900
+; ; Per-border values
+; border-top = 1
+; ; border-top-color = #ff9900
+; border-bottom = 1
+; ;border-bottom-color = #5d00ff
+; border-left = 1
+; border-right = 1
+; ;border-right-color = #ff0059
 
 spacing = 2
-lineheight = 3
 
-padding-left = 0
-padding-right = 0
+padding-left = 2
+padding-right = 2
 
 module-margin-left = 2
 module-margin-right = 2
 
 ; Fonts are defined using: <FontName>;<Offset>
-font-0 = FantasqueSansMono-Regular=11;0
-font-1 = MaterialIcons:size=10;0
+font-0 = FantasqueSansMono-Regular=10;0
+font-1 = MaterialIcons:size=11;0
 ; font-2 = Termsynu:size=8;-1
-font-2 = FontAwesome:size=10;0
+font-2 = FontAwesome:size=11;0
+font-3 = Siji:size=10;0
 
-separator = |
+; separator = |
 
-modules-left = i3
-modules-center = spotify
-modules-right = cpu wifi battery memory volume date
+modules-center = i3
+modules-left = mpd
+modules-right = volume date powermenu
 
+tray-detached = false
+tray-background = #cc131313
 tray-position = right
+tray-padding = 1
+; tray-transparent = true
 
+;=====================================================
+[bar/asus]
+monitor = DP-3
+width = 100%
+height = 28
+clickareas = 100
+; offset-x = 16
+; offset-y = 68
 
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 2
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
+
+; Borders
+; Size to be used for all borders
+; Default: 0
+; border-size = 2
+; Color to be used for all borders
+; border-color = #ff9900
+; ; Per-border values
+; border-top = 1
+; ; border-top-color = #ff9900
+; border-bottom = 1
+; ;border-bottom-color = #5d00ff
+; border-left = 1
+; border-right = 1
+; ;border-right-color = #ff0059
+
+spacing = 2
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 2
+
+; Fonts are defined using: <FontName>;<Offset>
+font-0 = FantasqueSansMono-Regular=10;0
+font-1 = MaterialIcons:size=11;0
+; font-2 = Termsynu:size=8;-1
+font-2 = FontAwesome:size=11;0
+font-3 = Siji:size-10;0
+
+; separator = |
+
+modules-center = i3
+modules-left = xwindow
+modules-right = updates temperature cpu memory eth
+
+; tray-background = #cc131313
+; tray-position = right
+; tray-padding = 2
+
+;=====================================================
 [module/i3]
 type = internal/i3
 pin-workspaces = true
-format = <label-state>
+format = <label-state> <label-mode>
 index-sort = true
+enable-click = true
 
 ; ws-icon-[0-9]+ = label;icon
-ws-icon-0 = 1;
-ws-icon-1 = 2;♛
-ws-icon-2 = 3;♜
-ws-icon-3 = 4;♝
-ws-icon-4 = 5;♞
-ws-icon-default = ♟
+ws-icon-0 = ;
+ws-icon-1 = ;
+ws-icon-2 = ;
+ws-icon-3 = ;
+ws-icon-4 = ;
+ws-icon-5 = ;
+ws-icon-6 = ;
+ws-icon-7 = ;
+ws-icon-8 = ;
+ws-icon-default = 
 
 ; Available tokens:
 ;   %name%
@@ -81,209 +169,93 @@ ws-icon-default = ♟
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %name%
+label-focused = %icon%
 label-focused-foreground = #ffffff
-label-focused-background = #d13418
-label-focused-underline = #000000
-label-focused-padding = 1
+label-focused-background = #3f3f3f
+label-focused-underline = #ff0000
+label-focused-padding = 2
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-unfocused = %name%
-label-unfocused-foreground = #ffffff
-label-unfocused-background = #c28e2a
-label-unfocused-underline = #107aa7
-label-unfocused-padding = 1
+label-unfocused = %icon%
+; label-unfocused-foreground = #ffffff
+; label-unfocused-background = #c28e2a
+; label-unfocused-underline = #107aa7
+label-unfocused-padding = 2
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-visible = %name%
+label-visible = %icon%
 label-visible-foreground = #ffffff
-label-visible-background = #C9CCDB
-; label-visible-underline = #555555
-label-visible-padding = 1
+label-visible-background = #3f3f3f
+label-visible-underline = #600404
+label-visible-padding = 2
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent = %index%
+label-urgent = %icon%
 label-urgent-foreground = #ffffff
 label-urgent-background = #bd2c40
 label-urgent-padding = 1
 
 
+;=====================================================
 [module/date]
 type = internal/date
-date = %H:%M
+; date = %%{F#fba922}%%{F-} %%{F#999}%a %e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
+date =  %%{F#999}%a %e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
 ; if `date-alt` is defined, clicking the area will toggle between formats
-date-alt = %%{F#fba922}%A%%{F#ff}, %d %B %Y  %H:%M:%S
-format =   <date>
-format-background = #4e53ab
-format-foreground = #000000
+date-alt =  %%{F#fba922}%A%%{F#ff}, %d %B %Y  %H:%M:%S
+format = <date>
+; format-background = #4e53ab
+format-foreground = #fba922
+format-underline = #fba922
 interval = 5
 
-
-[module/wifi]
-type = internal/network
-interface = wlp4s0
-interval = 3.0
-udspeed-minwidth = 3
-
-; Available tags:
-;   <label-connected> (default)
-;   <ramp-signal>
-format-connected = <ramp-signal> <label-connected>
-
-; Available tags:
-;   <label-disconnected> (default)
-format-disconnected = <label-disconnected>
-
-; Available tags:
-;   <label-connected> (default)
-;   <label-packetloss>
-;   <animation-packetloss>
-format-packetloss = <animation-packetloss> <label-connected>
-
-; Available tokens:
-;   %ifname%    [wireless+wired]
-;   %local_ip%  [wireless+wired]
-;   %essid%     [wireless]
-;   %signal%    [wireless]
-;   %upspeed%   [wireless+wired]
-;   %downspeed% [wireless+wired]
-;   %linkspeed% [wired]
-; Default: %ifname% %local_ip%
-label-connected = %essid% %downspeed%
-label-connected-foreground = #eefafafa
-
-; Available tokens:
-;   %ifname%    [wireless+wired]
-; Default: (none)
-label-disconnected = not connected
-label-disconnected-foreground = #66ffffff
-
-; Available tokens:
-;   %ifname%    [wireless+wired]
-;   %local_ip%  [wireless+wired]
-;   %essid%     [wireless]
-;   %signal%    [wireless]
-;   %linkspeed% [wired]
-; Default: (none)
-;label-packetloss = %essid%
-;label-packetloss-foreground = #eefafafa
-
-; Only applies if <ramp-signal> is used
-ramp-signal-0 = 😱
-ramp-signal-1 = 😠
-ramp-signal-2 = 😒
-ramp-signal-3 = 😊
-ramp-signal-4 = 😃
-ramp-signal-5 = 😈
-
-; Only applies if <animation-packetloss> is used
-animation-packetloss-0 = ⚠
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 📶
-animation-packetloss-1-foreground = #000000
-; Framerate in milliseconds
-animation-packetloss-framerate = 500
-
-
-
-[module/battery]
-type = internal/battery
-full-at = 98
-battery = BAT1
-adapter = AC
-
-; Available tags:
-;   <label-charging> (default)
-;   <bar-capaity>
-;   <ramp-capacity>
-;   <animation-charging>
-format-charging = <animation-charging> <label-charging>
-
-; Available tags:
-;   <label-discharging> (default)
-;   <bar-capaity>
-;   <ramp-capacity>
-format-discharging = <ramp-capacity> <label-discharging>
-
-; Available tags:
-;   <label-full> (default)
-;   <bar-capaity>
-;   <ramp-capacity>
-;format-full = <ramp-capacity> <label-full>
-
-; Available tokens:
-;   %percentage% (default)
-label-charging = Charging %percentage%
-
-; Available tokens:
-;   %percentage% (default)
-label-discharging = Discharging %percentage%
-
-; Available tokens:
-;   %percentage% (default)
-label-full =  %percentage%
-
-; Only applies if <ramp-capacity> is used
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-; Only applies if <bar-capacity> is used
-bar-capacity-width = 10
-
-; Only applies if <animation-charging> is used
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-; Framerate in milliseconds
-animation-charging-framerate = 750
-
-
+;=====================================================
 [module/memory]
 type = internal/memory
 interval = 2
 
 format = <label> <bar-used>
-label = RAM
+label-underline = ${colors.purple}
+label =  %percentage_used%
+label-foreground = ${colors.purple}
 
 bar-used-width = 10
-bar-used-foreground-0 = #55aa55
-bar-used-foreground-1 = #55aa55
-bar-used-foreground-2 = #f5a70a
+bar-used-foreground-0 = ${colors.purple}
+bar-used-foreground-1 = ${colors.purple}
+bar-used-foreground-2 = #fba922
 bar-used-foreground-3 = #ff5555
 bar-used-gradient = true
-bar-used-indicator = >
-bar-used-indicator-font = 2
+bar-used-indicator = |
+bar-used-indicator-font = 0
 bar-used-indicator-foreground = #ff
 bar-used-fill = ━
-bar-used-fill-font = 2
+bar-used-fill-font = 0
 bar-used-empty = ━
-bar-used-empty-font = 2
+bar-used-empty-font = 0
 bar-used-empty-foreground = #444444
 
+;=====================================================
 [module/cpu]
 type = internal/cpu
 interval = 2
 
-; format = <label> <bar-load>
-format = <label> <ramp-coreload>
-label = CPU %percentage%
+format = <label> <bar-load>
+; format = <label> <ramp-coreload>
+label =  %percentage%
+label-underline = ${colors.blue}
+label-foreground = ${colors.blue}
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
@@ -309,31 +281,29 @@ ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
+; ramp-coreload-underline = ${colors.white}
 
-bar-load-width = 20
-bar-load-foreground-0 = #55aa55
-bar-load-foreground-1 = #55aa55
+bar-load-width = 10
+bar-load-foreground-0 = ${colors.blue}
+bar-load-foreground-1 = ${colors.blue}
 bar-load-foreground-2 = #f5a70a
 bar-load-foreground-3 = #ff5555
-bar-load-gradient = false
-bar-load-indicator = >
-bar-load-indicator-font = 2
+bar-load-gradient = true
+bar-load-indicator = |
+bar-load-indicator-font = 0
 bar-load-indicator-foreground = #ff
 bar-load-fill = ━
-bar-load-fill-font = 2
+bar-load-fill-font = 0
 bar-load-empty = ━
-bar-load-empty-font = 2
+bar-load-empty-font = 0
 bar-load-empty-foreground = #444444
 
+;=====================================================
 [module/volume]
 type = internal/volume
 
-; Name of the master mixer
-; Default: Master
 master-mixer = Master
 
-; Optionally define speaker and headphone mixers
-; Use the following command to list available mixer controls:
 ; $ amixer scontrols | sed -nr "s/.*'([[:alnum:]]+)'.*/\1/p"
 ; Default: none
 ; speaker-mixer = Speaker
@@ -350,7 +320,7 @@ master-mixer = Master
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume = <ramp-volume> <label-volume>
+format-volume = <ramp-volume> <bar-volume>
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -364,13 +334,32 @@ format-volume = <ramp-volume> <label-volume>
 
 ; Available tokens:
 ;   %percentage% (default)
-label-muted = 🔇 muted
+label-muted =  muted
 label-muted-foreground = #66
 
 ; Only applies if <ramp-volume> is used
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-foreground-0 = ${colors.pink}
+ramp-volume-foreground-1 = ${colors.pink}
+ramp-volume-foreground-2 = ${colors.pink}
+ramp-volume-foreground-3 = ${colors.pink}
+ramp-volume-underline = ${colors.pink}
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.pink}
+bar-volume-foreground-1 = ${colors.pink}
+bar-volume-foreground-2 = ${colors.pink}
+bar-volume-foreground-3 = ${colors.pink}
+bar-volume-indicator = 
+bar-volume-indicator-foreground = #ff
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = #444444
 
 ; If defined, it will replace <ramp-volume> when
 ; headphones are plugged in to `headphone_control_numid`
@@ -379,11 +368,153 @@ ramp-volume-2 = 🔊
 ramp-headphones-0 = 
 ramp-headphones-1 = 
 
-
+;=====================================================
 [module/spotify]
 type = custom/script
 exec = ~/.i3/spotify.py
 tail = true
 maxlen = 10
+
+;=====================================================
+[module/mpd]
+type = internal/mpd
+clickable_progress = true
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <bar-progress> <label-time> <label-song>
+
+; label-song = %artist% - %album% - %title%
+; label-song = %artist% - %title%
+label-song = %title%
+label-song-maxlen = 25
+label-song-ellipsis = true
+label-song-foreground = ${colors.green}
+
+icon-play = 
+icon-play-foreground = ${colors.green}
+icon-pause = 
+icon-pause-foreground = ${colors.yellow}
+icon-stop = 
+icon-stop-foreground = ${colors.red}
+icon-prev = 
+icon-prev-foreground = ${colors.blue}
+icon-next = 
+icon-next-foreground = ${colors.blue}
+icon-random = 
+icon-random-foreground = ${colors.white}
+icon-repeat = 
+icon-repeat-foreground = ${colors.white}
+
+toggle_on-foreground =
+toggle_off-foreground = #55
+
+bar-progress-width = 10
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = >
+bar-progress-indicator-foreground = ${colors.green}
+bar-progress-indicator-font = 2
+bar-progress-fill = ─
+bar-progress-fill-foreground = ${colors.green}
+bar-progress-fill-font = 2
+bar-progress-empty = ─
+bar-progress-empty-font = 2
+bar-progress-empty-foreground = #44
+
+format-online-underline = ${colors.green}
+; format-online-background = #0d5959
+
+;=====================================================
+[module/powermenu]
+type = custom/menu
+
+format-padding = 0
+
+label-open = 
+label-close = 
+
+label-open-foreground = ${colors.red}
+label-close-foreground = ${colors.blue}
+
+menu-0-0 =  shutdown
+menu-0-0-foreground = #fba922
+menu-0-0-exec = shutdown now
+menu-0-1 =  restart
+menu-0-1-foreground = #fba922
+menu-0-1-exec = shutdown -r now
+
+;=====================================================
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+
+format-connected-underline = ${colors.yellow}
+format-connected-prefix = 
+format-connected-foreground-foreground = ${colors.yellow}
+label-connected =  %local_ip%
+label-connected-foreground = ${colors.yellow}
+
+format-disconnected-underline = 
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.pink}
+
+;=====================================================
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = ${colors.green}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${colors.red}
+
+label = %temperature%
+label-foreground = ${colors.green}
+label-warn = %temperature%
+label-warn-foreground = ${colors.red}
+
+ramp-0 = 
+ramp-foreground-0 = ${colors.green}
+ramp-1 = 
+ramp-foreground-1 = ${colors.green}
+ramp-2 = 
+ramp2-foreground-2 = ${colors.yellow}
+ramp-3 = 
+ramp-foreground-3 = ${colors.yellow}
+ramp-4 = 
+ramp-foreground-4 = ${colors.red}
+ramp-5 = 
+ramp-foreground-5 = ${colors.red}
+; ramp-foreground = ${colors.foreground-alt}
+
+;=====================================================
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:20:...%
+label-background = ${colors.background-alt}
+label-padding = 2
+format-underline = ${colors.green}
+
+;=====================================================
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-underline = ${colors.secondary}
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %layout%
+
+label-indicator-padding = 2
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+;=====================================================
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/getpacmanupdates
+format-foreground = #c6e600
+format-underline = #c6e600
+interval = 360
 
 ; vim:ft=dosini

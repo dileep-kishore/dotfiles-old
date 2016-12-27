@@ -147,14 +147,15 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 "1:Term "
-set $ws2 "2:Code "
-set $ws3 "3:Browser "
-set $ws4 "4:Social "
-set $ws5 "5:Music "
-set $ws6 "6:Mail "
-set $ws7 "7:Notes "
-set $ws8 8
+set $ws1 ""
+set $ws2 ""
+set $ws3 ""
+set $ws4 ""
+set $ws5 ""
+set $ws6 ""
+set $ws7 ""
+set $ws8 ""
+set $ws9 ""
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -165,6 +166,7 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -175,6 +177,7 @@ bindsym $mod+Ctrl+5 move container to workspace $ws5
 bindsym $mod+Ctrl+6 move container to workspace $ws6
 bindsym $mod+Ctrl+7 move container to workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -185,14 +188,15 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 
 # Open applications on specific workspaces
-assign [class="termite" instance="ranger"] $ws1
-assign [class="vivaldi-stable"] $ws3
+assign [class="termite" instance="ranger"] $ws4
+assign [class="vivaldi-stable"] $ws1
 # assign [class="Pcmanfm"] $ws1
-assign [class="wmail"] $ws6
-assign [class="Spotify"] $ws5
-assign [class="Skype"] $ws4
+assign [class="wmail"] $ws7
+assign [class="Spotify"] $ws6
+assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -276,7 +280,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id ~/.dotfiles/i3/lock.sh
+bindsym $mod+Ctrl+l exec --no-startup-id ~/.dotfiles/i3/lock.sh
 
 # Autostart applications
 ## adjustment of i3bar battery reading (only run at the very first login):
@@ -313,35 +317,35 @@ set $base0E #c0b7f9
 set $base0F #fcc09e
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	status_command i3blocks -c ~/.i3/i3blocks.conf
-
-    ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-    #	tray_output primary
-    #	tray_output eDP1
-
-    position top
-    height 25
-	bindsym button4 nop
-	bindsym button5 nop
-    font pango:Fantasque Sans Mono 12
-    # separator_symbol "<|<"
-    separator_symbol ""
-	# strip_workspace_numbers yes
-
-	colors {
-    #	background $transparent
-		# separator #04fe70
-        separator #807878
-		background #000000
-		statusline #f12a0e
-                		# border background text
-		focused_workspace #400402 #d13418 $base01
-		active_workspace #400402 #c28e2a $base01
-		inactive_workspace #400402 $base06 $base02
-		urgent_workspace $base01 $base08 $base07
-	}
-}
+# bar {
+# 	status_command i3blocks -c ~/.i3/i3blocks.conf
+# 
+#     ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#     #	tray_output primary
+#     #	tray_output eDP1
+# 
+#     position top
+#     height 25
+# 	bindsym button4 nop
+# 	bindsym button5 nop
+#     font pango:Fantasque Sans Mono 12
+#     # separator_symbol "<|<"
+#     separator_symbol ""
+# 	# strip_workspace_numbers yes
+# 
+# 	colors {
+#     #	background $transparent
+# 		# separator #04fe70
+#         separator #807878
+# 		background #000000
+# 		statusline #f12a0e
+#                 		# border background text
+# 		focused_workspace #400402 #d13418 $base01
+# 		active_workspace #400402 #c28e2a $base01
+# 		inactive_workspace #400402 $base06 $base02
+# 		urgent_workspace $base01 $base08 $base07
+# 	}
+# }
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
@@ -413,6 +417,7 @@ mode "$mode_gaps_outer" {
 }
 
 # Startup stuff
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id mopidy
 exec --no-startup-id dropbox start
 exec xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-5 --off --output DP-4 --off --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off --output DP-1 --off --output DP-0 --off

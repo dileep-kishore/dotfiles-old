@@ -1,13 +1,13 @@
-  #!/usr/bin/env sh
+#!/usr/bin/env sh
 
-  # Terminate already running bar instances
-  killall -q lemonbuddy
+# Terminate already running bar instances
+killall -q polybar
 
-  # Wait until the processes have been shut down
-  while pgrep -x lemonbuddy >/dev/null; do sleep 1; done
+# Wait until the processes have been shut down
+while pgrep -x polybar >/dev/null; do sleep 1; done
 
-  # Launch bar1 and bar2
-  lemonbuddy bar1 &
-  lemonbuddy bar2 &
+# Launch bar1 and bar2
+polybar asus &
+polybar hp &
 
-  echo "Bars launched..."
+echo "Bars launched..."
