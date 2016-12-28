@@ -8,7 +8,7 @@
 ;=====================================================
 
 [colors]
-background = #170101
+background = #cc131313
 background-alt = #651d1d
 foreground = #dfdfdf
 foreground-alt = #55
@@ -18,12 +18,12 @@ alert = #bd2c40
 white = #d1d1d1
 gray = #585858
 black = #090909
-red = #c79595
-blue = #95aec7
-yellow = #c7ae95
-green = #aec795
-purple = #ae95c7
-pink = #c795bc
+red = #c70707
+blue = #0666c6
+yellow = #c86604
+green = #67c805
+purple = #6807c8
+pink = #c4079b
 
 ;=====================================================
 [bar/hp]
@@ -59,13 +59,13 @@ underline-color = #00f
 ; border-right = 1
 ; ;border-right-color = #ff0059
 
-spacing = 2
+spacing = 1
 
-padding-left = 2
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
-module-margin-left = 2
-module-margin-right = 2
+module-margin-left = 1
+module-margin-right = 1
 
 ; Fonts are defined using: <FontName>;<Offset>
 font-0 = FantasqueSansMono-Regular=10;0
@@ -81,7 +81,7 @@ modules-left = mpd
 modules-right = volume date powermenu
 
 tray-detached = false
-tray-background = #cc131313
+; tray-background = #cc131313
 tray-position = right
 tray-padding = 1
 ; tray-transparent = true
@@ -118,13 +118,13 @@ underline-color = #00f
 ; border-right = 1
 ; ;border-right-color = #ff0059
 
-spacing = 2
+spacing = 1
 
-padding-left = 2
-padding-right = 2
+padding-left = 1
+padding-right = 1
 
-module-margin-left = 2
-module-margin-right = 2
+module-margin-left = 1
+module-margin-right = 1
 
 ; Fonts are defined using: <FontName>;<Offset>
 font-0 = FantasqueSansMono-Regular=10;0
@@ -157,7 +157,7 @@ ws-icon-1 = ;
 ws-icon-2 = ;
 ws-icon-3 = ;
 ws-icon-4 = ;
-ws-icon-5 = ;
+ws-icon-5 = ;
 ws-icon-6 = ;
 ws-icon-7 = ;
 ws-icon-8 = ;
@@ -379,12 +379,13 @@ maxlen = 10
 [module/mpd]
 type = internal/mpd
 clickable_progress = true
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <bar-progress> <label-time> <label-song>
+; format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <bar-progress> <label-time> <label-song>
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <bar-progress> <label-song>
 
 ; label-song = %artist% - %album% - %title%
 ; label-song = %artist% - %title%
 label-song = %title%
-label-song-maxlen = 25
+label-song-maxlen = 30
 label-song-ellipsis = true
 label-song-foreground = ${colors.green}
 
@@ -399,9 +400,9 @@ icon-prev-foreground = ${colors.blue}
 icon-next = 
 icon-next-foreground = ${colors.blue}
 icon-random = 
-icon-random-foreground = ${colors.white}
+icon-random-foreground = ${colors.pink}
 icon-repeat = 
-icon-repeat-foreground = ${colors.white}
+icon-repeat-foreground = ${colors.pink}
 
 toggle_on-foreground =
 toggle_off-foreground = #55
@@ -434,11 +435,14 @@ label-open-foreground = ${colors.red}
 label-close-foreground = ${colors.blue}
 
 menu-0-0 =  shutdown
-menu-0-0-foreground = #fba922
+menu-0-0-foreground = ${colors.red}
 menu-0-0-exec = shutdown now
 menu-0-1 =  restart
-menu-0-1-foreground = #fba922
+menu-0-1-foreground = ${colors.yellow}
 menu-0-1-exec = shutdown -r now
+menu-0-2 =  lock
+menu-0-2-foreground = ${colors.black}
+menu-0-2-exec = ~/.i3/i3lock-fancy-multimonitor/lock
 
 ;=====================================================
 [module/eth]
@@ -449,10 +453,10 @@ interval = 3.0
 format-connected-underline = ${colors.yellow}
 format-connected-prefix = 
 format-connected-foreground-foreground = ${colors.yellow}
-label-connected =  %local_ip%
+label-connected = "%local_ip%%{u#dc322f +u}%{F#dc322f}%{F-}%upspeed%%{u-}%{u#2aa198 +u}%{F#2aa198}%{F-}%downspeed%%{u-}"
 label-connected-foreground = ${colors.yellow}
 
-format-disconnected-underline = 
+; format-disconnected-underline = 
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.pink}
 
@@ -489,10 +493,10 @@ ramp-foreground-5 = ${colors.red}
 ;=====================================================
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:20:...%
-label-background = ${colors.background-alt}
+label =  %title:0:20:...%
+label-background = #ff0000
 label-padding = 2
-format-underline = ${colors.green}
+format-underline = ${colors.red}
 
 ;=====================================================
 [module/xkeyboard]
@@ -516,5 +520,6 @@ exec = ~/.config/polybar/getpacmanupdates
 format-foreground = #c6e600
 format-underline = #c6e600
 interval = 360
+
 
 ; vim:ft=dosini
