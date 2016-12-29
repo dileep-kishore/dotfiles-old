@@ -121,7 +121,7 @@ alias tkill="tmux kill-session -t"
 alias tlist="tmux ls"
 alias condadir="cd /home/dileep/anaconda3/bin/"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
-
+alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 

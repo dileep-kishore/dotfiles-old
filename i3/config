@@ -424,7 +424,10 @@ exec xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 1920x0
 exec albert
 
 # Shortcuts
-bindsym $mod+Shift+f exec --no-startup-id termite -d "`xcwd`" -e ranger
+# bindsym $mod+Shift+f exec --no-startup-id termite -d "`xcwd`" -e ranger
+bindsym $mod+Shift+f exec --no-startup-id tdrop -n ranger -a -m -w 1362 -x  250 -y 34 -f '-d "`xcwd`" -e ranger' termite
 bindsym $mod+Shift+x exec blurlock
 bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
+bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -w 1362 -x 250 -y 34 -s tdrop -f '-d "`xcwd`"' termite
+bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 1362 -x 250 -y 585 -f '-e ncmpcpp' termite
