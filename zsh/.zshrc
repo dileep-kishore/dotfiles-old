@@ -147,6 +147,7 @@ export VISUAL=$EDITOR
 export BROWSER=vivaldi-stable
 
 # Anaconda path
+export ana=$HOME/anaconda3/bin
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
