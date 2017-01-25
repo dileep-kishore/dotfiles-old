@@ -1,0 +1,28 @@
+width: 1000
+height: "max"
+linter: "remark-lint"
+lint_options:
+    maximum-line-length: false
+drawer:
+    responsive: false
+menu:
+    visible: true
+markdown:
+    font_size: 12px
+    css_path: '~/.dotfiles/Shiba/tufte-css/tufte.css'
+    code_theme: 'monokai'
+file_ext:
+    markdown:
+        - "md"
+        - "markdown"
+        - "mkd"
+        - "wiki"
+    html:
+        - "html"
+shortcuts:
+    "g g": "PageTop"
+    "shift+g": "PageBottom"
+    i: ""
+    m: ""
+    command+q: "QuitApp"
+    "shift+z shift+z": "QuitApp"
