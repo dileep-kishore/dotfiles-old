@@ -119,9 +119,10 @@ alias tdetach="tmux detach"
 # alias tkill="tmux tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
 alias tkill="tmux kill-session -t"
 alias tlist="tmux ls"
-alias condadir="cd /home/dileep/anaconda3/bin/"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
+alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
+alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
@@ -147,8 +148,10 @@ export VISUAL=$EDITOR
 export BROWSER=vivaldi-stable
 
 # Anaconda path
-export ana=$HOME/anaconda3/bin
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
+
+# Nextflow path
+export PATH="/home/dileep/nextflow:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh
