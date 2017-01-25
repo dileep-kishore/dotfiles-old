@@ -32,7 +32,7 @@ dock = false
 ; bottom = true
 width = 100%
 height = 28
-clickareas = 100
+; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
 
@@ -91,7 +91,7 @@ tray-padding = 1
 monitor = DP-3
 width = 100%
 height = 28
-clickareas = 100
+; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
 
@@ -137,7 +137,7 @@ font-3 = Siji:size-10;0
 
 modules-center = i3
 modules-left = xwindow
-modules-right = updates filesystem-root filesystem-home temperature cpu memory eth
+modules-right = filesystem-root filesystem-home temperature cpu memory eth
 
 ; tray-background = #cc131313
 ; tray-position = right
@@ -149,18 +149,19 @@ type = internal/i3
 pin-workspaces = true
 format = <label-state> <label-mode>
 index-sort = true
-enable-click = false
+enable-click = true
+strip-wsnumbers = true
 
 ; ws-icon-[0-9]+ = label;icon
-ws-icon-0 = ;
-ws-icon-1 = ;
-ws-icon-2 = ;
-ws-icon-3 = ;
-ws-icon-4 = ;
-ws-icon-5 = ;
-ws-icon-6 = ;
-ws-icon-7 = ;
-ws-icon-8 = ;
+ws-icon-0 = 1:;
+ws-icon-1 = 2:;
+ws-icon-2 = 3:;
+ws-icon-3 = 4:;
+ws-icon-4 = 5:;
+ws-icon-5 = 6:;
+ws-icon-6 = 7:;
+ws-icon-7 = 8:;
+ws-icon-8 = 9:;
 ws-icon-default = 
 
 ; Available tokens:
@@ -169,10 +170,11 @@ ws-icon-default = 
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %icon%
+label-focused = %name%
 label-focused-foreground = #ffffff
-label-focused-background = #3f3f3f
-label-focused-underline = #ff0000
+; label-focused-background = #3f3f3f
+label-focused-background =#ff9100
+label-focused-underline = #fbb04d
 label-focused-padding = 2
 
 ; Available tokens:
@@ -180,7 +182,7 @@ label-focused-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-unfocused = %icon%
+label-unfocused = %name%
 ; label-unfocused-foreground = #ffffff
 ; label-unfocused-background = #c28e2a
 ; label-unfocused-underline = #107aa7
@@ -191,10 +193,11 @@ label-unfocused-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-visible = %icon%
+label-visible = %name%
 label-visible-foreground = #ffffff
-label-visible-background = #3f3f3f
-label-visible-underline = #600404
+; label-visible-background = #3f3f3f
+label-visible-background = #034b4b
+label-visible-underline = #034b4b
 label-visible-padding = 2
 
 ; Available tokens:
@@ -202,7 +205,7 @@ label-visible-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent = %icon%
+label-urgent = %name%
 label-urgent-foreground = #ffffff
 label-urgent-background = #bd2c40
 label-urgent-padding = 2
@@ -212,7 +215,7 @@ label-urgent-padding = 2
 [module/date]
 type = internal/date
 ; date = %%{F#fba922}%%{F-} %%{F#999}%a %e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
-date =  %%{F#999}%a %e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
+date =  %%{F#999}%a,%e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
 ; if `date-alt` is defined, clicking the area will toggle between formats
 date-alt =  %%{F#fba922}%A%%{F#ff}, %d %B %Y  %H:%M:%S
 format = <date>
@@ -228,7 +231,7 @@ interval = 2
 
 format = <label> <bar-used>
 label-underline = ${colors.purple}
-label =  %percentage_used%
+label =  %percentage_used%%
 label-foreground = ${colors.purple}
 
 bar-used-width = 10
@@ -251,24 +254,25 @@ bar-used-empty-foreground = #444444
 type = internal/cpu
 interval = 2
 
-format = <label> <bar-load>
-; format = <label> <ramp-coreload>
-label =  %percentage%
+; format = <label> <bar-load>
+format = <label> <ramp-coreload>
+label =  %percentage%%
 label-underline = ${colors.blue}
 label-foreground = ${colors.blue}
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
-ramp-coreload-0-foreground = #55aa55
+; ramp-coreload-0-foreground = #55aa55
+ramp-coreload-0-foreground = ${colors.blue}
 ramp-coreload-1 = ▂
 ramp-coreload-1-font = 2
-ramp-coreload-1-foreground = #55aa55
+ramp-coreload-1-foreground = ${colors.blue}
 ramp-coreload-2 = ▃
 ramp-coreload-2-font = 2
-ramp-coreload-2-foreground = #55aa55
+ramp-coreload-2-foreground = ${colors.blue}
 ramp-coreload-3 = ▄
 ramp-coreload-3-font = 2
-ramp-coreload-3-foreground = #55aa55
+ramp-coreload-3-foreground = ${colors.blue}
 ramp-coreload-4 = ▅
 ramp-coreload-4-font = 2
 ramp-coreload-4-foreground = #f5a70a
@@ -281,6 +285,8 @@ ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
 ramp-coreload-7-font = 2
 ramp-coreload-7-foreground = #ff5555
+ramp-coreload-8-font = 2
+ramp-coreload-8-foreground = #ff5555
 ; ramp-coreload-underline = ${colors.white}
 
 bar-load-width = 10
@@ -489,7 +495,7 @@ ramp-4 = 
 ramp-foreground-4 = ${colors.red}
 ramp-5 = 
 ramp-foreground-5 = ${colors.red}
-; ramp-foreground = ${colors.foreground-alt}
+ramp-foreground = ${colors.green}
 
 ;=====================================================
 [module/xwindow]
@@ -528,7 +534,7 @@ type = internal/fs
 interval = 30
 mount-0 = /home
 format-mounted = <label-mounted>
-label-mounted = : %percentage_used%
+label-mounted =  %percentage_used%%
 label-mounted-foreground = ${colors.pink}
 label-mounted-underline = ${colors.pink}
 
@@ -538,7 +544,7 @@ type = internal/fs
 interval = 30
 mount-0 = /
 format-mounted = <label-mounted>
-label-mounted = : %percentage_used%
+label-mounted =  %percentage_used%%
 label-mounted-foreground = ${colors.pink}
 label-mounted-underline = ${colors.pink}
 

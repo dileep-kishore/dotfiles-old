@@ -147,15 +147,15 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 ""
-set $ws2 ""
-set $ws3 ""
-set $ws4 ""
-set $ws5 ""
-set $ws6 ""
-set $ws7 ""
-set $ws8 ""
-set $ws9 ""
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -353,9 +353,9 @@ bindsym $mod+m bar mode toggle
 
 # Widow Colours
               # border background text indicator
-client.focused #ff0000 #ff0000 #00bdff #e26943
-client.focused_inactive #600404 #660707 $base03 #743232
-client.unfocused #583501 #3b2501 $base03 $base0F
+client.focused #ff9100 #ff9100 #00bdff #e26943
+client.focused_inactive #034b4b #034b4b $base03 #743232
+client.unfocused #034b4b #034b4b $base03 $base0F
 client.urgent $base0E $base08 $base00 $base0F
 
 #############################
@@ -431,3 +431,4 @@ bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
 bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -w 1362 -x 250 -y 34 -s tdrop -f '-d "`xcwd`"' termite
 bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 1362 -x 250 -y 585 -f '-e ncmpcpp' termite
+bindsym $mod+Shift+P exec --no-startup-id shiba --detach "`xcwd`"
