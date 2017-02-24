@@ -9,7 +9,7 @@
     dynamic_title = true
     urgent_on_bell = true
     clickable_url = true
-    font = hermit
+    font = Hurmit Nerd Font
     scrollback_lines = 1000
     search_wrap = true
     #icon_name = terminal

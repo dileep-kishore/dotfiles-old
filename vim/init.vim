@@ -47,6 +47,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'sickill/vim-pasta'
 Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
 " Tmux
 Plug 'edkolev/tmuxline.vim'
 " Themes
@@ -169,7 +170,7 @@ autocmd! BufWritePost * Neomake
 set updatetime=1000
 
 " fzf settings
-" Remapping 
+" Remapping
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -263,7 +264,7 @@ nnoremap <leader>q :q!<cr>
 set foldenable " Enables folding
 set foldlevelstart=10 "Folds below level 10 will be folded
 set foldnestmax=10 "More than 10 folds can't be nested
-set foldmethod=indent 
+set foldmethod=indent
 
 " Gundo-vim mapping
 nnoremap <F5> :GundoToggle<CR>
@@ -273,7 +274,7 @@ let g:indentLine_char = '┆'
 let g:indentLine_color_gui = '#A4E57E'
 
 " Resizing using arrow keys
-nnoremap <left> :vertical resize +5<cr> 
+nnoremap <left> :vertical resize +5<cr>
 nnoremap <right> :vertical resize -5<cr>
 nnoremap <up> :resize +5<cr>
 nnoremap <down> :resize -5<cr>
