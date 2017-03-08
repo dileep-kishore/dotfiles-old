@@ -48,6 +48,7 @@ Plug 'honza/vim-snippets'
 Plug 'sickill/vim-pasta'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
 " Tmux
 Plug 'edkolev/tmuxline.vim'
 " Themes
@@ -55,6 +56,8 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'sjl/badwolf'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'jacoborus/tender.vim'
 call plug#end()
 
 set number
@@ -62,17 +65,27 @@ set number
 " Relative line numbering
 syntax enable
 set background=dark
+" deep-space settings
 " colorscheme deep-space
 " let g:deepspace_italics=1
+" badwolf settings
 " let g:badwolf_darkgutter = 1
 " let g:badwolf_tabline = 0
 " colorscheme badwolf
+" srcery settings
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let g:srcery_italic=1
-colorscheme srcery
+" let g:srcery_italic=1
+" colorscheme srcery
+" firewatch settings
 "colorscheme two-firewatch
 "let g:two_firewatch_italics=1
+" vim-quantum settings
+let g:quantum_black = 1
+let g:quantum_italics = 1
+colorscheme quantum
+" tender settings
+" colorscheme tender
 set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -154,7 +167,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='simple'
+let g:airline_theme='base16_google'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
