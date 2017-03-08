@@ -8,6 +8,7 @@
 ;=====================================================
 
 [colors]
+transparent = #00000000
 background = #cc131313
 background-alt = #651d1d
 foreground = #dfdfdf
@@ -15,6 +16,7 @@ foreground-alt = #55
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+
 white = #d1d1d1
 gray = #585858
 black = #090909
@@ -25,21 +27,46 @@ green = #67c805
 purple = #8305ff
 pink = #de00ae
 
+pred = #c56f82
+pblue = #84b6bd
+pgreen = #84b6bd
+pcream = #d1d0ef
+ppurple = #a385cb
+lpink = #cc83b5
+dpink = #b34980 
+
+tblack   = #948A74
+tred     = #DC8068
+tgreen   = #C2B966
+tyellow  = #E1BA6A
+tblue    = #79A298
+tmagenta = #C89099
+tcyan    = #84AB7A
+tgrey    = #bdae93
+
+
+;=====================================================
+[settings]
+compositing-background = ${colors.transparent}
+compositing-foreground = over
+compositing-overline = ${colors.transparent}
+compositing-underline = over
+compositing-border = ${colors.transparent}
 ;=====================================================
 [bar/hp]
 monitor = HDMI-0
 dock = false
 ; bottom = true
 width = 100%
-height = 28
+height = 18
 ; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.transparent}
+foreground = ${colors.black}
 
-overline-size = 2
+; overline-size = 2
 overline-color = #f00
 underline-size = 2
 underline-color = #00f
@@ -47,32 +74,32 @@ underline-color = #00f
 ; Borders
 ; Size to be used for all borders
 ; Default: 0
-; border-size = 2
+border-size = 2
 ; Color to be used for all borders
-; border-color = #ff9900
+border-color = ${self.background}
 ; ; Per-border values
 ; border-top = 1
 ; ; border-top-color = #ff9900
 ; border-bottom = 1
-; ;border-bottom-color = #5d00ff
-; border-left = 1
-; border-right = 1
+; border-bottom-color = ${colors.primary}
+; border-left-size = 2
+; border-right-size = 2
 ; ;border-right-color = #ff0059
 
-spacing = 1
+; spacing = 1
 
 padding-left = 1
 padding-right = 1
 
-module-margin-left = 1
-module-margin-right = 1
+; module-margin-left = 1
+; module-margin-right = 1
 
 ; Fonts are defined using: <FontName>;<Offset>
-font-0 = FantasqueSansMono-Regular=10;0
-font-1 = MaterialIcons:size=11;0
-; font-2 = Termsynu:size=8;-1
-font-2 = FontAwesome:size=11;0
-font-3 = Siji:size=10;0
+font-0 = FantasqueSansMono:style:Regular:size=11;1
+font-1 = FontAwesome:size=11;1
+font-2 = MaterialIcons:size=11;1
+font-3 = OperatorMono:style:Italic:size=11;0
+font-4 = Siji:size=11;2
 
 ; separator = |
 
@@ -83,22 +110,23 @@ modules-right = volume date powermenu
 tray-detached = false
 ; tray-background = #cc131313
 tray-position = right
-tray-padding = 1
+tray-padding = 5
+tray-scale=1
 ; tray-transparent = true
 
 ;=====================================================
 [bar/asus]
 monitor = DP-3
 width = 100%
-height = 28
+height = 18
 ; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.transparent}
+foreground = ${colors.black}
 
-overline-size = 2
+; overline-size = 2
 overline-color = #f00
 underline-size = 2
 underline-color = #00f
@@ -106,32 +134,32 @@ underline-color = #00f
 ; Borders
 ; Size to be used for all borders
 ; Default: 0
-; border-size = 2
+border-size = 2
 ; Color to be used for all borders
-; border-color = #ff9900
+border-color = ${self.background}
 ; ; Per-border values
 ; border-top = 1
 ; ; border-top-color = #ff9900
 ; border-bottom = 1
-; ;border-bottom-color = #5d00ff
+; border-bottom-color = ${colors.primary}
 ; border-left = 1
 ; border-right = 1
 ; ;border-right-color = #ff0059
 
-spacing = 1
+; spacing = 1
 
 padding-left = 1
 padding-right = 1
 
-module-margin-left = 1
-module-margin-right = 1
+; module-margin-left = 1
+; module-margin-right = 1
 
 ; Fonts are defined using: <FontName>;<Offset>
-font-0 = FantasqueSansMono-Regular=10;0
-font-1 = MaterialIcons:size=11;0
-; font-2 = Termsynu:size=8;-1
-font-2 = FontAwesome:size=11;0
-font-3 = Siji:size-10;0
+font-0 = FantasqueSansMono:style:Regular:size=11;1
+font-1 = FontAwesome:size=11;1
+font-2 = MaterialIcons:size=11;1
+font-3 = Operator Mono:style:Italic:size=11;1
+font-4 = Siji:size=11;2
 
 ; separator = |
 
@@ -147,10 +175,18 @@ modules-right = filesystem-root filesystem-home temperature cpu memory eth
 [module/i3]
 type = internal/i3
 pin-workspaces = true
-format = <label-state> <label-mode>
+format = <label-state><label-mode>
 index-sort = true
 enable-click = true
 strip-wsnumbers = true
+
+label-mode-foreground = ${colors.tblue}
+label-mode-background = ${colors.tgrey}
+
+format-prefix = 
+format-prefix-foreground = ${colors.tgrey}
+format-suffix = 
+format-suffix-foreground = ${colors.tgrey}
 
 ; ws-icon-[0-9]+ = label;icon
 ws-icon-0 = 1:;
@@ -170,12 +206,12 @@ ws-icon-default = 
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %name%
-label-focused-foreground = #ffffff
+label-focused = %{B#bdae93 F#84AB7A}%{F- B#84AB7A}  %name%  %{B#bdae93 F#84AB7A}
+label-focused-foreground = ${colors.black}
 ; label-focused-background = #3f3f3f
-label-focused-background =#ff9100
-label-focused-underline = #fbb04d
-label-focused-padding = 2
+; label-focused-background = #ff9100
+; label-focused-underline = #fbb04d
+label-focused-padding = 0
 
 ; Available tokens:
 ;   %name%
@@ -183,56 +219,78 @@ label-focused-padding = 2
 ;   %index%
 ; Default: %icon%  %name%
 label-unfocused = %name%
-; label-unfocused-foreground = #ffffff
-; label-unfocused-background = #c28e2a
-; label-unfocused-underline = #107aa7
-label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.black}
+label-unfocused-background = ${colors.tgrey}
+; label-unfocused-underline = #27404b
+label-unfocused-padding = 3
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-visible = %name%
+label-visible = %{B#bdae93 F#84b6bd}%{F- B#84b6bd}  %name%  %{B#bdae93 F#84b6bd}
 label-visible-foreground = #ffffff
 ; label-visible-background = #3f3f3f
 label-visible-background = #034b4b
-label-visible-underline = #034b4b
-label-visible-padding = 2
+; label-visible-underline = #034b4b
+label-visible-padding = 0
 
 ; Available tokens:
 ;   %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent = %name%
+label-urgent = %{B#bdae93 F#bd2c40}%{F- B#bd2c40}  %name%  %{B#bdae93 F#bd2c40}
 label-urgent-foreground = #ffffff
 label-urgent-background = #bd2c40
-label-urgent-padding = 2
+label-urgent-padding = 0
 
 
 ;=====================================================
 [module/date]
 type = internal/date
-; date = %%{F#fba922}%%{F-} %%{F#999}%a %e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
-date =  %%{F#999}%a,%e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
-; if `date-alt` is defined, clicking the area will toggle between formats
-date-alt =  %%{F#fba922}%A%%{F#ff}, %d %B %Y  %H:%M:%S
-format = <date>
-; format-background = #4e53ab
-format-foreground = #fba922
-format-underline = #fba922
+; date =  %%{F#999}%a,%e %b%%{F-} %%{F#fba922}%H:%M%%{F-}
+; date-alt =  %%{F#fba922}%A%%{F#ff}, %d %B %Y %H:%M:%S
+
+date     = " %m.%d.%y"
+date-alt = "  %A, %d. %B"
+
+time     = " %H:%M"
+time-alt = "%H:%M:%S"
+
+format           = <label>
+label            = %time% | %date%
+
+; format-background = ${colors.tyellow}
+label-background = ${colors.tyellow}
+label-padding = 1
 interval = 5
+
+
+format-suffix = 
+format-suffix-foreground = ${self.label-background}
+; format-suffix-background = ${colors.transparent}
 
 ;=====================================================
 [module/memory]
 type = internal/memory
 interval = 2
 
-format = <label> <bar-used>
-label-underline = ${colors.purple}
+format = <label>%{B#a385cb}<bar-used>%{B-}
+; format = <label>
+label-padding = 1
 label =  %percentage_used%%
-label-foreground = ${colors.purple}
+; label-foreground = ${colors.purple}
+label-background = ${colors.ppurple}
+; bar-used-background = ${colors.ppurple}
+format-bar-background = ${colors.ppurple}
+
+; format-prefix            = 
+; format-prefix-foreground = ${self.label-background}
+format-suffix            = 
+format-suffix-background = ${self.label-background}
+format-suffix-foreground = ${module/eth.format-connected-background}
 
 bar-used-width = 10
 bar-used-foreground-0 = ${colors.purple}
@@ -249,30 +307,40 @@ bar-used-empty = ━
 bar-used-empty-font = 0
 bar-used-empty-foreground = #444444
 
+
 ;=====================================================
 [module/cpu]
 type = internal/cpu
 interval = 2
 
 ; format = <label> <bar-load>
-format = <label> <ramp-coreload>
+format = <label>%{B#79A298}<ramp-coreload>%{B-}
 label =  %percentage%%
-label-underline = ${colors.blue}
-label-foreground = ${colors.blue}
+label-padding = 1
+; label-foreground = ${colors.blue}
+label-background = ${colors.tblue}
+; ramp-coreload-background = ${colors.tblue}
+
+format-suffix            = 
+format-suffix-background = ${colors.tblue}
+format-suffix-foreground = ${module/memory.format-bar-background}
+format-prefix            = 
+format-prefix-foreground = ${colors.tblue}
+format-prefix-background = ${module/temperature.format-background}
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-font = 2
 ; ramp-coreload-0-foreground = #55aa55
-ramp-coreload-0-foreground = ${colors.blue}
+; ramp-coreload-0-foreground = ${colors.blue}
 ramp-coreload-1 = ▂
 ramp-coreload-1-font = 2
-ramp-coreload-1-foreground = ${colors.blue}
+; ramp-coreload-1-foreground = ${colors.blue}
 ramp-coreload-2 = ▃
 ramp-coreload-2-font = 2
-ramp-coreload-2-foreground = ${colors.blue}
+; ramp-coreload-2-foreground = ${colors.blue}
 ramp-coreload-3 = ▄
 ramp-coreload-3-font = 2
-ramp-coreload-3-foreground = ${colors.blue}
+; ramp-coreload-3-foreground = ${colors.blue}
 ramp-coreload-4 = ▅
 ramp-coreload-4-font = 2
 ramp-coreload-4-foreground = #f5a70a
@@ -326,7 +394,7 @@ master-mixer = Master
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume = <ramp-volume> <bar-volume>
+format-volume = %{B#C89099}<ramp-volume> <bar-volume> %{B-}
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -336,12 +404,26 @@ format-volume = <ramp-volume> <bar-volume>
 
 ; Available tokens:
 ;   %percentage% (default)
-;label-volume = %percentage%
-
+; label-volume = %percentage%
+label-volume-padding = 1
 ; Available tokens:
 ;   %percentage% (default)
 label-muted =  muted
 label-muted-foreground = #66
+label-muted-background = #66
+
+label-volume-background  = ${colors.tmagenta}
+format-volume-prefix            = 
+format-volume-prefix-foreground = ${self.label-volume-background}
+; format-volume-prefix-background = ${colors.transparent}
+format-volume-suffix            = 
+format-volume-suffix-background = ${self.label-volume-background}
+format-volume-suffix-foreground = ${module/date.label-background}
+
+; format-muted-background  = ${colors.tmagenta}
+; format-volume-background  = ${colors.tmagenta}
+; format-bar-backgound = ${colors.tmagenta}
+
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 
@@ -352,7 +434,6 @@ ramp-volume-foreground-0 = ${colors.pink}
 ramp-volume-foreground-1 = ${colors.pink}
 ramp-volume-foreground-2 = ${colors.pink}
 ramp-volume-foreground-3 = ${colors.pink}
-ramp-volume-underline = ${colors.pink}
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.pink}
 bar-volume-foreground-1 = ${colors.pink}
@@ -386,14 +467,15 @@ maxlen = 10
 type = internal/mpd
 clickable_progress = true
 ; format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <bar-progress> <label-time> <label-song>
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <bar-progress> <label-song>
+format-online = %{B#d1d0ef}<icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random> <bar-progress> <label-song>%{B-}
+; format-padding = 2
 
 ; label-song = %artist% - %album% - %title%
-; label-song = %artist% - %title%
 label-song = %title%
+label-song-font = 0
 label-song-maxlen = 30
 label-song-ellipsis = true
-label-song-foreground = ${colors.green}
+label-song-foreground = ${colors.black}
 
 icon-play = 
 icon-play-foreground = ${colors.green}
@@ -425,8 +507,14 @@ bar-progress-empty = ─
 bar-progress-empty-font = 2
 bar-progress-empty-foreground = #44
 
-format-online-underline = ${colors.green}
-; format-online-background = #0d5959
+; format-online-underline = ${colors.green}
+; format-online-background = ${colors.pcream}
+format-online-suffix = 
+format-online-prefix = 
+format-online-prefix-foreground = ${colors.pcream}
+; format-online-prefix-background = ${colors.transparent}
+format-online-suffix-foreground = ${colors.pcream}
+; format-online-suffix-background = ${colors.transparent}
 
 ;=====================================================
 [module/powermenu]
@@ -456,15 +544,49 @@ type = internal/network
 interface = enp3s0
 interval = 3.0
 
-format-connected-underline = ${colors.yellow}
+; format-connected-underline = ${colors.yellow}
+format-connected-background = ${colors.yellow}
 format-connected-prefix = 
-format-connected-foreground-foreground = ${colors.yellow}
-label-connected = "%local_ip%%{u#dc322f +u}%{F#dc322f}%{F-}%upspeed%%{u-}%{u#2aa198 +u}%{F#2aa198}%{F-}%downspeed%%{u-}"
-label-connected-foreground = ${colors.yellow}
+; format-connected-foreground-foreground = ${colors.yellow}
+; label-connected = "%local_ip%%{u#dc322f +u}%{F#dc322f}%{F-}%upspeed%%{u-}%{u#2aa198 +u}%{F#2aa198}%{F-}%downspeed%%{u-}"
+label-connected = "%local_ip%%{F#dc322f}%{F-}%{B#dc322f}%upspeed%%{B-}%{B#dc322f F#2aa198}%{B- F-}%{B#2aa198}%downspeed%%{B-}"
+; label-connected-foreground = ${colors.yellow}
 
 ; format-disconnected-underline = 
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.pink}
+
+;=====================================================
+[module/filesystem-home]
+type = internal/fs
+interval = 30
+mount-0 = /home
+format-mounted = <label-mounted>
+label-mounted =  %percentage_used%%
+label-mounted-background = ${colors.dpink}
+format-mounted-background = ${colors.dpink}
+; label-mounted-underline = ${colors.pink}
+label-mounted-padding = 1
+
+format-mounted-prefix            = 
+format-mounted-prefix-foreground = ${self.label-mounted-background}
+format-mounted-prefix-background = ${module/filesystem-root.label-mounted-background}
+
+;=====================================================
+[module/filesystem-root]
+type = internal/fs
+interval = 30
+mount-0 = /
+format-mounted = <label-mounted>
+label-mounted =  %percentage_used%%
+label-mounted-background = ${colors.lpink}
+; label-mounted-underline = ${colors.pink}
+; format-mounted-background = ${colors.lpink}
+label-mounted-padding = 1
+
+format-mounted-prefix            = 
+format-mounted-prefix-foreground = ${self.label-mounted-background}
+; format-mounted-prefix-background = ${colors.transparent}
 
 ;=====================================================
 [module/temperature]
@@ -473,20 +595,24 @@ interval = 10
 thermal-zone = 2
 warn-temperature = 60
 
-format = <ramp> <label>
-format-underline = ${colors.green}
-format-warn = <ramp> <label-warn>
+format = <ramp><label>
+; format-underline = ${colors.green}
+format-warn = <ramp><label-warn>
 format-warn-underline = ${colors.red}
+format-background = ${colors.green}
+format-warn-background = ${colors.red}
+
 
 label = %temperature%
-label-foreground = ${colors.green}
+label-padding = 1
 label-warn = %temperature%
 label-warn-foreground = ${colors.red}
+label-background = ${colors.green}
 
 ramp-0 = 
-ramp-foreground-0 = ${colors.green}
+ramp-foreground-0 = ${colors.foreground}
 ramp-1 = 
-ramp-foreground-1 = ${colors.green}
+ramp-foreground-1 = ${colors.foreground}
 ramp-2 = 
 ramp2-foreground-2 = ${colors.yellow}
 ramp-3 = 
@@ -495,15 +621,28 @@ ramp-4 = 
 ramp-foreground-4 = ${colors.red}
 ramp-5 = 
 ramp-foreground-5 = ${colors.red}
-ramp-foreground = ${colors.green}
+ramp-background = ${colors.green}
+
+format-prefix            = 
+format-prefix-background = ${module/filesystem-home.format-mounted-background}
+format-prefix-foreground = ${self.label-background}
 
 ;=====================================================
 [module/xwindow]
 type = internal/xwindow
-label =  %title:0:20:...%
-label-background = #ff0000
+format = <label>
+label =  %title:0:20:...%
+label-background = ${colors.tred}
+format-suffix = 
+format-suffix-foreground = ${colors.tred}
+; format-suffix-background = ${colors.transparent}
+format-prefix = 
+format-prefix-foreground = ${colors.tred}
+; format-prefix-background = ${colors.transparent}
+; format-background = ${colors.tred}
 label-padding = 2
-format-underline = ${colors.red}
+; format-padding = 2
+; format-underline = ${colors.red}
 
 ;=====================================================
 [module/xkeyboard]
@@ -528,24 +667,5 @@ format-foreground = #c6e600
 format-underline = #c6e600
 interval = 360
 
-;=====================================================
-[module/filesystem-home]
-type = internal/fs
-interval = 30
-mount-0 = /home
-format-mounted = <label-mounted>
-label-mounted =  %percentage_used%%
-label-mounted-foreground = ${colors.pink}
-label-mounted-underline = ${colors.pink}
-
-;=====================================================
-[module/filesystem-root]
-type = internal/fs
-interval = 30
-mount-0 = /
-format-mounted = <label-mounted>
-label-mounted =  %percentage_used%%
-label-mounted-foreground = ${colors.pink}
-label-mounted-underline = ${colors.pink}
 
 ; vim:ft=dosini

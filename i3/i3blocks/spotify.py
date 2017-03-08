@@ -10,4 +10,3 @@ try:
 	exit
 except dbus.exceptions.DBusException:
 	exit
-
