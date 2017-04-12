@@ -10,7 +10,7 @@
     urgent_on_bell = true
     clickable_url = true
     # font = FantasqueSansMono Nerd Font 11
-    font = Operator Mono 11
+    font = Operator Mono Semi-Light 11
     scrollback_lines = 1000
     search_wrap = true
     #icon_name = terminal
@@ -35,39 +35,39 @@
 [colors]
 
 # special
-foreground      = #ffffff
-foreground_bold = #ffffff
-cursor          = #ffffff
-background      = #000000
+foreground      = #ebece6
+foreground_bold = #ebece6
+cursor          = #ebece6
+background      = #1e1f29
 
 # black
-color0  = #2a1d17
-color8  = #4f362b
+color0  = #000000
+color8  = #555555
 
 # red
-color1  = #da1657
-color9  = #da4375
+color1  = #fc4346
+color9  = #fc4346
 
 # green
-color2  = #3ea250
-color10 = #6cb87a
+color2  = #50fb7c
+color10 = #50fb7c
 
 # yellow
-color3  = #e3d33d
-color11 = #e3da84
+color3  = #f0fb8c
+color11 = #f0fb8c
 
 # blue
-color4  = #3ea290
-color12 = #8ca8a3
+color4  = #49baff
+color12 = #49baff
 
 # magenta
-color5  = #ff850d
-color13 = #ffa64f
+color5  = #fc4cb4
+color13 = #fc4cb4
 
 # cyan
-color6  = #8c16da
-color14 = #a167c7
+color6  = #8be9fe
+color14 = #8be9fe
 
 # white
-color7  = #e9e9e9
-color15 = #fdfdfd
+color7  = #ededec
+color15 = #ededec
