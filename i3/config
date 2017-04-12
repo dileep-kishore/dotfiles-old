@@ -8,8 +8,8 @@ set $mod Mod4
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 4
-new_float pixel 4
+new_window pixel 5
+new_float pixel 5
 
 focus_follows_mouse no
 
@@ -353,9 +353,9 @@ bindsym $mod+m bar mode toggle
 
 # Widow Colours
               # border background text indicator
-client.focused #ff9100 #ff9100 #00bdff #e26943
-client.focused_inactive #034b4b #034b4b $base03 #743232
-client.unfocused #034b4b #034b4b $base03 $base0F
+client.focused #84AB7A #84AB7A #00bdff #3f4b3c
+client.focused_inactive #84b6bd #84b6bd $base03 #4f6366
+client.unfocused #bdae93 #bdae93 $base03 $base0F
 client.urgent $base0E $base08 $base00 $base0F
 
 #############################
