@@ -49,6 +49,8 @@ Plug 'sickill/vim-pasta'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+" Wakatime
+Plug 'Wakatime/vim-wakatime'
 " Tmux
 Plug 'edkolev/tmuxline.vim'
 " Themes
@@ -89,8 +91,8 @@ colorscheme quantum
 set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-"set expandtab
-set noexpandtab
+set expandtab
+" set noexpandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
