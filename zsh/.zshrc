@@ -108,6 +108,15 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+# Example functions
+showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
+
+# Gurobi envs
+export GUROBI_HOME="/opt/gurobi702/linux64" 
+export PATH="${PATH}:${GUROBI_HOME}/bin" 
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
