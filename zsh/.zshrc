@@ -116,6 +116,8 @@ showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
 export GUROBI_HOME="/opt/gurobi702/linux64" 
 export PATH="${PATH}:${GUROBI_HOME}/bin" 
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+# Nextflow path
+export PATH="/home/dileep/nextflow:$PATH"
 
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
@@ -161,8 +163,6 @@ export BROWSER=vivaldi-stable
 # Anaconda path
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
 
-# Nextflow path
-export PATH="/home/dileep/nextflow:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh
