@@ -136,6 +136,7 @@ alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
+alias gitplog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
