@@ -1,4 +1,4 @@
-# include Z, yo
+
 . ~/z.sh
 
 # Path to your oh-my-zsh installation.
@@ -27,12 +27,14 @@ POWERLEVEL9K_ANACONDA_FOREGROUND="black"
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{50}%}\u250f"
 # local user_symbol="$"
 # if [[ $(print -P "%#") =~ "#" ]]; then
 # 	user_symbol = "#"
 # fi
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517\ue0b0%{%F{default}%}"
+# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517\ue0b0%{%F{default}%}"
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%F{001}%} "
 POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER"
 
@@ -119,9 +121,10 @@ alias tdetach="tmux detach"
 # alias tkill="tmux tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
 alias tkill="tmux kill-session -t"
 alias tlist="tmux ls"
-alias condadir="cd /home/dileep/anaconda3/bin/"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
-
+alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
+alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
+alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
@@ -148,6 +151,9 @@ export BROWSER=vivaldi-stable
 
 # Anaconda path
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
+
+# Nextflow path
+export PATH="/home/dileep/nextflow:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh

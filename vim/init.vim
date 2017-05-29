@@ -40,13 +40,17 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 "Plug 'reedes/vim-pencil'
 Plug 'christoomey/vim-system-copy' "Install xsel
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'vimwiki/vimwiki'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'honza/vim-snippets'
 Plug 'sickill/vim-pasta'
 Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+" Wakatime
+Plug 'Wakatime/vim-wakatime'
 " Tmux
 Plug 'edkolev/tmuxline.vim'
 " Themes
@@ -54,6 +58,8 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'sjl/badwolf'
+Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'jacoborus/tender.vim'
 call plug#end()
 
 set number
@@ -61,22 +67,32 @@ set number
 " Relative line numbering
 syntax enable
 set background=dark
+" deep-space settings
 " colorscheme deep-space
 " let g:deepspace_italics=1
+" badwolf settings
 " let g:badwolf_darkgutter = 1
 " let g:badwolf_tabline = 0
 " colorscheme badwolf
+" srcery settings
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let g:srcery_italic=1
-colorscheme srcery
+" let g:srcery_italic=1
+" colorscheme srcery
+" firewatch settings
 "colorscheme two-firewatch
 "let g:two_firewatch_italics=1
+" vim-quantum settings
+let g:quantum_black = 1
+let g:quantum_italics = 1
+colorscheme quantum
+" tender settings
+" colorscheme tender
 set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-"set expandtab
-set noexpandtab
+set expandtab
+" set noexpandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -153,7 +169,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='simple'
+let g:airline_theme='base16_google'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -169,7 +185,7 @@ autocmd! BufWritePost * Neomake
 set updatetime=1000
 
 " fzf settings
-" Remapping 
+" Remapping
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -263,7 +279,7 @@ nnoremap <leader>q :q!<cr>
 set foldenable " Enables folding
 set foldlevelstart=10 "Folds below level 10 will be folded
 set foldnestmax=10 "More than 10 folds can't be nested
-set foldmethod=indent 
+set foldmethod=indent
 
 " Gundo-vim mapping
 nnoremap <F5> :GundoToggle<CR>
@@ -273,7 +289,7 @@ let g:indentLine_char = '┆'
 let g:indentLine_color_gui = '#A4E57E'
 
 " Resizing using arrow keys
-nnoremap <left> :vertical resize +5<cr> 
+nnoremap <left> :vertical resize +5<cr>
 nnoremap <right> :vertical resize -5<cr>
 nnoremap <up> :resize +5<cr>
 nnoremap <down> :resize -5<cr>
@@ -318,30 +334,7 @@ set t_ZH=[3m
 set t_ZR=[23m
 
 " Rainbow parentheses
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -406,7 +399,7 @@ let g:vimwiki_dir_link = 'index'
 let g:vimwiki_hl_headers = 1
 let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_table_mappings = 0
-autocmd FileType vimwiki :RainbowParenthesesToggle
+autocmd FileType vimwiki :RainbowToggleOff
 
 " Tmuxline settings
 let g:tmuxline_preset = 'full'
