@@ -78,7 +78,7 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper)
+plugins=(git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir)
 
 # User configuration
 
@@ -166,3 +166,5 @@ export BROWSER=vivaldi-stable
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh
+
+eval $(thefuck --alias)
