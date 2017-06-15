@@ -53,6 +53,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'Wakatime/vim-wakatime'
 " Tmux
 Plug 'edkolev/tmuxline.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
@@ -135,7 +137,7 @@ inoremap <right> <Nop>
 " Remapping the movement
 nnoremap j gj
 nnoremap k gk
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
 " Easy window navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
