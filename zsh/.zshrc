@@ -18,10 +18,10 @@ POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator time context dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(anaconda vcs background_jobs time vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs time vi_mode)
 POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
-POWERLEVEL9K_ANACONDA_BACKGROUND="yellow"
-POWERLEVEL9K_ANACONDA_FOREGROUND="black"
+LEFT_SUBSEGMENT_SEPARATOR='>'
+POWERLEVEL9K_DIR_PATH_SEPARATOR=' $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") '
 # POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
 # POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -78,7 +78,7 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir)
+plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory)
 
 # User configuration
 
