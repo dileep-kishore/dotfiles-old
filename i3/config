@@ -297,6 +297,7 @@ exec --no-startup-id clipit
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 15 -locker ~/.dotfiles/i3/lock.sh
 exec_always --no-startup-id setcursor
+exec --no-startup-id rescuetime
 
 ### THEME ###
 set $base00 #101218
