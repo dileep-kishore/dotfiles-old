@@ -1,16 +1,11 @@
 
 . ~/z.sh
+source ~/.dotfiles/zsh/enhancd/./init.sh
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/dileep/.oh-my-zsh
+export ZSH=/home/dileep/.oh-my-zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="agnoster"
-#ZSH_THEME="cobalt2"
-#ZSH_THEME="statusline"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -38,6 +33,8 @@ POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%
 POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER"
 
+ENHANCD_FILTER=fzy:fzf
+export ENHANCD_FILTER
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -78,7 +75,7 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory)
+plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips)
 
 # User configuration
 
