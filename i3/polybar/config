@@ -165,7 +165,7 @@ font-4 = Siji:size=11;2
 
 modules-center = i3
 modules-left = xwindow
-modules-right = filesystem-root filesystem-home temperature cpu memory eth
+modules-right = filesystem-root filesystem-home temperature cpu memory eth vpncheck
 
 ; tray-background = #cc131313
 ; tray-position = right
@@ -540,6 +540,16 @@ menu-0-1-exec = shutdown -r now
 menu-0-2 =  lock
 menu-0-2-foreground = ${colors.green}
 menu-0-2-exec = ~/.dotfiles/i3/lock.sh
+
+;=====================================================
+[module/vpncheck]
+type = custom/script
+exec = pgrep openconnect
+interval = 5
+label = vpn
+format-background = ${colors.yellow}
+format-prefix = "  "
+format-prefix-foreground = ${colors.black}
 
 ;=====================================================
 [module/eth]
