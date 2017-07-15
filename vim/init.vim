@@ -405,3 +405,8 @@ autocmd FileType vimwiki :RainbowToggleOff
 
 " Tmuxline settings
 let g:tmuxline_preset = 'full'
+
+" Setting syntax coloring for nextflow files
+augroup filetypedetect
+    au BufRead,BufNewFile *.nf set filetype=groovy
+augroup END
