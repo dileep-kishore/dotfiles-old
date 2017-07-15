@@ -34,7 +34,8 @@ POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%
 POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER"
 
-ENHANCD_FILTER=fzy:fzf
+export FZF_DEFAULT_OPTS='--height 40% --reverse'
+ENHANCD_FILTER=fzf:fzy
 export ENHANCD_FILTER
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
