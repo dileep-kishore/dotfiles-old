@@ -53,8 +53,8 @@ compositing-overline = ${colors.transparent}
 compositing-underline = over
 compositing-border = ${colors.transparent}
 ;=====================================================
-[bar/hp]
-monitor = HDMI-0
+[bar/dell1]
+monitor = DisplayPort-1
 dock = false
 ; bottom = true
 width = 100%
@@ -63,7 +63,7 @@ height = 18
 ; offset-x = 16
 ; offset-y = 68
 
-background = ${colors.transparent}
+background = ${colors.pcream}
 foreground = ${colors.black}
 
 ; overline-size = 2
@@ -115,15 +115,15 @@ tray-scale=1
 ; tray-transparent = true
 
 ;=====================================================
-[bar/asus]
-monitor = DP-3
+[bar/dell0]
+monitor = DisplayPort-0
 width = 100%
 height = 18
 ; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
 
-background = ${colors.transparent}
+background = ${colors.pcream}
 foreground = ${colors.black}
 
 ; overline-size = 2
@@ -409,8 +409,14 @@ label-volume-padding = 1
 ; Available tokens:
 ;   %percentage% (default)
 label-muted =  muted
-label-muted-foreground = #66
-label-muted-background = #66
+label-muted-background  = ${colors.tmagenta}
+format-muted-prefix            = 
+format-muted-prefix-foreground = ${self.label-muted-background}
+; format-muted-prefix-background = ${colors.transparent}
+format-muted-suffix            = 
+format-muted-suffix-background = ${self.label-muted-background}
+format-muted-suffix-foreground = ${module/date.label-background}
+
 
 label-volume-background  = ${colors.tmagenta}
 format-volume-prefix            = 
@@ -544,7 +550,7 @@ menu-0-2-exec = ~/.dotfiles/i3/lock.sh
 ;=====================================================
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = enp0s25
 interval = 3.0
 
 ; format-connected-underline = ${colors.yellow}
@@ -595,7 +601,7 @@ format-mounted-prefix-foreground = ${self.label-mounted-background}
 [module/temperature]
 type = internal/temperature
 interval = 10
-thermal-zone = 2
+thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp><label>

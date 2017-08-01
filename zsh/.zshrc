@@ -17,7 +17,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs time
 POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
 POWERLEVEL9K_ANACONDA_BACKGROUND="blue"
 POWERLEVEL9K_ANACONDA_FOREGROUND="black"
-POWERLEVEL9K_DIR_PATH_SEPARATOR=' $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") '
+# POWERLEVEL9K_DIR_PATH_SEPARATOR=' $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") '
 # POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
 # POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -146,7 +146,7 @@ alias lsa="exa -lag --color-scale -h"
 # k aliases
 alias k="k -h"
 
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+# source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
 # Making tmux use proper colors
 #[[ $TMUX = "" ]] && export TERM="xterm-256color"
