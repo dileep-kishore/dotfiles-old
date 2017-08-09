@@ -58,6 +58,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
+Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'sjl/badwolf'
 Plug 'tyrannicaltoucan/vim-quantum'
@@ -69,27 +70,10 @@ set number
 " Relative line numbering
 syntax enable
 set background=dark
-" deep-space settings
-" colorscheme deep-space
-" let g:deepspace_italics=1
-" badwolf settings
-" let g:badwolf_darkgutter = 1
-" let g:badwolf_tabline = 0
-" colorscheme badwolf
-" srcery settings
 highlight Comment cterm=italic
 highlight Comment gui=italic
-" let g:srcery_italic=1
-" colorscheme srcery
-" firewatch settings
-"colorscheme two-firewatch
-"let g:two_firewatch_italics=1
-" vim-quantum settings
-let g:quantum_black = 1
-let g:quantum_italics = 1
-colorscheme quantum
-" tender settings
-" colorscheme tender
+let g:onedark_terminal_italics=1
+colorscheme onedark
 set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -171,7 +155,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16_google'
+let g:airline_theme='onedark' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -405,6 +389,7 @@ autocmd FileType vimwiki :RainbowToggleOff
 
 " Tmuxline settings
 let g:tmuxline_preset = 'full'
+let g:airline#extensions#tmuxline#enabled = 0
 
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
