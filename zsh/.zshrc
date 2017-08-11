@@ -18,10 +18,10 @@ POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator time context dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(anaconda vcs background_jobs time vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs time vi_mode)
 POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
-POWERLEVEL9K_ANACONDA_BACKGROUND="yellow"
-POWERLEVEL9K_ANACONDA_FOREGROUND="black"
+LEFT_SUBSEGMENT_SEPARATOR='>'
+POWERLEVEL9K_DIR_PATH_SEPARATOR=' $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") '
 # POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
 # POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
@@ -78,7 +78,7 @@ export DEFAULT_USER="$USER"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper)
+plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory)
 
 # User configuration
 
@@ -108,6 +108,17 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+# Example functions
+showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
+
+# Gurobi envs
+export GUROBI_HOME="/opt/gurobi702/linux64" 
+export PATH="${PATH}:${GUROBI_HOME}/bin" 
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+# Nextflow path
+export PATH="/home/dileep/nextflow:$PATH"
+
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -125,6 +136,7 @@ alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
+alias gitplog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
@@ -152,8 +164,8 @@ export BROWSER=vivaldi-stable
 # Anaconda path
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
 
-# Nextflow path
-export PATH="/home/dileep/nextflow:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh
+
+eval $(thefuck --alias)
