@@ -118,6 +118,8 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 export PATH="/home/dileep/nextflow:$PATH"
 # Exa path
 export PATH="/home/dileep/.cargo/bin:$PATH"
+# npm path
+export PATH=~/.npm-global/bin:$PATH
 
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
