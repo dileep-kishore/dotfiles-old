@@ -13,7 +13,7 @@ span.mtk5, span.mtk11.mtki, span.mtk3.mtki, span.mtk6.mtki, span.mtk14.mtki {
     vertical-align: baseline;
 }
 
-span.mtk1.mtki {
+span.mtk1.mtki, span.mtk12.mtki, span.mtk9.mtki{
     font-style: normal;
     /* font-weight: 600; */
 }
