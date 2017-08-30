@@ -1,0 +1,26 @@
+/* Hide "send feeback" button in status bar */
+.dropdown-label.send-feedback {
+    display: none !important;
+}
+
+@font-face {
+    font-family: 'Fira Code Ligatures';
+    src: local('Fira Code');
+    unicode-range: U+0021-0026, U+002A-002B, U+002D-002F, U+003A-003F, U+0040, U+005E-005F, U+007B-007E, U+00B1, U+035F;
+}
+
+.view-lines {
+    font-family: 'Fira Code Ligatures', 'Operator Mono Book' !important;
+}
+
+.view-line {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: baseline;
+}
+
+span.mtk18, span.mtk9, span.mtk5 {
+    font-style:  italic;
+}
