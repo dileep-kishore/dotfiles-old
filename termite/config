@@ -23,7 +23,7 @@
     cursor_shape = block
 
     # $BROWSER is used by default
-    browser = vivaldi-stable
+    browser = google-chrome-unstable
 
     # word characters used for word selection
     # (default if unset: all graphic non-punctuation/space characters)
