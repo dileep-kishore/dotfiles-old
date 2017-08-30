@@ -54,7 +54,7 @@ compositing-underline = over
 compositing-border = ${colors.transparent}
 ;=====================================================
 [bar/dell1]
-monitor = DisplayPort-1
+monitor = DVI-D-0
 dock = false
 ; bottom = true
 width = 100%
@@ -63,7 +63,7 @@ height = 18
 ; offset-x = 16
 ; offset-y = 68
 
-background = ${colors.pcream}
+background = ${colors.transparent}
 foreground = ${colors.black}
 
 ; overline-size = 2
@@ -116,14 +116,14 @@ tray-scale=1
 
 ;=====================================================
 [bar/dell0]
-monitor = DisplayPort-0
+monitor = DP-0
 width = 100%
 height = 18
 ; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
 
-background = ${colors.pcream}
+background = ${colors.transparent}
 foreground = ${colors.black}
 
 ; overline-size = 2

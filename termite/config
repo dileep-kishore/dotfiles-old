@@ -10,8 +10,9 @@
     urgent_on_bell = true
     clickable_url = true
     # font = FantasqueSansMono Nerd Font 11
-    font = Operator Mono Semi-Light 11
-    scrollback_lines = 1000
+    # font = Operator Mono Semi-Light 11
+    font = Operator Mono 11
+    scrollback_lines = 2000
     search_wrap = true
     #icon_name = terminal
     #geometry = 640x480
