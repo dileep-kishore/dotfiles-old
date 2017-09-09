@@ -112,8 +112,8 @@ source $ZSH/oh-my-zsh.sh
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
 
 # Gurobi envs
-export GUROBI_HOME="/opt/gurobi702/linux64" 
-export PATH="${PATH}:${GUROBI_HOME}/bin" 
+export GUROBI_HOME="/opt/gurobi702/linux64"
+export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 # Nextflow path
 export PATH="/home/dileep/nextflow:$PATH"
@@ -146,8 +146,13 @@ alias la="exa -lag --color-scale"
 alias lsa="exa -lag --color-scale -h"
 # k aliases
 alias k="k -h"
+# coconut aliases
+alias icoconut="coconut --jupyter console"
+cocowatch() { coconut -pswt 36 "$1" --mypy --ignore-missing-imports }
+cococompile() { coconut -pst 36 "$1" --mypy --ignore-missing-imports }
 
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+
+source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Making tmux use proper colors
 #[[ $TMUX = "" ]] && export TERM="xterm-256color"
