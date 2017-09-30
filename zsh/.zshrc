@@ -136,6 +136,7 @@ alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
 alias gitplog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 alias zc="z -c"
+alias zt="z -t"
 # exa aliases
 alias l="exa -lg -s modified --color-scale"
 alias ll="exa -lag -s modified --color-scale -h"
@@ -148,8 +149,8 @@ alias lsa="exa -lag --color-scale -h"
 alias k="k -h"
 # coconut aliases
 alias icoconut="coconut --jupyter console"
-cocowatch() { coconut -pswt 36 "$1" --mypy --ignore-missing-imports }
-cococompile() { coconut -pst 36 "$1" --mypy --ignore-missing-imports }
+cocowatch() { coconut -pswt 36 "$1" "$2" --mypy --ignore-missing-imports }
+cococompile() { coconut -pst 36 "$1" "$2" --mypy --ignore-missing-imports }
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
