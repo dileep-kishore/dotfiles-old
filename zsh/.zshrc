@@ -110,13 +110,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Example functions
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
+tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
 
 # Gurobi envs
 export GUROBI_HOME="/opt/gurobi702/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 # Nextflow path
-export PATH="/home/dileep/nextflow:$PATH"
+# export PATH="/home/dileep/nextflow:$PATH"
 # Exa path
 export PATH="/home/dileep/.cargo/bin:$PATH"
 
