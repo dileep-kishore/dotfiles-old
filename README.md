@@ -1,4 +1,4 @@
-# Dotfiles for all my favorite applications
+# Dotfiles
 
 ## vim
 neovim configuration files
