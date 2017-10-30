@@ -113,7 +113,7 @@ showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
 tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
 
 # Gurobi envs
-export GUROBI_HOME="/opt/gurobi702/linux64"
+export GUROBI_HOME="/opt/gurobi751/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 # Nextflow path
@@ -152,6 +152,8 @@ alias k="k -h"
 alias icoconut="coconut --jupyter console"
 cocowatch() { coconut -pswt 36 "$1" "$2" --mypy --ignore-missing-imports }
 cococompile() { coconut -pst 36 "$1" "$2" --mypy --ignore-missing-imports }
+# fd aliases
+alias find="fd"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
