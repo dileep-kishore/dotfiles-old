@@ -1,0 +1,14 @@
+/* Hide "send feeback" button in status bar */
+.dropdown-label.send-feedback {
+    display: none !important;
+}
+
+span.mtk6, span.mtk8 span.mtk7, span.mtk3.mki {
+    font-family: 'Operator Mono';
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1rem;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: baseline;
+}

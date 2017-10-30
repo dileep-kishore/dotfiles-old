@@ -3,13 +3,42 @@
     display: none !important;
 }
 
-/* span.mtk12, span.mtk5, span.mtk18, span.mtk8 { */
-span.mtk12, span.mtk5, span.mtk18, span.mtk3 {
-    font-family: 'Operator Mono';
-    font-style: italic;
+@font-face {
+    font-family: 'Fira Code Ligatures';
+    src: local('Fira Code');
+    unicode-range: U+0021-0026, U+002A-002B, U+002D-002F, U+003A-003F, U+0040, U+005E-005F, U+007B-007E, U+00B1, U+035F;
+}
+
+.view-lines {
+    font-family: 'Fira Code Ligatures', 'Operator Mono' !important;
+}
+
+.view-line {
     font-size: 15px;
     font-weight: 300;
     line-height: 1rem;
     -webkit-font-smoothing: antialiased;
     vertical-align: baseline;
+}
+
+span.mtk19, span.mtk3 {
+    font-style:  italic;
+}
+
+.tabs-container, .tab, .tab.active, .title-actions, .tablist, .tabs-container, .tabs, .composite.title {
+  background-color: rgba(40, 44, 52, 1) !important;
+}
+
+.tab.active, .tab {
+  border-right: 0px !important;
+  border-left: 0px !important;
+}
+.tab.active {
+  border-bottom: 2px solid aqua !important;
+}
+.vs-dark .monaco-workbench>.part.editor>.content>.one-editor-silo>.container>.title.tabs:before {
+  border: 0px !important;
+}
+.title.tabs::before {
+  border: 0px !important;
 }

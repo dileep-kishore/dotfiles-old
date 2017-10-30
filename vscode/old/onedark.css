@@ -3,7 +3,8 @@
     display: none !important;
 }
 
-span.mtk4, span.mtk7, span.mtk3.mki {
+/* span.mtk12, span.mtk5, span.mtk18, span.mtk8 { */
+span.mtk12, span.mtk5, span.mtk18, span.mtk3 {
     font-family: 'Operator Mono';
     font-style: italic;
     font-size: 15px;
