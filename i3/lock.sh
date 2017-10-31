@@ -5,8 +5,8 @@ while IFS=' :x@,' read i w h x y; do
 done
 # ICON=/home/dileep/.dotfiles/i3/lock.png
 ICON=/home/dileep/.dotfiles/i3/arch.png
-TMPBG0=/tmp/head_0.png
-TMPBG1=/tmp/head_1.png
+TMPBG0=/tmp/head_1.png
+TMPBG1=/tmp/head_0.png
 TMPBG=/tmp/screen.png
 # scrot /tmp/screen.png
 convert $TMPBG0 -scale 10% -scale 1000% $TMPBG0
