@@ -111,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # Example functions
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
 tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
+gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
 
 # Gurobi envs
 export GUROBI_HOME="/opt/gurobi751/linux64"
@@ -150,8 +151,11 @@ alias lsa="exa -lag --color-scale -h"
 alias k="k -h"
 # coconut aliases
 alias icoconut="coconut --jupyter console"
-cocowatch() { coconut -pswt 36 "$1" "$2" --mypy --ignore-missing-imports }
-cococompile() { coconut -pst 36 "$1" "$2" --mypy --ignore-missing-imports }
+cocowatch() { coconut -pswt 36 --no-tco "$1" "$2"}
+cocowatch-mypy() { coconut -pswt 36 --no-tco "$1" "$2" --mypy --ignore-missing-imports }
+cococompile() { coconut -pst 36 --no-tco "$1" "$2" }
+cococompile-mypy() { coconut -pst 36 --no-tco "$1" "$2" --mypy --ignore-missing-imports }
+cococompile-wtco() { coconut -pst 36 "$1" "$2" }
 # fd aliases
 alias find="fd"
 
