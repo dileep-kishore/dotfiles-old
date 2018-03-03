@@ -297,8 +297,8 @@ exec --no-startup-id clipit
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 15 -locker ~/.dotfiles/i3/lock.sh
 exec_always --no-startup-id setcursor
-exec --no-startup-id rescuetime
 # exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id redshift -l 42.36989:-71.11211
 
 ### THEME ###
 set $base00 #101218
@@ -420,7 +420,7 @@ mode "$mode_gaps_outer" {
 
 # Startup stuff
 exec --no-startup-id mopidy
-exec --no-startup-id dropbox start
+# exec --no-startup-id dropbox start
 exec xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-5 --off --output DP-4 --off --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-2 --off --output DP-1 --off --output DP-0 --off
 exec albert
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
