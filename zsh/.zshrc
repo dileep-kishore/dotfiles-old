@@ -112,15 +112,19 @@ source $ZSH/oh-my-zsh.sh
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
 tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
 gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
+shufflecopy() { shuf -zn10 -e "$1" | xargs -0 cp -vt "$2" }
 
 # Gurobi envs
-export GUROBI_HOME="/opt/gurobi751/linux64"
+export GUROBI_HOME="/opt/gurobi752/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 # Nextflow path
 # export PATH="/home/dileep/nextflow:$PATH"
 # Exa path
 export PATH="/home/dileep/.cargo/bin:$PATH"
+
+# Todosh
+export TODOTXT_DEFAULT_ACTION=ls
 
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
@@ -158,6 +162,8 @@ cococompile-mypy() { coconut -pst 36 --no-tco "$1" "$2" --mypy --ignore-missing-
 cococompile-wtco() { coconut -pst 36 "$1" "$2" }
 # fd aliases
 alias find="fd"
+# todo alias
+alias todo="todo.sh -d ~/.config/todo.cfg"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
