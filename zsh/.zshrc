@@ -7,6 +7,9 @@ export ZSH=/home/dileep/.oh-my-zsh
 
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
+
+source $ZSH/oh-my-zsh.sh
+
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
@@ -17,9 +20,13 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs time
 POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
 POWERLEVEL9K_ANACONDA_BACKGROUND="blue"
 POWERLEVEL9K_ANACONDA_FOREGROUND="black"
-POWERLEVEL9K_DIR_PATH_SEPARATOR=' $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") '
+POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
+POWERLEVEL9K_VI_COMMAND_MODE_STRING="N"
+POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon 'LEFT_SUBSEGMENT_SEPARATOR') "
+POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 # POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
-# POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\UE0BC'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\UE0BA'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
@@ -30,7 +37,7 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{50}%}\u250f"
 # 	user_symbol = "#"
 # fi
 # POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517\ue0b0%{%F{default}%}"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%F{001}%} "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%F{001}%} "
 POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER"
 
@@ -77,7 +84,7 @@ export ENHANCD_FILTER
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips thefuck)
+plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips thefuck git-extra-commands)
 
 # User configuration
 
