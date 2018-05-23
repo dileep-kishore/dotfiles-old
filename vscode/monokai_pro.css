@@ -21,24 +21,15 @@
     vertical-align: baseline;
 }
 
-span.mtk19, span.mtk3 {
+span.mtk12, span.mtk3 {
     font-style:  italic;
 }
 
-.tabs-container, .tab, .tab.active, .title-actions, .tablist, .tabs-container, .tabs, .composite.title {
-  background-color: rgba(40, 44, 52, 1) !important;
+span.mtk11 {
+    font-weight: 600;
 }
 
-.tab.active, .tab {
-  border-right: 0px !important;
-  border-left: 0px !important;
+span.mtk7.mtki {
+    font-style: normal;
 }
-.tab.active {
-  border-bottom: 2px solid aqua !important;
-}
-.vs-dark .monaco-workbench>.part.editor>.content>.one-editor-silo>.container>.title.tabs:before {
-  border: 0px !important;
-}
-.title.tabs::before {
-  border: 0px !important;
-}
+

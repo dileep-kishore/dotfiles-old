@@ -110,6 +110,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Example functions
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
+svg2pdf() { inkscape -D -z --file=$1 --export-pdf=$2 --export-latex }
 
 # Gurobi envs
 export GUROBI_HOME="/opt/gurobi751/linux64" 
@@ -148,11 +149,18 @@ alias la="exa -lag --color-scale"
 alias lsa="exa -lag --color-scale -h"
 # k aliases
 alias k="k -h"
+# fd alias
+alias find="fd"
+# todotxt alias
+export TODOTXT_DEFAULT_ACTION=ls
+alias todo="todo.sh -d ~/.config/todo.cfg"
 
 # coconut aliases
 alias icoconut="coconut --jupyter console"
-cocowatch() { coconut -pswt 36 "$1" "$2" --mypy --ignore-missing-imports }
-cococompile() { coconut -pst 36 "$1" "$2" --mypy --ignore-missing-imports }
+cocowatch() { coconut -pswt 36 "$1" "$2" --no-tco }
+cocowatch-mypy() { coconut -pswt 36 "$1" "$2" --mypy --ignore-missing-imports }
+cococompile() { coconut -pst 36 "$1" "$2" --no-tco }
+cococompile-mypy() { coconut -pst 36 "$1" "$2" --mypy --ignore-missing-imports }
 
 # source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
