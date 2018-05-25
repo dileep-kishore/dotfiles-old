@@ -171,6 +171,7 @@ cococompile-wtco() { coconut -pst 36 "$1" "$2" }
 alias find="fd"
 # todo alias
 alias todo="todo.sh -d ~/.config/todo.cfg"
+alias git="hub"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
