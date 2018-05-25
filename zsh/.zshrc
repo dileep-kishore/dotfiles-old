@@ -10,6 +10,9 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 source $ZSH/oh-my-zsh.sh
 
+fpath=(/home/dileep/.dotfiles/zsh/completions/_hub $fpath)
+autoload -U compinit && compinit
+
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
