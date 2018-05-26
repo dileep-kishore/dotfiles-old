@@ -402,3 +402,7 @@ augroup END
 augroup filetypedetect
     au BufRead,BufNewFile *.coco set filetype=python
 augroup END
+
+" virtual environment setting for deoplete-jedi
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
