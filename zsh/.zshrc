@@ -5,6 +5,9 @@ source ~/.dotfiles/zsh/enhancd/./init.sh
 # Path to your oh-my-zsh installation.
 export ZSH=/home/dileep/.oh-my-zsh
 
+fpath=(/home/dileep/.dotfiles/zsh/completions/_hub $fpath)
+autoload -U compinit && compinit
+
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='awesome-fontconfig'
