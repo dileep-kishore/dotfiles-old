@@ -65,18 +65,19 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'sjl/badwolf'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jacoborus/tender.vim'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
-set background=dark
+" set background=dark
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let g:onedark_terminal_italics=1
-colorscheme onedark
-set termguicolors
+" let g:onedark_terminal_italics=1
+colorscheme wal
+" set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
@@ -157,7 +158,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark' " old: base16_google
+let g:airline_theme='wal' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -233,7 +234,7 @@ let g:minimap_highlight='Visual'
 set autoread
 au FocusGained,BufEnter * :silent! !
 set visualbell
-set cursorline
+" set cursorline
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu
 function! ToggleNumbersOn()
@@ -283,7 +284,7 @@ nnoremap <up> :resize +5<cr>
 nnoremap <down> :resize -5<cr>
 
 " Highlighting when col >= 80
-let &colorcolumn=join(range(81,999),",")
+" let &colorcolumn=join(range(81,999),",")
 
 " Simply fold settings
 let g:SimpylFold_docstring_preview = 1
