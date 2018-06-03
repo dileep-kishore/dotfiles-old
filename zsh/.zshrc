@@ -13,6 +13,9 @@ source $ZSH/oh-my-zsh.sh
 fpath=(/home/dileep/.dotfiles/zsh/completions/_hub $fpath)
 autoload -U compinit && compinit
 
+# wal setup
+(cat ~/.cache/wal/sequences &)
+
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true

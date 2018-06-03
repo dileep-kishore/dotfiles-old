@@ -353,12 +353,34 @@ set $base0F #fcc09e
 bindsym $mod+m bar mode toggle
 
 
-# Widow Colours
-              # border background text indicator
-client.focused #84AB7A #84AB7A #00bdff #3f4b3c
-client.focused_inactive #84b6bd #84b6bd $base03 #4f6366
-client.unfocused #bdae93 #bdae93 $base03 $base0F
-client.urgent $base0E $base08 $base00 $base0F
+# # Widow Colours
+#               # border background text indicator
+# client.focused #84AB7A #84AB7A #00bdff #3f4b3c
+# client.focused_inactive #84b6bd #84b6bd $base03 #4f6366
+# client.unfocused #bdae93 #bdae93 $base03 $base0F
+# client.urgent $base0E $base08 $base00 $base0F
+
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fc i3wm.color2 #f0f0f0
+set_from_resource $fc_in i3wm.color7 #f0f0f0
+set_from_resource $ind i3wm.color3 #f0f0f0
+set_from_resource $urg i3wm.color1 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $fc     $fc     $fg  $ind       $fc
+client.focused_inactive $fc_in     $fc_in     $fg  $fc_in       $fc_in
+client.unfocused        $fc_in     $fc_in     $fg  $fc_in       $fc_in
+client.urgent           $urg     $urg     $fg  $urg       $urg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
+# PROTIP: You can also dynamically set dmenu's colors this way:
+# bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 
 #############################
 ### settings for i3-gaps: ###
