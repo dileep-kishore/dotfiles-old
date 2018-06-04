@@ -396,8 +396,8 @@ let g:tmuxline_preset = {
       \'a'    : '#S',
       \'b'    : '#W',
       \'c'    : '#H',
-      \'win'  : '#I. #W',
-      \'cwin' : '#I. #W #F',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W #F'],
       \'x'    : '%a',
       \'y'    : '#W %R',
       \'z'    : '#H'}
