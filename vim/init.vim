@@ -391,8 +391,17 @@ let g:vimwiki_table_mappings = 0
 autocmd FileType vimwiki :RainbowToggleOff
 
 " Tmuxline settings
-let g:tmuxline_preset = 'full'
-let g:airline#extensions#tmuxline#enabled = 0
+" let g:tmuxline_preset = 'full'
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'c'    : '#H',
+      \'win'  : '#I. #W',
+      \'cwin' : '#I. #W #F',
+      \'x'    : '%a',
+      \'y'    : '#W %R',
+      \'z'    : '#H'}
+" let g:airline#extensions#tmuxline#enabled = 0
 
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
