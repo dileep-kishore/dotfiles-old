@@ -96,10 +96,12 @@ padding-right = 1
 
 ; Fonts are defined using: <FontName>;<Offset>
 font-0 = FantasqueSansMono:style:Regular:size=11;1
-font-1 = FontAwesome:size=11;1
-font-2 = MaterialIcons:size=11;1
-font-3 = OperatorMono:style:Italic:size=11;0
-font-4 = Siji:size=11;2
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
+font-4 = MaterialIcons:size=11;1
+font-5 = OperatorMono:style:Italic:size=11;0
+font-6 = Siji:size=11;2
 
 ; separator = |
 
@@ -156,10 +158,13 @@ padding-right = 1
 
 ; Fonts are defined using: <FontName>;<Offset>
 font-0 = FantasqueSansMono:style:Regular:size=11;1
-font-1 = FontAwesome:size=11;1
-font-2 = MaterialIcons:size=11;1
-font-3 = Operator Mono:style:Italic:size=11;1
-font-4 = Siji:size=11;2
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
+font-4 = MaterialIcons:size=11;1
+font-5 = OperatorMono:style:Italic:size=11;0
+font-6 = Siji:size=11;2
+
 
 ; separator = |
 
