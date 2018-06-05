@@ -127,6 +127,7 @@ tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
 gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
 shufflecopy() { shuf -zn10 -e "$1" | xargs -0 cp -vt "$2" }
 getcurrwal() { cat /home/dileep/.cache/wal/wal | rev | cut -c 1- | rev }
+walcolor() { wal --backend $1 -g -n -i $(getcurrwal)}
 
 # Gurobi envs
 export GUROBI_HOME="/opt/gurobi752/linux64"
