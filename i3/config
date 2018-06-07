@@ -153,7 +153,7 @@ set $ws3 "3:"
 set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6:"
-set $ws7 "7:"
+set $ws7 "7:"
 set $ws8 "8:"
 set $ws9 "9:"
 
@@ -299,6 +299,7 @@ exec --no-startup-id xautolock -time 15 -locker ~/.dotfiles/i3/lock.sh
 exec_always --no-startup-id setcursor
 # exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id redshift -l 42.36989:-71.11211
+exec --no-startup-id variety
 
 ### THEME ###
 set $base00 #101218
@@ -371,8 +372,8 @@ set_from_resource $ind i3wm.color3 #f0f0f0
 set_from_resource $urg i3wm.color1 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
-client.focused          $fc     $fc     $fg  $ind       $fc
-client.focused_inactive $fc_in     $fc_in     $fg  $fc_in       $fc_in
+client.focused          $fc     $fc     $fc_in  $ind       $fc
+client.focused_inactive $fc_in     $fc_in     $fc  $fc_in       $fc_in
 client.unfocused        $fc_in     $fc_in     $fg  $fc_in       $fc_in
 client.urgent           $urg     $urg     $fg  $urg       $urg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
