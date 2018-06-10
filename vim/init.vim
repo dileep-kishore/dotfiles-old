@@ -57,6 +57,8 @@ Plug 'Wakatime/vim-wakatime'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
+" Colors in vim
+Plug 'chrisbra/Colorizer'
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
