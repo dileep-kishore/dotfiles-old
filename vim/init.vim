@@ -183,7 +183,8 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 " Open file menu
-nnoremap <Leader>o :Files<CR>
+nnoremap <Leader>o :GFiles<CR>
+nnoremap <Leader>O :Files<CR>
 " Open buffer menu
 nnoremap <Leader>b :Buffers<CR>
 " Open most recently used files
