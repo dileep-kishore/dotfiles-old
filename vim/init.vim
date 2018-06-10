@@ -51,6 +51,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mattn/emmet-vim'
+Plug 'justinmk/vim-sneak'
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
@@ -113,7 +114,6 @@ set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set list
 autocmd filetype html,xml set listchars-=tab:>.
 set pastetoggle=<F2>
-nnoremap ; :
 " Unmapping the arrow keys
 noremap <up> <Nop>
 noremap <down> <Nop>
