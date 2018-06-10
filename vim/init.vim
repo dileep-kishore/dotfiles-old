@@ -17,11 +17,10 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/vim-easy-align'
 Plug 'sjl/gundo.vim'
-Plug 'rking/ag.vim'
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Yggdroot/indentLine'
 Plug 'raimondi/delimitmate'
-Plug 'severin-lemaignan/vim-minimap'
 Plug 'takac/vim-hardtime'
 Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-repeat'
@@ -33,9 +32,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'terryma/vim-expand-region'
 Plug 'wellle/targets.vim'
 Plug 'plasticboy/vim-markdown'
-"Plug 'tpope/vim-markdown'
-Plug 'suan/vim-instant-markdown'
-"Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 "Plug 'reedes/vim-pencil'
@@ -76,10 +72,10 @@ set number
 " Relative line numbering
 syntax enable
 " set background=dark
+colorscheme wal
 highlight Comment cterm=italic
 highlight Comment gui=italic
 " let g:onedark_terminal_italics=1
-colorscheme wal
 " set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -418,3 +414,18 @@ augroup END
 " virtual environment setting for deoplete-jedi
 let g:python_host_prog = '/usr/bin/python3'
 let g:python3_host_prog = '/usr/bin/python3'
+
+" Grepper configuration
+nnoremap <leader>g :Grepper -tool git<cr>
+nnoremap <leader>G :Grepper -tool ag<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" Optional. The default behaviour should work for most users.
+let g:grepper               = {}
+let g:grepper.tools         = ['git', 'ag', 'rg']
+let g:grepper.jump          = 1
+let g:grepper.next_tool     = '<leader>g'
+let g:grepper.simple_prompt = 1
+let g:grepper.quickfix      = 0
