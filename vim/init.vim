@@ -52,6 +52,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'tpope/vim-rhubarb'
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
@@ -123,9 +124,9 @@ inoremap <up> <Nop>
 inoremap <down> <Nop>
 inoremap <left> <Nop>
 inoremap <right> <Nop>
-" Remapping the movement
-nnoremap j gj
-nnoremap k gk
+" " Remapping the movement
+" nnoremap j gj
+" nnoremap k gk
 nmap <silent> <leader>/ :nohlsearch<CR>
 " Easy window navigation
 nnoremap <C-J> <C-W><C-J>
