@@ -48,6 +48,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mattn/emmet-vim'
 Plug 'justinmk/vim-sneak'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
@@ -429,3 +433,20 @@ let g:grepper.jump          = 1
 let g:grepper.next_tool     = '<leader>g'
 let g:grepper.simple_prompt = 1
 let g:grepper.quickfix      = 0
+
+" LanguageClient Configuration
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
