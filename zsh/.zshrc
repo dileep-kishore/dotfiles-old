@@ -180,6 +180,7 @@ alias find="fd"
 # todo alias
 alias todo="todo.sh -d ~/.config/todo.cfg"
 alias git="hub"
+alias howdoi="howdoi -c -n 5"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
