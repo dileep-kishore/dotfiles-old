@@ -76,7 +76,7 @@ set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
-" set background=dark
+set background=dark
 colorscheme wal
 highlight Comment cterm=italic
 highlight Comment gui=italic
@@ -452,3 +452,11 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" Git fugitive configuration
+
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gs :diffput<CR>
+nnoremap <leader>ga :Gwrite<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gp :Gpush<CR>
