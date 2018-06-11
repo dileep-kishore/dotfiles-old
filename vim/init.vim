@@ -17,11 +17,10 @@ Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/vim-easy-align'
 Plug 'sjl/gundo.vim'
-Plug 'rking/ag.vim'
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Yggdroot/indentLine'
 Plug 'raimondi/delimitmate'
-Plug 'severin-lemaignan/vim-minimap'
 Plug 'takac/vim-hardtime'
 Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-repeat'
@@ -33,9 +32,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'terryma/vim-expand-region'
 Plug 'wellle/targets.vim'
 Plug 'plasticboy/vim-markdown'
-"Plug 'tpope/vim-markdown'
-Plug 'suan/vim-instant-markdown'
-"Plug 'jtratner/vim-flavored-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 "Plug 'reedes/vim-pencil'
@@ -51,12 +47,20 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mattn/emmet-vim'
+Plug 'justinmk/vim-sneak'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'tpope/vim-rhubarb'
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
+" Colors in vim
+Plug 'chrisbra/Colorizer'
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
@@ -65,6 +69,7 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'sjl/badwolf'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jacoborus/tender.vim'
+" Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 set number
@@ -72,10 +77,11 @@ set number
 " Relative line numbering
 syntax enable
 set background=dark
+colorscheme onedark
+" colorscheme wal
 highlight Comment cterm=italic
 highlight Comment gui=italic
 let g:onedark_terminal_italics=1
-colorscheme onedark
 set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -110,7 +116,6 @@ set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set list
 autocmd filetype html,xml set listchars-=tab:>.
 set pastetoggle=<F2>
-nnoremap ; :
 " Unmapping the arrow keys
 noremap <up> <Nop>
 noremap <down> <Nop>
@@ -120,9 +125,9 @@ inoremap <up> <Nop>
 inoremap <down> <Nop>
 inoremap <left> <Nop>
 inoremap <right> <Nop>
-" Remapping the movement
-nnoremap j gj
-nnoremap k gk
+" " Remapping the movement
+" nnoremap j gj
+" nnoremap k gk
 nmap <silent> <leader>/ :nohlsearch<CR>
 " Easy window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -157,6 +162,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
+" let g:airline_theme='wal' " old: base16_google
 let g:airline_theme='onedark' " old: base16_google
 
 " Use deoplete.
@@ -179,7 +185,8 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 " Open file menu
-nnoremap <Leader>o :Files<CR>
+nnoremap <Leader>o :GFiles<CR>
+nnoremap <Leader>O :Files<CR>
 " Open buffer menu
 nnoremap <Leader>b :Buffers<CR>
 " Open most recently used files
@@ -233,7 +240,7 @@ let g:minimap_highlight='Visual'
 set autoread
 au FocusGained,BufEnter * :silent! !
 set visualbell
-set cursorline
+" set cursorline
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu
 function! ToggleNumbersOn()
@@ -283,7 +290,7 @@ nnoremap <up> :resize +5<cr>
 nnoremap <down> :resize -5<cr>
 
 " Highlighting when col >= 80
-let &colorcolumn=join(range(81,999),",")
+" let &colorcolumn=join(range(81,999),",")
 
 " Simply fold settings
 let g:SimpylFold_docstring_preview = 1
@@ -390,8 +397,17 @@ let g:vimwiki_table_mappings = 0
 autocmd FileType vimwiki :RainbowToggleOff
 
 " Tmuxline settings
-let g:tmuxline_preset = 'full'
-let g:airline#extensions#tmuxline#enabled = 0
+" let g:tmuxline_preset = 'full'
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'c'    : '#H',
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W #F'],
+      \'x'    : '%a',
+      \'y'    : '#W %R',
+      \'z'    : '#H'}
+" let g:airline#extensions#tmuxline#enabled = 0
 
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
@@ -402,3 +418,47 @@ augroup END
 augroup filetypedetect
     au BufRead,BufNewFile *.coco set filetype=python
 augroup END
+
+" virtual environment setting for deoplete-jedi
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
+
+" Grepper configuration
+nnoremap <leader>r :Grepper -tool git<cr>
+nnoremap <leader>R :Grepper -tool ag<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" Optional. The default behaviour should work for most users.
+let g:grepper               = {}
+let g:grepper.tools         = ['git', 'ag', 'rg']
+let g:grepper.jump          = 1
+let g:grepper.next_tool     = '<leader>g'
+let g:grepper.simple_prompt = 1
+let g:grepper.quickfix      = 0
+
+" LanguageClient Configuration
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" Git fugitive configuration
+
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gs :diffput<CR>
+nnoremap <leader>ga :Gwrite<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gp :Gpush<CR>
