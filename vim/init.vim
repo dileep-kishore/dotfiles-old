@@ -422,8 +422,8 @@ let g:python_host_prog = '/usr/bin/python3'
 let g:python3_host_prog = '/usr/bin/python3'
 
 " Grepper configuration
-nnoremap <leader>g :Grepper -tool git<cr>
-nnoremap <leader>G :Grepper -tool ag<cr>
+nnoremap <leader>r :Grepper -tool git<cr>
+nnoremap <leader>R :Grepper -tool ag<cr>
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
