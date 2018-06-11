@@ -120,6 +120,9 @@ export PATH="/home/dileep/nextflow:$PATH"
 # Exa path
 export PATH="/home/dileep/.cargo/bin:$PATH"
 
+# Todosh
+export TODOTXT_DEFAULT_ACTION=ls
+
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
 alias youtube="youtube-viewer"
@@ -146,6 +149,10 @@ alias la="exa -lag --color-scale"
 alias lsa="exa -lag --color-scale -h"
 # k aliases
 alias k="k -h"
+# fd alias
+alias find="fd"
+# todo alias
+alias todo="todo.sh -d ~/.config/todo.cfg"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 

@@ -49,6 +49,8 @@ Plug 'sickill/vim-pasta'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'mattn/emmet-vim'
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
@@ -394,4 +396,9 @@ let g:airline#extensions#tmuxline#enabled = 0
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
     au BufRead,BufNewFile *.nf set filetype=groovy
+augroup END
+
+" Setting syntax coloring for coconut files
+augroup filetypedetect
+    au BufRead,BufNewFile *.coco set filetype=python
 augroup END

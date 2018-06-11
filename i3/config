@@ -293,6 +293,7 @@ exec --no-startup-id clipit
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 15 -locker ~/.dotfiles/i3/lock.sh
 exec_always --no-startup-id setcursor
+exec --no-startup-id redshift -l 42.36989:-71.11211
 
 ### THEME ###
 set $base00 #101218
@@ -413,7 +414,7 @@ mode "$mode_gaps_outer" {
 }
 
 # Startup stuff
-exec --no-startup-id dropbox start
+# exec --no-startup-id dropbox start
 exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --off --output DP2 --off
 exec albert
 
