@@ -5,11 +5,17 @@ source ~/.dotfiles/zsh/enhancd/./init.sh
 # Path to your oh-my-zsh installation.
 export ZSH=/home/dileep/.oh-my-zsh
 
+# Set name of the theme to load.
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+source $ZSH/oh-my-zsh.sh
+
 fpath=(/home/dileep/.dotfiles/zsh/completions/_hub $fpath)
 autoload -U compinit && compinit
 
-# Set name of the theme to load.
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# wal setup
+(cat ~/.cache/wal/sequences &)
+
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
@@ -20,9 +26,13 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs time
 POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
 POWERLEVEL9K_ANACONDA_BACKGROUND="blue"
 POWERLEVEL9K_ANACONDA_FOREGROUND="black"
-# POWERLEVEL9K_DIR_PATH_SEPARATOR=' $(print_icon "LEFT_SUBSEGMENT_SEPARATOR") '
+POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
+POWERLEVEL9K_VI_COMMAND_MODE_STRING="N"
+POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon 'LEFT_SUBSEGMENT_SEPARATOR') "
+POWERLEVEL9K_DIR_SHOW_WRITABLE=true
 # POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
-# POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B3'
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\UE0BC'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\UE0BA'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
@@ -33,7 +43,7 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{50}%}\u250f"
 # 	user_symbol = "#"
 # fi
 # POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517\ue0b0%{%F{default}%}"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%F{001}%} "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%F{001}%} "
 POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER"
 
@@ -80,7 +90,7 @@ export ENHANCD_FILTER
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips thefuck zsh-syntax-highlighting)
+plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips thefuck git-extra-commands zsh-syntax-highlighting)
 
 # User configuration
 
@@ -113,18 +123,23 @@ source $ZSH/oh-my-zsh.sh
 
 # Example functions
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
-svg2pdf() { inkscape -D -z --file=$1 --export-pdf=$2 --export-latex }
+tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
+gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
+shufflecopy() { shuf -zn10 -e "$1" | xargs -0 cp -vt "$2" }
+getcurrwal() { cat /home/dileep/.cache/wal/wal | rev | cut -c 1- | rev }
+walcolor() { wal --backend $1 -g -n -i $(getcurrwal)}
 
 # Gurobi envs
-export GUROBI_HOME="/opt/gurobi751/linux64" 
-export PATH="${PATH}:${GUROBI_HOME}/bin" 
+export GUROBI_HOME="/opt/gurobi752/linux64"
+export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 # Nextflow path
-export PATH="/home/dileep/nextflow:$PATH"
+# export PATH="/home/dileep/nextflow:$PATH"
 # Exa path
 export PATH="/home/dileep/.cargo/bin:$PATH"
-# npm path
-export PATH=~/.npm-global/bin:$PATH
+
+# Todosh
+export TODOTXT_DEFAULT_ACTION=ls
 
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
@@ -142,6 +157,7 @@ alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
 alias gitplog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 alias zc="z -c"
+alias zt="z -t"
 # exa aliases
 alias l="exa -lg -s modified --color-scale"
 alias ll="exa -lag -s modified --color-scale -h"
@@ -152,20 +168,22 @@ alias la="exa -lag --color-scale"
 alias lsa="exa -lag --color-scale -h"
 # k aliases
 alias k="k -h"
-# fd alias
-alias find="fd"
-# todotxt alias
-export TODOTXT_DEFAULT_ACTION=ls
-alias todo="todo.sh -d ~/.config/todo.cfg"
-
 # coconut aliases
 alias icoconut="coconut --jupyter console"
-cocowatch() { coconut -pswt 36 "$1" "$2" --no-tco }
-cocowatch-mypy() { coconut -pswt 36 "$1" "$2" --mypy --ignore-missing-imports }
-cococompile() { coconut -pst 36 "$1" "$2" --no-tco }
-cococompile-mypy() { coconut -pst 36 "$1" "$2" --mypy --ignore-missing-imports }
+cocowatch() { coconut -pswt 36 --no-tco "$1" "$2"}
+cocowatch-mypy() { coconut -pswt 36 --no-tco "$1" "$2" --mypy --ignore-missing-imports }
+cococompile() { coconut -pst 36 --no-tco "$1" "$2" }
+cococompile-mypy() { coconut -pst 36 --no-tco "$1" "$2" --mypy --ignore-missing-imports }
+cococompile-wtco() { coconut -pst 36 "$1" "$2" }
+# fd aliases
+alias find="fd"
+# todo alias
+alias todo="todo.sh -d ~/.config/todo.cfg"
+alias git="hub"
+alias howdoi="howdoi -c -n 5"
 
-# source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+
+# source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Making tmux use proper colors
 #[[ $TMUX = "" ]] && export TERM="xterm-256color"

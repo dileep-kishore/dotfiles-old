@@ -77,12 +77,11 @@ set number
 " Relative line numbering
 syntax enable
 set background=dark
-colorscheme onedark
-" colorscheme wal
+colorscheme wal
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let g:onedark_terminal_italics=1
-set termguicolors
+" let g:onedark_terminal_italics=1
+" set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
@@ -163,7 +162,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
 " let g:airline_theme='wal' " old: base16_google
-let g:airline_theme='onedark' " old: base16_google
+let g:airline_theme='wal' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
