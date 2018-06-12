@@ -460,3 +460,13 @@ nnoremap <leader>gs :diffput<CR>
 nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
+
+" Hack to make vim fugitive work  with https on neovim
+if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
+  let s:gui_askpass = system("git --exec-path")[0:-2] . "/git-gui--askpass"
+  if executable(s:gui_askpass)
+    let $SSH_ASKPASS = s:gui_askpass
+  elseif executable("ssh-askpass")
+    let $SSH_ASKPASS = "ssh-askpass"
+  endif
+endif
