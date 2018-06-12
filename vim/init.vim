@@ -69,7 +69,7 @@ Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'sjl/badwolf'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jacoborus/tender.vim'
-" Plug 'dylanaraps/wal.vim'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 set number
@@ -77,12 +77,11 @@ set number
 " Relative line numbering
 syntax enable
 set background=dark
-colorscheme onedark
-" colorscheme wal
+colorscheme wal
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let g:onedark_terminal_italics=1
-set termguicolors
+" let g:onedark_terminal_italics=1
+" set termguicolors
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
@@ -162,8 +161,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='wal' " old: base16_google
-let g:airline_theme='onedark' " old: base16_google
+let g:airline_theme='wal' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -462,3 +460,13 @@ nnoremap <leader>gs :diffput<CR>
 nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
+
+" Hack to make vim fugitive work  with https on neovim
+if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
+  let s:gui_askpass = system("git --exec-path")[0:-2] . "/git-gui--askpass"
+  if executable(s:gui_askpass)
+    let $SSH_ASKPASS = s:gui_askpass
+  elseif executable("ssh-askpass")
+    let $SSH_ASKPASS = "ssh-askpass"
+  endif
+endif
