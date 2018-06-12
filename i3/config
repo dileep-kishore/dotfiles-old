@@ -147,14 +147,16 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 "1:Term "
-set $ws2 "2:Code "
-set $ws3 "3:Browser "
-set $ws4 "4:Social "
-set $ws5 "5:Music "
-set $ws6 "6:Mail "
-set $ws7 "7:Notes "
-set $ws8 8
+
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -165,6 +167,7 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -276,7 +279,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id ~/.dotfiles/i3/lock.sh
+bindsym $mod+Shift+x exec --no-startup-id ~/.dotfiles/i3/lock.sh
 
 # Autostart applications
 ## adjustment of i3bar battery reading (only run at the very first login):
@@ -294,6 +297,7 @@ exec --no-startup-id clipit
 exec --no-startup-id xautolock -time 15 -locker ~/.dotfiles/i3/lock.sh
 exec_always --no-startup-id setcursor
 exec --no-startup-id redshift -l 42.36989:-71.11211
+exec --no-startup-id variety
 
 ### THEME ###
 set $base00 #101218
@@ -314,35 +318,35 @@ set $base0E #c0b7f9
 set $base0F #fcc09e
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	status_command i3blocks -c ~/.i3/i3blocks.conf
+#bar {
+#	status_command i3blocks -c ~/.i3/i3blocks.conf
 
-    ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-    #	tray_output primary
-    #	tray_output eDP1
+#    ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#    #	tray_output primary
+#    #	tray_output eDP1
 
-    position top
-    height 25
-	bindsym button4 nop
-	bindsym button5 nop
-    font pango:Fantasque Sans Mono 12
-    # separator_symbol "<|<"
-    separator_symbol ""
-	# strip_workspace_numbers yes
+#    position top
+#    height 25
+#	bindsym button4 nop
+#	bindsym button5 nop
+#    font pango:Fantasque Sans Mono 12
+#    # separator_symbol "<|<"
+#    separator_symbol ""
+#	# strip_workspace_numbers yes
 
-	colors {
-    #	background $transparent
-		# separator #04fe70
-        separator #807878
-		background #000000
-		statusline #f12a0e
-                		# border background text
-		focused_workspace #400402 #d13418 $base01
-		active_workspace #400402 #c28e2a $base01
-		inactive_workspace #400402 $base06 $base02
-		urgent_workspace $base01 $base08 $base07
-	}
-}
+#	colors {
+#    #	background $transparent
+#		# separator #04fe70
+#        separator #807878
+#		background #000000
+#		statusline #f12a0e
+#                		# border background text
+#		focused_workspace #400402 #d13418 $base01
+#		active_workspace #400402 #c28e2a $base01
+#		inactive_workspace #400402 $base06 $base02
+#		urgent_workspace $base01 $base08 $base07
+#	}
+#}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
@@ -436,9 +440,10 @@ mode "$mode_gaps_outer" {
 # exec --no-startup-id dropbox start
 exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --off --output DP2 --off
 exec albert
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Shortcuts
 bindsym $mod+Shift+f exec --no-startup-id termite -d "`xcwd`" -e ranger
-bindsym $mod+Shift+x exec blurlock
+# bindsym $mod+Shift+x exec blurlock
 bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
