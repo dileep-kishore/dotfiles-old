@@ -2,7 +2,7 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -53,6 +53,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'tpope/vim-rhubarb'
+Plug 'farmergreg/vim-lastplace'
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
@@ -178,8 +179,18 @@ let g:deoplete#sources.rust = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.vim = ['vim']
 
-" Neomake Settings
-autocmd! BufWritePost * Neomake
+" ale settings
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'jsx': ['stylelint', 'eslint'],
+\   'python': ['pylint', 'mypy', 'flake8'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   'python': ['black', 'autopep8'],
+\}
+let g:ale_linter_aliases = {'jsx': 'css'}
 
 " Git gutter settings
 set updatetime=1000
@@ -423,6 +434,12 @@ augroup END
 " Setting syntax coloring for coconut files
 augroup filetypedetect
     au BufRead,BufNewFile *.coco set filetype=python
+augroup END
+
+" Setting syntax coloring for jsx files
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
 " deoplete-jedi configurations
