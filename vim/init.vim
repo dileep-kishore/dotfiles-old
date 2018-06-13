@@ -13,7 +13,7 @@ Plug 'airblade/vim-gitgutter'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/vim-easy-align'
 Plug 'sjl/gundo.vim'
@@ -165,10 +165,19 @@ let g:airline_theme='wal' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enale_smart_case = 1
+let g:deoplete#enable_smart_case = 1
 " Let TAB also do autocompletion
 inoremap <silent><expr> <Tab>
 		\ pumvisible() ? "\<C-n>" : deoplete#manual_complete()
+
+" set sources
+let g:deoplete#sources = {}
+let g:deoplete#sources.cpp = ['LanguageClient']
+let g:deoplete#sources.python = ['LanguageClient']
+let g:deoplete#sources.python3 = ['LanguageClient']
+let g:deoplete#sources.rust = ['LanguageClient']
+let g:deoplete#sources.c = ['LanguageClient']
+let g:deoplete#sources.vim = ['vim']
 
 " Neomake Settings
 autocmd! BufWritePost * Neomake
