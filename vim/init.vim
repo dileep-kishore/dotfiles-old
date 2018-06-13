@@ -167,9 +167,7 @@ let g:airline_theme='wal' " old: base16_google
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 " Let TAB also do autocompletion
-inoremap <silent><expr> <Tab>
-		\ pumvisible() ? "\<C-n>" : deoplete#manual_complete()
-
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " set sources
 let g:deoplete#sources = {}
 let g:deoplete#sources.cpp = ['LanguageClient']
