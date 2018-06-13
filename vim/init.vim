@@ -52,7 +52,6 @@ Plug 'tpope/vim-rhubarb' " Remote source control support
 Plug 'farmergreg/vim-lastplace' " Remember last place on exit
 Plug 'tpope/vim-dispatch' " Async builder
 Plug 'janko-m/vim-test' " Makes testing easier
-Plug 'raghur/vim-ghost', {'do': ':GhostInstall'} " Edit text in browser
 Plug 'Wakatime/vim-wakatime' " Wakatime
 Plug 'edkolev/tmuxline.vim' " Tmux line sync with airline
 Plug 'tmux-plugins/vim-tmux-focus-events' " Restore focus autocommands in tmux session
