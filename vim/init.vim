@@ -438,6 +438,8 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
+" deoplete settings
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete-jedi configurations
 let g:deoplete#sources#jedi#server_timeout = 20
 let g:deoplete#sources#jedi#show_docstring = 1
