@@ -507,3 +507,7 @@ nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
 nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
 nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+" make test commands execute using dispatch.vim
+let test#strategy = "dispatch"
+" test to be used for python
+let test#python#runner = 'pytest'
