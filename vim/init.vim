@@ -318,7 +318,7 @@ let g:instant_markdown_autostart = 0
 "augroup END
 
 "Syntax highlighting in Markdown
-au BufNewFile,BufReadPost *.md *.Rmd *.rmd set filetype=markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'r']
 
 " Overriding vim italics codes
