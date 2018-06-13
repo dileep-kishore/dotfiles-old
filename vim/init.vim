@@ -54,6 +54,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 Plug 'tpope/vim-rhubarb'
 Plug 'farmergreg/vim-lastplace'
+Plug 'tpope/vim-dispatch'
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
