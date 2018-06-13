@@ -168,11 +168,12 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 " Let TAB also do autocompletion
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
 " set sources
 let g:deoplete#sources = {}
 let g:deoplete#sources.cpp = ['LanguageClient']
-let g:deoplete#sources.python = ['LanguageClient']
-let g:deoplete#sources.python3 = ['LanguageClient']
 let g:deoplete#sources.rust = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.vim = ['vim']
@@ -424,6 +425,9 @@ augroup filetypedetect
     au BufRead,BufNewFile *.coco set filetype=python
 augroup END
 
+" deoplete-jedi configurations
+let g:deoplete#sources#jedi#server_timeout = 20
+let g:deoplete#sources#jedi#show_docstring = 1
 " virtual environment setting for deoplete-jedi
 let g:python_host_prog = '/usr/bin/python3'
 let g:python3_host_prog = '/usr/bin/python3'
