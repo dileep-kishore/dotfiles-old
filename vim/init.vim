@@ -55,6 +55,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'tpope/vim-rhubarb'
 Plug 'farmergreg/vim-lastplace'
 Plug 'tpope/vim-dispatch'
+Plug 'janko-m/vim-test'
 " Wakatime
 Plug 'Wakatime/vim-wakatime'
 " Tmux
@@ -499,3 +500,10 @@ if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
     let $SSH_ASKPASS = "ssh-askpass"
   endif
 endif
+
+" Setting for vim-test
+nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
+nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
+nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
+nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
