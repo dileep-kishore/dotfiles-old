@@ -57,6 +57,7 @@ Plug 'edkolev/tmuxline.vim' " Tmux line sync with airline
 Plug 'tmux-plugins/vim-tmux-focus-events' " Restore focus autocommands in tmux session
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between vim and tmux
 Plug 'chrisbra/Colorizer' " Highlight colors in vim
+Plug 'KabbAmine/zeavim.vim' " Search zeal docs from vim
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
@@ -186,6 +187,7 @@ let g:ale_fixers = {
 \   'python': ['black', 'autopep8'],
 \}
 let g:ale_linter_aliases = {'jsx': 'css'}
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 " Git gutter settings
 set updatetime=1000
@@ -437,6 +439,8 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
+" deoplete settings
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete-jedi configurations
 let g:deoplete#sources#jedi#server_timeout = 20
 let g:deoplete#sources#jedi#show_docstring = 1
@@ -454,9 +458,9 @@ xmap gs <plug>(GrepperOperator)
 " Optional. The default behaviour should work for most users.
 let g:grepper               = {}
 let g:grepper.tools         = ['git', 'ag', 'rg']
-let g:grepper.jump          = 1
+let g:grepper.jump          = 0
 let g:grepper.next_tool     = '<leader>g'
-let g:grepper.simple_prompt = 1
+let g:grepper.simple_prompt = 0
 let g:grepper.quickfix      = 0
 
 " LanguageClient Configuration
@@ -504,3 +508,9 @@ nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 let test#strategy = "dispatch"
 " test to be used for python
 let test#python#runner = 'pytest'
+
+" Live view of subsitutions
+set inccommand=nosplit
+
+" Use sytem clipboard
+" set clipboard+=unnamedplus
