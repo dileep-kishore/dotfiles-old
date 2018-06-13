@@ -1,66 +1,62 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
-Plug 'neomake/neomake'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'bling/vim-airline'
-Plug 'tpope/vim-commentary'
-Plug 'majutsushi/tagbar'
-Plug 'airblade/vim-gitgutter'
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'zchee/deoplete-jedi'
-Plug 'junegunn/vim-easy-align'
-Plug 'sjl/gundo.vim'
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
-Plug 'terryma/vim-multiple-cursors'
-Plug 'Yggdroot/indentLine'
-Plug 'raimondi/delimitmate'
-Plug 'takac/vim-hardtime'
-Plug 'thinca/vim-quickrun'
-Plug 'tpope/vim-repeat'
-Plug 'junegunn/vim-peekaboo'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'matze/vim-move'
-Plug 'eugen0329/vim-esearch'
-Plug 'tmhedberg/SimpylFold'
-Plug 'terryma/vim-expand-region'
-Plug 'wellle/targets.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-"Plug 'reedes/vim-pencil'
-Plug 'christoomey/vim-system-copy' "Install xsel
-Plug 'luochen1990/rainbow'
-Plug 'vimwiki/vimwiki'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'honza/vim-snippets'
-Plug 'sickill/vim-pasta'
-Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'
-Plug 'sheerun/vim-polyglot'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'mattn/emmet-vim'
-Plug 'justinmk/vim-sneak'
+Plug 'scrooloose/nerdtree' " File browser
+Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'w0rp/ale' " Async linting engine
+Plug 'tpope/vim-surround' " Surround text objects
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
+Plug 'junegunn/fzf.vim' " fzf buffer
+Plug 'bling/vim-airline' " Vim status bar
+Plug 'tpope/vim-commentary' " Key bindings for commenting
+Plug 'majutsushi/tagbar' " Ctags bar for exploring symbols
+Plug 'airblade/vim-gitgutter' " Git diffs in gutter
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
+Plug 'zchee/deoplete-jedi' " autocompletion for python
+Plug 'junegunn/vim-easy-align' " Align text
+Plug 'sjl/gundo.vim' " Undo tree
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
+Plug 'terryma/vim-multiple-cursors' " Multiple cursor support
+Plug 'Yggdroot/indentLine' " Shows indent guides on screen
+Plug 'raimondi/delimitmate' " Insert mode autocompletion for delimiters
+Plug 'takac/vim-hardtime' " Makes it harder to use arrows and hjkl
+Plug 'thinca/vim-quickrun' " Execute part of file
+Plug 'tpope/vim-repeat' " Supports repeat of complex motions
+Plug 'junegunn/vim-peekaboo' " Peek into registers
+Plug 'vim-airline/vim-airline-themes' " Collection of airline themes
+Plug 'matze/vim-move' " Move visually selected lines
+Plug 'eugen0329/vim-esearch' " Search all files in project for keyword
+Plug 'tmhedberg/SimpylFold' " Better python code folding
+Plug 'terryma/vim-expand-region' " Expand selected region
+Plug 'wellle/targets.vim' " Supports more text-objects
+Plug 'plasticboy/vim-markdown' " Markdown support for vim
+Plug 'junegunn/goyo.vim' " Distraction-free writing in vim
+Plug 'junegunn/limelight.vim' " Hyperfocus-writing in vim
+Plug 'christoomey/vim-system-copy' " Support system copy-paste (Install xsel)
+Plug 'luochen1990/rainbow' " Rainbow paranthesis
+Plug 'vimwiki/vimwiki' " Wiki in vim
+Plug 'Shougo/neosnippet.vim' " Plugin for snippet supports
+Plug 'Shougo/neosnippet-snippets' " A collection of popular snippets
+Plug 'honza/vim-snippets' " More snippets
+Plug 'sickill/vim-pasta' " Paste preserves indentation
+Plug 'mhinz/vim-startify' " Show start-page when you open nvim
+Plug 'ryanoasis/vim-devicons' " Icon support
+Plug 'sheerun/vim-polyglot' " Multiple language syntax support
+Plug 'michaeljsmith/vim-indent-object' " Defines indent as text object
+Plug 'mattn/emmet-vim' " Emmet support for vim
+Plug 'justinmk/vim-sneak' " Sneak for vim
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ }
-Plug 'tpope/vim-rhubarb'
-" Wakatime
-Plug 'Wakatime/vim-wakatime'
-" Tmux
-Plug 'edkolev/tmuxline.vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'christoomey/vim-tmux-navigator'
-" Colors in vim
-Plug 'chrisbra/Colorizer'
+    \ } " Language client support
+Plug 'tpope/vim-rhubarb' " Remote source control support
+Plug 'farmergreg/vim-lastplace' " Remember last place on exit
+Plug 'tpope/vim-dispatch' " Async builder
+Plug 'janko-m/vim-test' " Makes testing easier
+Plug 'Wakatime/vim-wakatime' " Wakatime
+Plug 'edkolev/tmuxline.vim' " Tmux line sync with airline
+Plug 'tmux-plugins/vim-tmux-focus-events' " Restore focus autocommands in tmux session
+Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between vim and tmux
+Plug 'chrisbra/Colorizer' " Highlight colors in vim
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
@@ -161,18 +157,35 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='wal' " old: base16_google
 let g:airline_theme='wal' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enale_smart_case = 1
+let g:deoplete#enable_smart_case = 1
 " Let TAB also do autocompletion
-inoremap <silent><expr> <Tab>
-		\ pumvisible() ? "\<C-n>" : deoplete#manual_complete()
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+call deoplete#custom#source('LanguageClient',
+            \ 'min_pattern_length',
+            \ 2)
+" set sources
+let g:deoplete#sources = {}
+let g:deoplete#sources.cpp = ['LanguageClient']
+let g:deoplete#sources.rust = ['LanguageClient']
+let g:deoplete#sources.c = ['LanguageClient']
+let g:deoplete#sources.vim = ['vim']
 
-" Neomake Settings
-autocmd! BufWritePost * Neomake
+" ale settings
+let g:airline#extensions#ale#enabled = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'jsx': ['stylelint', 'eslint'],
+\   'python': ['pylint', 'mypy', 'flake8'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   'python': ['black', 'autopep8'],
+\}
+let g:ale_linter_aliases = {'jsx': 'css'}
 
 " Git gutter settings
 set updatetime=1000
@@ -319,7 +332,7 @@ let g:instant_markdown_autostart = 0
 "augroup END
 
 "Syntax highlighting in Markdown
-au BufNewFile,BufReadPost *.md *.Rmd *.rmd set filetype=markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'r']
 
 " Overriding vim italics codes
@@ -418,6 +431,15 @@ augroup filetypedetect
     au BufRead,BufNewFile *.coco set filetype=python
 augroup END
 
+" Setting syntax coloring for jsx files
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
+" deoplete-jedi configurations
+let g:deoplete#sources#jedi#server_timeout = 20
+let g:deoplete#sources#jedi#show_docstring = 1
 " virtual environment setting for deoplete-jedi
 let g:python_host_prog = '/usr/bin/python3'
 let g:python3_host_prog = '/usr/bin/python3'
@@ -471,3 +493,14 @@ if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
     let $SSH_ASKPASS = "ssh-askpass"
   endif
 endif
+
+" Setting for vim-test
+nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
+nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
+nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
+nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
+nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
+" make test commands execute using dispatch.vim
+let test#strategy = "dispatch"
+" test to be used for python
+let test#python#runner = 'pytest'
