@@ -508,3 +508,9 @@ nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 let test#strategy = "dispatch"
 " test to be used for python
 let test#python#runner = 'pytest'
+
+" Live view of subsitutions
+set inccommand=nosplit
+
+" Use sytem clipboard
+" set clipboard+=unnamedplus
