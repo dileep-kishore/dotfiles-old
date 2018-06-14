@@ -58,6 +58,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Restore focus autocommands in tmux s
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between vim and tmux
 Plug 'chrisbra/Colorizer' " Highlight colors in vim
 Plug 'KabbAmine/zeavim.vim' " Search zeal docs from vim
+Plug 'machakann/vim-highlightedyank' " Highlights yanked text briefly
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
@@ -514,3 +515,6 @@ set inccommand=split
 
 " Use sytem clipboard
 " set clipboard+=unnamedplus
+
+" Make highlighted text more visible
+hi HighlightedyankRegion cterm=reverse gui=reverse
