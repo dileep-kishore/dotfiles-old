@@ -423,7 +423,7 @@ let g:tmuxline_preset = {
       \'x'    : '%a',
       \'y'    : '#W %R',
       \'z'    : '#H'}
-" let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 0
 
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
