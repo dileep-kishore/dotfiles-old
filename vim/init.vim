@@ -484,11 +484,12 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " Git fugitive configuration
 
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gc :Gcommit --verbose<CR>
 vnoremap <leader>gs :diffput<CR>
 nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gs :Gstatus<CR>
 
 " Hack to make vim fugitive work  with https on neovim
 if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
