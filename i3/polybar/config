@@ -1,21 +1,31 @@
-;=====================================================
-;
-;   To learn more about how to configure Lemonbuddy
-;   go to https://github.com/jaagr/lemonbuddy
-;
-;   The README contains alot of information
-;
-;=====================================================
+;=========================================================
+;                Polybar config
+;=========================================================
 
 [colors]
 transparent = #00000000
-background = #cc131313
-background-alt = #651d1d
-foreground = #dfdfdf
-foreground-alt = #55
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+primary = ${xrdb:color1:#ffb52a}
+secondary = ${xrdb:color2:#e60053}
+alert = ${xrdb:color3:#bd2c40}
+
+xcolor0 = ${xrdb:color0}
+xcolor1 = ${xrdb:color1}
+xcolor2 = ${xrdb:color2}
+xcolor3 = ${xrdb:color3}
+xcolor4 = ${xrdb:color4}
+xcolor5 = ${xrdb:color5}
+xcolor6 = ${xrdb:color6}
+xcolor7 = ${xrdb:color7}
+xcolor8 = ${xrdb:color8}
+xcolor9 = ${xrdb:color9}
+xcolor10 = ${xrdb:color10}
+xcolor11 = ${xrdb:color11}
+xcolor12 = ${xrdb:color12}
+xcolor13 = ${xrdb:color13}
+xcolor14 = ${xrdb:color14}
+xcolor15 = ${xrdb:color15}
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
 
 white = #d1d1d1
 gray = #585858
@@ -35,6 +45,12 @@ ppurple = #a385cb
 lpink = #cc83b5
 dpink = #b34980 
 
+peach = #FFCD98
+lime = #CADC79
+salmon = #d97464
+darkgrey = #2e2e2e
+lightgrey = #444444
+
 tblack   = #948A74
 tred     = #DC8068
 tgreen   = #C2B966
@@ -52,6 +68,14 @@ compositing-foreground = over
 compositing-overline = ${colors.transparent}
 compositing-underline = over
 compositing-border = ${colors.transparent}
+
+
+;=====================================================
+[global/wm]
+margin-top = 20
+margin-bottom = 20
+
+
 ;=====================================================
 [bar/hp]
 monitor = HDMI-0
@@ -62,37 +86,40 @@ height = 18
 ; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
+fixed-center = true
 
-background = ${colors.transparent}
-foreground = ${colors.black}
+background = ${colors.xcolor0}
+foreground = ${colors.xcolor1}
 
-; overline-size = 2
-overline-color = #f00
-underline-size = 2
-underline-color = #00f
+overline-size = 0
+overline-color = ${colors.xcolor7}
+underline-size = 0
+underline-color = ${colors.xcolor7}
 
 ; Borders
 ; Size to be used for all borders
 ; Default: 0
-border-size = 2
+; border-size = 2
 ; Color to be used for all borders
-border-color = ${self.background}
+; border-color = ${self.background}
 ; ; Per-border values
 ; border-top = 1
-; ; border-top-color = #ff9900
+border-top-color = ${colors.xcolor7}
+border-bottom-color = ${colors.xcolor7}
+border-top-size = 0
+border-bottom-size = 0
+border-color-foreground = ${colors.peach}
 ; border-bottom = 1
 ; border-bottom-color = ${colors.primary}
 ; border-left-size = 2
 ; border-right-size = 2
 ; ;border-right-color = #ff0059
 
-; spacing = 1
-
-padding-left = 1
-padding-right = 1
-
-; module-margin-left = 1
-; module-margin-right = 1
+spacing = 0
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
 
 ; Fonts are defined using: <FontName>;<Offset>
 font-0 = FantasqueSansMono:style:Regular:size=11;1
@@ -126,7 +153,7 @@ height = 18
 ; offset-y = 68
 
 background = ${colors.transparent}
-foreground = ${colors.black}
+foreground = ${colors.foreground}
 
 ; overline-size = 2
 overline-color = #f00
