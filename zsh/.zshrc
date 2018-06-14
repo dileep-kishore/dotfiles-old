@@ -155,7 +155,7 @@ alias tlist="tmux ls"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
-alias gitplog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph --date=short"
 alias zc="z -c"
 alias zt="z -t"
 # exa aliases
