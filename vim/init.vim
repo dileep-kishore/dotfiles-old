@@ -58,6 +58,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events' " Restore focus autocommands in tmux s
 Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between vim and tmux
 Plug 'chrisbra/Colorizer' " Highlight colors in vim
 Plug 'KabbAmine/zeavim.vim' " Search zeal docs from vim
+Plug 'machakann/vim-highlightedyank' " Highlights yanked text briefly
 " Themes
 Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
@@ -77,9 +78,9 @@ set background=dark
 colorscheme wal
 highlight Comment cterm=italic
 highlight Comment gui=italic
+" colorscheme onedark
 " let g:onedark_terminal_italics=1
 " set termguicolors
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
 " set noexpandtab
@@ -159,6 +160,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wal' " old: base16_google
+" let g:airline_theme='onedark' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -510,7 +512,10 @@ let test#strategy = "dispatch"
 let test#python#runner = 'pytest'
 
 " Live view of subsitutions
-set inccommand=nosplit
+set inccommand=split
 
 " Use sytem clipboard
 " set clipboard+=unnamedplus
+
+" Make highlighted text more visible
+hi HighlightedyankRegion cterm=reverse gui=reverse
