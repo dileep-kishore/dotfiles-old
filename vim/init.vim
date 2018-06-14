@@ -485,7 +485,7 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " Git fugitive configuration
 
 nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gs :diffput<CR>
+vnoremap <leader>gs :diffput<CR>
 nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
