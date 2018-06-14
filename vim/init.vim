@@ -60,14 +60,14 @@ Plug 'chrisbra/Colorizer' " Highlight colors in vim
 Plug 'KabbAmine/zeavim.vim' " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank' " Highlights yanked text briefly
 " Themes
-Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
 Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'sjl/badwolf'
 Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'jacoborus/tender.vim'
 Plug 'dylanaraps/wal.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 set number
@@ -75,12 +75,12 @@ set number
 " Relative line numbering
 syntax enable
 set background=dark
-colorscheme wal
+colorscheme OceanicNext
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+set termguicolors
 highlight Comment cterm=italic
 highlight Comment gui=italic
-" colorscheme onedark
-" let g:onedark_terminal_italics=1
-" set termguicolors
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
 " set noexpandtab
@@ -159,8 +159,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='wal' " old: base16_google
-" let g:airline_theme='onedark' " old: base16_google
+let g:airline_theme='oceanicnext' " old: base16_google
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
