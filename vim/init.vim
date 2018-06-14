@@ -510,7 +510,7 @@ let test#strategy = "dispatch"
 let test#python#runner = 'pytest'
 
 " Live view of subsitutions
-set inccommand=nosplit
+set inccommand=split
 
 " Use sytem clipboard
 " set clipboard+=unnamedplus
