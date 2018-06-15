@@ -1,6 +1,7 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree' " File browser
+Plug 'Xuyuanp/nerdtree-git-plugin' " Git support for nerdtree
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'w0rp/ale' " Async linting engine
 Plug 'tpope/vim-surround' " Surround text objects
@@ -59,28 +60,30 @@ Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between vim and tmux
 Plug 'chrisbra/Colorizer' " Highlight colors in vim
 Plug 'KabbAmine/zeavim.vim' " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank' " Highlights yanked text briefly
+Plug 'tpope/vim-obsession' " continuously update sessions (wrapper around :mksession)
 " Themes
-Plug 'rakr/vim-two-firewatch'
 Plug 'roosta/srcery'
 Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'sjl/badwolf'
 Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'jacoborus/tender.vim'
 Plug 'dylanaraps/wal.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
+set encoding=utf-8
 set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
 set background=dark
-colorscheme wal
+colorscheme OceanicNext
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+set termguicolors
 highlight Comment cterm=italic
 highlight Comment gui=italic
-" colorscheme onedark
-" let g:onedark_terminal_italics=1
-" set termguicolors
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
 " set noexpandtab
@@ -159,8 +162,8 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
-let g:airline_theme='wal' " old: base16_google
-" let g:airline_theme='onedark' " old: base16_google
+let g:airline_theme='oceanicnext' " old: base16_google
+let g:airline#extensions#obsession#enabled = 1
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -230,7 +233,7 @@ let g:move_key_modifier = 'C-S'
 
 " Automatically start nerdtree
 "autocmd vimenter * NERDTree
-map <C-\> :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 " Automatically close NERDTree if it's the last window there
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw = 1
@@ -424,6 +427,7 @@ let g:tmuxline_preset = {
       \'y'    : '#W %R',
       \'z'    : '#H'}
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#obsession#indicator_text = ''
 
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
@@ -520,3 +524,6 @@ set inccommand=split
 
 " Make highlighted text more visible
 hi HighlightedyankRegion cterm=reverse gui=reverse
+
+" show break character at the beginning of wrapped lines
+set showbreak=↪\ 
