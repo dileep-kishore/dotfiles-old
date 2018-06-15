@@ -1,6 +1,7 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree' " File browser
+Plug 'Xuyuanp/nerdtree-git-plugin' " Git support for nerdtree
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'w0rp/ale' " Async linting engine
 Plug 'tpope/vim-surround' " Surround text objects
