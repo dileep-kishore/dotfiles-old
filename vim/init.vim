@@ -60,6 +60,7 @@ Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between vim and tmux
 Plug 'chrisbra/Colorizer' " Highlight colors in vim
 Plug 'KabbAmine/zeavim.vim' " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank' " Highlights yanked text briefly
+Plug 'tpope/vim-obsession' " continuously update sessions (wrapper around :mksession)
 " Themes
 Plug 'roosta/srcery'
 Plug 'joshdick/onedark.vim'
@@ -161,6 +162,7 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='oceanicnext' " old: base16_google
+let g:airline#extensions#obsession#enabled = 1
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -424,6 +426,7 @@ let g:tmuxline_preset = {
       \'y'    : '#W %R',
       \'z'    : '#H'}
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#obsession#indicator_text = ''
 
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
