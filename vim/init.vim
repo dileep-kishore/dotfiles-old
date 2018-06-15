@@ -210,6 +210,7 @@ nnoremap <Leader>O :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 " Open most recently used files
 nnoremap <Leader>f :History<CR>
+nnoremap <Leader>p :SLoad 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
