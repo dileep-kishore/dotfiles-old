@@ -1,66 +1,67 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree' " File browser
-Plug 'Xuyuanp/nerdtree-git-plugin' " Git support for nerdtree
-Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'w0rp/ale' " Async linting engine
-Plug 'tpope/vim-surround' " Surround text objects
+Plug 'scrooloose/nerdtree'                " File browser
+Plug 'Xuyuanp/nerdtree-git-plugin'        " Git support for nerdtree
+Plug 'tpope/vim-fugitive'                 " Git wrapper
+Plug 'w0rp/ale'                           " Async linting engine
+Plug 'tpope/vim-surround'                 " Surround text objects
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
-Plug 'junegunn/fzf.vim' " fzf buffer
-Plug 'bling/vim-airline' " Vim status bar
-Plug 'tpope/vim-commentary' " Key bindings for commenting
-Plug 'majutsushi/tagbar' " Ctags bar for exploring symbols
-Plug 'airblade/vim-gitgutter' " Git diffs in gutter
+Plug 'junegunn/fzf.vim'                   " fzf buffer
+Plug 'bling/vim-airline'                  " Vim status bar
+Plug 'tpope/vim-commentary'               " Key bindings for commenting
+Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
+Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
-Plug 'zchee/deoplete-jedi' " autocompletion for python
-Plug 'junegunn/vim-easy-align' " Align text
-Plug 'sjl/gundo.vim' " Undo tree
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
-Plug 'terryma/vim-multiple-cursors' " Multiple cursor support
-Plug 'Yggdroot/indentLine' " Shows indent guides on screen
-Plug 'raimondi/delimitmate' " Insert mode autocompletion for delimiters
-Plug 'takac/vim-hardtime' " Makes it harder to use arrows and hjkl
-Plug 'thinca/vim-quickrun' " Execute part of file
-Plug 'tpope/vim-repeat' " Supports repeat of complex motions
-Plug 'junegunn/vim-peekaboo' " Peek into registers
-Plug 'vim-airline/vim-airline-themes' " Collection of airline themes
-Plug 'matze/vim-move' " Move visually selected lines
-Plug 'eugen0329/vim-esearch' " Search all files in project for keyword
-Plug 'tmhedberg/SimpylFold' " Better python code folding
-Plug 'terryma/vim-expand-region' " Expand selected region
-Plug 'wellle/targets.vim' " Supports more text-objects
-Plug 'plasticboy/vim-markdown' " Markdown support for vim
-Plug 'junegunn/goyo.vim' " Distraction-free writing in vim
-Plug 'junegunn/limelight.vim' " Hyperfocus-writing in vim
-Plug 'christoomey/vim-system-copy' " Support system copy-paste (Install xsel)
-Plug 'luochen1990/rainbow' " Rainbow paranthesis
-Plug 'vimwiki/vimwiki' " Wiki in vim
-Plug 'Shougo/neosnippet.vim' " Plugin for snippet supports
-Plug 'Shougo/neosnippet-snippets' " A collection of popular snippets
-Plug 'honza/vim-snippets' " More snippets
-Plug 'sickill/vim-pasta' " Paste preserves indentation
-Plug 'mhinz/vim-startify' " Show start-page when you open nvim
-Plug 'ryanoasis/vim-devicons' " Icon support
-Plug 'sheerun/vim-polyglot' " Multiple language syntax support
-Plug 'michaeljsmith/vim-indent-object' " Defines indent as text object
-Plug 'mattn/emmet-vim' " Emmet support for vim
-Plug 'justinmk/vim-sneak' " Sneak for vim
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ } " Language client support
-Plug 'tpope/vim-rhubarb' " Remote source control support
-Plug 'farmergreg/vim-lastplace' " Remember last place on exit
-Plug 'tpope/vim-dispatch' " Async builder
-Plug 'janko-m/vim-test' " Makes testing easier
-Plug 'Wakatime/vim-wakatime' " Wakatime
-Plug 'edkolev/tmuxline.vim' " Tmux line sync with airline
+Plug 'zchee/deoplete-jedi'                " autocompletion for python
+Plug 'junegunn/vim-easy-align'            " Align text
+Plug 'sjl/gundo.vim'                      " Undo tree
+Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
+Plug 'Yggdroot/indentLine'                " Shows indent guides on screen
+Plug 'raimondi/delimitmate'               " Insert mode autocompletion for delimiters
+Plug 'takac/vim-hardtime'                 " Makes it harder to use arrows and hjkl
+Plug 'thinca/vim-quickrun'                " Execute part of file
+Plug 'tpope/vim-repeat'                   " Supports repeat of complex motions
+Plug 'junegunn/vim-peekaboo'              " Peek into registers
+Plug 'vim-airline/vim-airline-themes'     " Collection of airline themes
+Plug 'matze/vim-move'                     " Move visually selected lines
+Plug 'eugen0329/vim-esearch'              " Search all files in project for keyword
+Plug 'tmhedberg/SimpylFold'               " Better python code folding
+Plug 'terryma/vim-expand-region'          " Expand selected region
+Plug 'wellle/targets.vim'                 " Supports more text-objects
+Plug 'plasticboy/vim-markdown'            " Markdown support for vim
+Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
+Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
+Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
+Plug 'luochen1990/rainbow'                " Rainbow paranthesis
+Plug 'vimwiki/vimwiki'                    " Wiki in vim
+Plug 'Shougo/neosnippet.vim'              " Plugin for snippet supports
+Plug 'Shougo/neosnippet-snippets'         " A collection of popular snippets
+Plug 'honza/vim-snippets'                 " More snippets
+Plug 'sickill/vim-pasta'                  " Paste preserves indentation
+Plug 'mhinz/vim-startify'                 " Show start-page when you open nvim
+Plug 'ryanoasis/vim-devicons'             " Icon support
+Plug 'sheerun/vim-polyglot'               " Multiple language syntax support
+Plug 'michaeljsmith/vim-indent-object'    " Defines indent as text object
+Plug 'mattn/emmet-vim'                    " Emmet support for vim
+Plug 'justinmk/vim-sneak'                 " Sneak for vim
+Plug 'tpope/vim-rhubarb'                  " Remote source control support
+Plug 'farmergreg/vim-lastplace'           " Remember last place on exit
+Plug 'tpope/vim-dispatch'                 " Async builder
+Plug 'janko-m/vim-test'                   " Makes testing easier
+Plug 'Wakatime/vim-wakatime'              " Wakatime
+Plug 'edkolev/tmuxline.vim'               " Tmux line sync with airline
 Plug 'tmux-plugins/vim-tmux-focus-events' " Restore focus autocommands in tmux session
-Plug 'christoomey/vim-tmux-navigator' " Seamless navigation between vim and tmux
-Plug 'chrisbra/Colorizer' " Highlight colors in vim
-Plug 'KabbAmine/zeavim.vim' " Search zeal docs from vim
-Plug 'machakann/vim-highlightedyank' " Highlights yanked text briefly
-Plug 'tpope/vim-obsession' " continuously update sessions (wrapper around :mksession)
+Plug 'christoomey/vim-tmux-navigator'     " Seamless navigation between vim and tmux
+Plug 'chrisbra/Colorizer'                 " Highlight colors in vim
+Plug 'KabbAmine/zeavim.vim'               " Search zeal docs from vim
+Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
+Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ } " Language client support
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
+
 " Themes
 Plug 'roosta/srcery'
 Plug 'joshdick/onedark.vim'
@@ -210,6 +211,7 @@ nnoremap <Leader>O :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 " Open most recently used files
 nnoremap <Leader>f :History<CR>
+nnoremap <Leader>p :SLoad 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -299,8 +301,9 @@ set foldmethod=indent
 nnoremap <F5> :GundoToggle<CR>
 
 " Indent line settings
-let g:indentLine_char = '┆'
-let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_setColors = 0
+let g:indentLine_char = '⎸'
+" let g:indentLine_color_gui = '#A4E57E'
 
 " Resizing using arrow keys
 nnoremap <left> :vertical resize +5<cr>
