@@ -72,6 +72,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
+set encoding=utf-8
 set number
 "set numberwidth=3
 " Relative line numbering
@@ -232,7 +233,7 @@ let g:move_key_modifier = 'C-S'
 
 " Automatically start nerdtree
 "autocmd vimenter * NERDTree
-map <C-\> :NERDTreeToggle<CR>
+map <leader>t :NERDTreeToggle<CR>
 " Automatically close NERDTree if it's the last window there
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw = 1
@@ -523,3 +524,6 @@ set inccommand=split
 
 " Make highlighted text more visible
 hi HighlightedyankRegion cterm=reverse gui=reverse
+
+" show break character at the beginning of wrapped lines
+set showbreak=↪\ 
