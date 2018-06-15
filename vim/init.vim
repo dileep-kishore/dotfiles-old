@@ -300,8 +300,9 @@ set foldmethod=indent
 nnoremap <F5> :GundoToggle<CR>
 
 " Indent line settings
-let g:indentLine_char = '┆'
-let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_setColors = 0
+let g:indentLine_char = '⎸'
+" let g:indentLine_color_gui = '#A4E57E'
 
 " Resizing using arrow keys
 nnoremap <left> :vertical resize +5<cr>
