@@ -56,10 +56,7 @@ Plug 'chrisbra/Colorizer'                 " Highlight colors in vim
 Plug 'KabbAmine/zeavim.vim'               " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
 Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ } " Language client support
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
 " Themes
