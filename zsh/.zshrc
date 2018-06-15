@@ -22,7 +22,7 @@ POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator time context dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs time vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs command_execution_time vi_mode)
 POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
 POWERLEVEL9K_ANACONDA_BACKGROUND="blue"
 POWERLEVEL9K_ANACONDA_FOREGROUND="black"
@@ -155,7 +155,7 @@ alias tlist="tmux ls"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
-alias gitplog="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
+alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short"
 alias zc="z -c"
 alias zt="z -t"
 # exa aliases
