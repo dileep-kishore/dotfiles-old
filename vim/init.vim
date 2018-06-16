@@ -201,13 +201,25 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
-" Open file menu
+" Search git ls-files
 nnoremap <Leader>o :GFiles<CR>
-nnoremap <Leader>O :Files<CR>
-" Open buffer menu
-nnoremap <Leader>b :Buffers<CR>
-" Open most recently used files
-nnoremap <Leader>f :History<CR>
+" Search all files
+nnoremap <Leader>ff :Files<CR>
+" Search recently used files
+nnoremap <Leader>fh :History<CR>
+" Search open buffers
+nnoremap <Leader>fb :Buffers<CR>
+" Search open windows
+nnoremap <Leader>fw :Windows<CR>
+" Search tags in buffer
+nnoremap <Leader>ft :Tags<CR>
+" Search commits
+nnoremap <Leader>fc :Commits<CR>
+" Search lines
+nnoremap <Leader>fl :Lines<CR>
+" Search using Ag
+nnoremap <Leader>fs :Ag<CR>
+" Load saved sessions
 nnoremap <Leader>p :SLoad 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -232,7 +244,6 @@ let g:move_key_modifier = 'C-S'
 
 " Automatically start nerdtree
 "autocmd vimenter * NERDTree
-map <leader>t :NERDTreeToggle<CR>
 " Automatically close NERDTree if it's the last window there
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw = 1
