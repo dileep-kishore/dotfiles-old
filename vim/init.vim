@@ -258,7 +258,7 @@ let g:minimap_highlight='Visual'
 set autoread
 au FocusGained,BufEnter * :silent! !
 set visualbell
-" set cursorline
+set cursorline
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu
 function! ToggleNumbersOn()
