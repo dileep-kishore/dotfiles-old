@@ -128,6 +128,17 @@ gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
 shufflecopy() { shuf -zn10 -e "$1" | xargs -0 cp -vt "$2" }
 getcurrwal() { cat /home/dileep/.cache/wal/wal | rev | cut -c 1- | rev }
 walcolor() { wal --backend $1 -g -n -i $(getcurrwal)}
+man() {
+    env \
+      LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+      LESS_TERMCAP_md=$(printf "\e[1;31m") \
+      LESS_TERMCAP_me=$(printf "\e[0m") \
+      LESS_TERMCAP_se=$(printf "\e[0m") \
+      LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+      LESS_TERMCAP_ue=$(printf "\e[0m") \
+      LESS_TERMCAP_us=$(printf "\e[1;36m") \
+      man "$@"
+}
 
 # Gurobi envs
 export GUROBI_HOME="/opt/gurobi752/linux64"
