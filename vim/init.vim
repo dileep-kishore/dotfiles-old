@@ -438,7 +438,7 @@ let g:tmuxline_preset = {
       \'y'    : '#W %R',
       \'z'    : '#H'}
 let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#obsession#indicator_text = ''
+let g:airline#extensions#obsession#indicator_text = "\uf692"
 
 " Setting syntax coloring for nextflow files
 augroup filetypedetect
