@@ -44,7 +44,6 @@ Plug 'michaeljsmith/vim-indent-object'    " Defines indent as text object
 Plug 'mattn/emmet-vim'                    " Emmet support for vim
 Plug 'justinmk/vim-sneak'                 " Sneak for vim
 Plug 'tpope/vim-rhubarb'                  " Remote source control support
-Plug 'farmergreg/vim-lastplace'           " Remember last place on exit
 Plug 'tpope/vim-dispatch'                 " Async builder
 Plug 'janko-m/vim-test'                   " Makes testing easier
 Plug 'Wakatime/vim-wakatime'              " Wakatime
@@ -57,6 +56,7 @@ Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
 Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
 Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
 Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
+Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
@@ -532,3 +532,6 @@ hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
 set showbreak=↪\ 
+
+" Loupe settings
+let g:LoupeClearHighlightMap = 1
