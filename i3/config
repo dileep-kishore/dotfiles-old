@@ -303,6 +303,8 @@ exec_always --no-startup-id setcursor
 # exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id redshift -l 42.36989:-71.11211
 exec --no-startup-id variety
+exec --no-startup-id synergy
+exec --no-startup-id syncthing-gtk
 
 ### THEME ###
 set $base00 #101218
