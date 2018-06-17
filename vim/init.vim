@@ -238,8 +238,13 @@ let g:esearch = {
     \ 'backend': 'nvim',
     \ 'out': 'win',
     \ 'batch_size': 1000,
-    \ 'use': ['visual', 'hlsearch', 'last'],
+    \ 'use': ['visual', 'hlsearch', 'last', 'word_under_cursor'],
     \}
+" Start esearch prompt autofilled with one of g:esearch.use initial patterns
+call esearch#map('<leader>ef', 'esearch')
+" Start esearch autofilled with a word under the cursor
+call esearch#map('<leader>ew', 'esearch-word-under-cursor')
+
 " Vim-move customization
 let g:move_key_modifier = 'C-S'
 
