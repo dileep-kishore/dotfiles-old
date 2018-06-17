@@ -56,6 +56,7 @@ Plug 'chrisbra/Colorizer'                 " Highlight colors in vim
 Plug 'KabbAmine/zeavim.vim'               " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
 Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
+Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
@@ -247,12 +248,6 @@ let g:move_key_modifier = 'C-S'
 " Automatically close NERDTree if it's the last window there
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw = 1
-
-" Remapping buffer navigation
-" Move to next tab
-nmap <leader>] :bnext<CR>
-" Move to previous buffer
-nmap <leader>[ :bprevious<CR>
 
 " Enabling Hardmode
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
