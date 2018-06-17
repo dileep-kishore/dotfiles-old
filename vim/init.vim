@@ -33,8 +33,7 @@ Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
 Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
 Plug 'luochen1990/rainbow'                " Rainbow paranthesis
-Plug 'Shougo/neosnippet.vim'              " Plugin for snippet supports
-Plug 'Shougo/neosnippet-snippets'         " A collection of popular snippets
+Plug 'SirVer/ultisnips'                   " Plugin for snippets
 Plug 'honza/vim-snippets'                 " More snippets
 Plug 'sickill/vim-pasta'                  " Paste preserves indentation
 Plug 'mhinz/vim-startify'                 " Show start-page when you open nvim
@@ -167,17 +166,30 @@ let g:airline#extensions#obsession#enabled = 1
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
 " Let TAB also do autocompletion
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
 " set sources
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 let g:deoplete#sources = {}
+let g:deoplete#sources.gitcommit = ['github']
 let g:deoplete#sources.cpp = ['LanguageClient']
 let g:deoplete#sources.rust = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
-let g:deoplete#sources.vim = ['vim']
+let g:deoplete#sources.javascript = ['LanguageClient']
+let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
+" deoplete close preview on completion
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" deoplete-jedi configurations
+let g:deoplete#sources#jedi#server_timeout = 20
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#enable_cache = 1
+let g:deoplete#sources#jedi#worker_threads = 2
+" virtual environment setting for deoplete-jedi
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
+
 
 " ale settings
 let g:airline#extensions#ale#enabled = 1
@@ -361,23 +373,14 @@ set t_ZR=[23m
 " Rainbow parentheses
 let g:rainbow_active = 1
 
-" Enable snimpMate compatibility feature
-let g:neosnippet#enable_snipmate_compatibility = 1
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" Ultisnippet settings
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger='<C-j>'
+let g:UltiSnipsJumpBackwardTrigger='<C-k>'
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'snips']
+let g:UltiSnipsUsePythonVersion = 3
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Narrow ag results in vim using fzf
 function! s:ag_to_qf(line)
@@ -450,15 +453,6 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
-" deoplete settings
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" deoplete-jedi configurations
-let g:deoplete#sources#jedi#server_timeout = 20
-let g:deoplete#sources#jedi#show_docstring = 1
-" virtual environment setting for deoplete-jedi
-let g:python_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/usr/bin/python3'
-
 " Grepper configuration
 nnoremap <leader>r :Grepper -tool git<cr>
 nnoremap <leader>R :Grepper -tool ag<cr>
@@ -528,7 +522,7 @@ set inccommand=split
 " set clipboard+=unnamedplus
 
 " Make highlighted text more visible
-hi HighlightedyankRegion cterm=reverse gui=reverse
+" hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
 set showbreak=↪\ 
