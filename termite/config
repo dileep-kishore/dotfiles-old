@@ -10,8 +10,9 @@
     urgent_on_bell = true
     clickable_url = true
     # font = FantasqueSansMono Nerd Font 11
-    # font = Operator Mono Semi-Light 12
-    font = Hermit 11
+    # font = Operator Mono Semi-Light 11
+    # font = Hermit 10
+    font = Monofur Nerd Font 12
     scrollback_lines = 1000
     search_wrap = true
     #icon_name = terminal
@@ -24,7 +25,7 @@
     cursor_shape = block
 
     # $BROWSER is used by default
-    browser = vivaldi-stable
+    browser = chromium
 
     # word characters used for word selection
     # (default if unset: all graphic non-punctuation/space characters)
