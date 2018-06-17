@@ -1,7 +1,7 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree'                " File browser
-Plug 'Xuyuanp/nerdtree-git-plugin'        " Git support for nerdtree
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File browser
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " Git support for nerdtree
 Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
@@ -12,7 +12,7 @@ Plug 'tpope/vim-commentary'               " Key bindings for commenting
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
-Plug 'zchee/deoplete-jedi'                " autocompletion for python
+Plug 'zchee/deoplete-jedi', { 'for': 'python' } " autocompletion for python
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
@@ -28,13 +28,12 @@ Plug 'eugen0329/vim-esearch'              " Search all files in project for keyw
 Plug 'tmhedberg/SimpylFold'               " Better python code folding
 Plug 'terryma/vim-expand-region'          " Expand selected region
 Plug 'wellle/targets.vim'                 " Supports more text-objects
-Plug 'plasticboy/vim-markdown'            " Markdown support for vim
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " Markdown support for vim
 Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
 Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
 Plug 'luochen1990/rainbow'                " Rainbow paranthesis
-Plug 'Shougo/neosnippet.vim'              " Plugin for snippet supports
-Plug 'Shougo/neosnippet-snippets'         " A collection of popular snippets
+Plug 'SirVer/ultisnips'                   " Plugin for snippets
 Plug 'honza/vim-snippets'                 " More snippets
 Plug 'sickill/vim-pasta'                  " Paste preserves indentation
 Plug 'mhinz/vim-startify'                 " Show start-page when you open nvim
@@ -44,7 +43,6 @@ Plug 'michaeljsmith/vim-indent-object'    " Defines indent as text object
 Plug 'mattn/emmet-vim'                    " Emmet support for vim
 Plug 'justinmk/vim-sneak'                 " Sneak for vim
 Plug 'tpope/vim-rhubarb'                  " Remote source control support
-Plug 'farmergreg/vim-lastplace'           " Remember last place on exit
 Plug 'tpope/vim-dispatch'                 " Async builder
 Plug 'janko-m/vim-test'                   " Makes testing easier
 Plug 'Wakatime/vim-wakatime'              " Wakatime
@@ -57,6 +55,7 @@ Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
 Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
 Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
 Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
+Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
@@ -167,17 +166,30 @@ let g:airline#extensions#obsession#enabled = 1
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
 " Let TAB also do autocompletion
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-call deoplete#custom#source('LanguageClient',
-            \ 'min_pattern_length',
-            \ 2)
 " set sources
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 let g:deoplete#sources = {}
+let g:deoplete#sources.gitcommit = ['github']
 let g:deoplete#sources.cpp = ['LanguageClient']
 let g:deoplete#sources.rust = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
-let g:deoplete#sources.vim = ['vim']
+let g:deoplete#sources.javascript = ['LanguageClient']
+let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
+" deoplete close preview on completion
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" deoplete-jedi configurations
+let g:deoplete#sources#jedi#server_timeout = 20
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#enable_cache = 1
+let g:deoplete#sources#jedi#worker_threads = 2
+" virtual environment setting for deoplete-jedi
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
+
 
 " ale settings
 let g:airline#extensions#ale#enabled = 1
@@ -361,23 +373,14 @@ set t_ZR=[23m
 " Rainbow parentheses
 let g:rainbow_active = 1
 
-" Enable snimpMate compatibility feature
-let g:neosnippet#enable_snipmate_compatibility = 1
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" Ultisnippet settings
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger='<C-j>'
+let g:UltiSnipsJumpBackwardTrigger='<C-k>'
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'snips']
+let g:UltiSnipsUsePythonVersion = 3
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Narrow ag results in vim using fzf
 function! s:ag_to_qf(line)
@@ -450,15 +453,6 @@ augroup FiletypeGroup
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
-" deoplete settings
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" deoplete-jedi configurations
-let g:deoplete#sources#jedi#server_timeout = 20
-let g:deoplete#sources#jedi#show_docstring = 1
-" virtual environment setting for deoplete-jedi
-let g:python_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/usr/bin/python3'
-
 " Grepper configuration
 nnoremap <leader>r :Grepper -tool git<cr>
 nnoremap <leader>R :Grepper -tool ag<cr>
@@ -528,7 +522,10 @@ set inccommand=split
 " set clipboard+=unnamedplus
 
 " Make highlighted text more visible
-hi HighlightedyankRegion cterm=reverse gui=reverse
+" hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
 set showbreak=↪\ 
+
+" Loupe settings
+let g:LoupeClearHighlightMap = 1
