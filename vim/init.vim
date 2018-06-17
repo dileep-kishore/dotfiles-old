@@ -56,6 +56,7 @@ Plug 'KabbAmine/zeavim.vim'               " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
 Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
 Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
+Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
@@ -355,6 +356,8 @@ set t_ZR=[23m
 " Rainbow parentheses
 let g:rainbow_active = 1
 
+" Enable snimpMate compatibility feature
+let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
