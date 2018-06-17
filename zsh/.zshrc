@@ -16,23 +16,28 @@ autoload -U compinit && compinit
 # wal setup
 (cat ~/.cache/wal/sequences &)
 
-POWERLEVEL9K_MODE='awesome-fontconfig'
+POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator time context dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda vcs background_jobs command_execution_time vi_mode)
-POWERLEVEL9K_PYTHON_ICON=$'\UE63C'
-POWERLEVEL9K_ANACONDA_BACKGROUND="blue"
-POWERLEVEL9K_ANACONDA_FOREGROUND="black"
-POWERLEVEL9K_VI_INSERT_MODE_STRING="I"
-POWERLEVEL9K_VI_COMMAND_MODE_STRING="N"
-POWERLEVEL9K_DIR_PATH_SEPARATOR=" $(print_icon 'LEFT_SUBSEGMENT_SEPARATOR') "
+
+# Defining icons
+POWERLEVEL9K_LINUX_ICON=$'\uf303'
+POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf09b'
+POWERLEVEL9K_HOME_ICON=$'\uf7db'
+POWERLEVEL9K_FOLDER_ICON=''
+POWERLEVEL9K_PYTHON_ICON=$'\ue235'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda background_jobs command_execution_time time vi_mode)
+POWERLEVEL9K_VI_INSERT_MODE_STRING="Ins"
+POWERLEVEL9K_VI_COMMAND_MODE_STRING="Nor"
+POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\ue0b1'
+POWERLEVEL9K_DIR_PATH_SEPARATOR=$'\ue0b1 '
 POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-# POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B1'
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\UE0BC'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\UE0BA'
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0d2'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0d4'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
@@ -128,6 +133,17 @@ gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
 shufflecopy() { shuf -zn10 -e "$1" | xargs -0 cp -vt "$2" }
 getcurrwal() { cat /home/dileep/.cache/wal/wal | rev | cut -c 1- | rev }
 walcolor() { wal --backend $1 -g -n -i $(getcurrwal)}
+man() {
+    env \
+      LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+      LESS_TERMCAP_md=$(printf "\e[1;31m") \
+      LESS_TERMCAP_me=$(printf "\e[0m") \
+      LESS_TERMCAP_se=$(printf "\e[0m") \
+      LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+      LESS_TERMCAP_ue=$(printf "\e[0m") \
+      LESS_TERMCAP_us=$(printf "\e[1;36m") \
+      man "$@"
+}
 
 # Gurobi envs
 export GUROBI_HOME="/opt/gurobi752/linux64"
@@ -155,7 +171,7 @@ alias tlist="tmux ls"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
-alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short"
+alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph --date=short"
 alias zc="z -c"
 alias zt="z -t"
 # exa aliases
