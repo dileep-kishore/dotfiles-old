@@ -33,7 +33,6 @@ Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
 Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
 Plug 'luochen1990/rainbow'                " Rainbow paranthesis
-Plug 'vimwiki/vimwiki'                    " Wiki in vim
 Plug 'Shougo/neosnippet.vim'              " Plugin for snippet supports
 Plug 'Shougo/neosnippet-snippets'         " A collection of popular snippets
 Plug 'honza/vim-snippets'                 " More snippets
@@ -412,14 +411,6 @@ command! -nargs=* Ag call fzf#run({
 " Vim expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-" Vim wiki settings
-let g:vimwiki_list = [{"path": '/home/dileep/Dropbox/Notes', "path_html": '/home/dileep/Dropbox/Notes/exports', "syntax": 'markdown', "template_path": '/home/dileep/Dropbox/vimwiki/', "template_default": 'default', "template_ext": '.tpl', "auto_export": 0}]
-let g:vimwiki_dir_link = 'index'
-let g:vimwiki_hl_headers = 1
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_table_mappings = 0
-autocmd FileType vimwiki :RainbowToggleOff
 
 " Tmuxline settings
 " let g:tmuxline_preset = 'full'
