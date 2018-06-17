@@ -1,7 +1,7 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree'                " File browser
-Plug 'Xuyuanp/nerdtree-git-plugin'        " Git support for nerdtree
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File browser
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " Git support for nerdtree
 Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
@@ -12,7 +12,7 @@ Plug 'tpope/vim-commentary'               " Key bindings for commenting
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
-Plug 'zchee/deoplete-jedi'                " autocompletion for python
+Plug 'zchee/deoplete-jedi', { 'for': 'python' } " autocompletion for python
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
@@ -28,7 +28,7 @@ Plug 'eugen0329/vim-esearch'              " Search all files in project for keyw
 Plug 'tmhedberg/SimpylFold'               " Better python code folding
 Plug 'terryma/vim-expand-region'          " Expand selected region
 Plug 'wellle/targets.vim'                 " Supports more text-objects
-Plug 'plasticboy/vim-markdown'            " Markdown support for vim
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " Markdown support for vim
 Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
 Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
