@@ -33,7 +33,6 @@ Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
 Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
 Plug 'luochen1990/rainbow'                " Rainbow paranthesis
-Plug 'vimwiki/vimwiki'                    " Wiki in vim
 Plug 'Shougo/neosnippet.vim'              " Plugin for snippet supports
 Plug 'Shougo/neosnippet-snippets'         " A collection of popular snippets
 Plug 'honza/vim-snippets'                 " More snippets
@@ -57,6 +56,7 @@ Plug 'KabbAmine/zeavim.vim'               " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
 Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
 Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
+Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
@@ -238,8 +238,13 @@ let g:esearch = {
     \ 'backend': 'nvim',
     \ 'out': 'win',
     \ 'batch_size': 1000,
-    \ 'use': ['visual', 'hlsearch', 'last'],
+    \ 'use': ['visual', 'hlsearch', 'last', 'word_under_cursor'],
     \}
+" Start esearch prompt autofilled with one of g:esearch.use initial patterns
+call esearch#map('<leader>ef', 'esearch')
+" Start esearch autofilled with a word under the cursor
+call esearch#map('<leader>ew', 'esearch-word-under-cursor')
+
 " Vim-move customization
 let g:move_key_modifier = 'C-S'
 
@@ -356,6 +361,8 @@ set t_ZR=[23m
 " Rainbow parentheses
 let g:rainbow_active = 1
 
+" Enable snimpMate compatibility feature
+let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
@@ -412,14 +419,6 @@ command! -nargs=* Ag call fzf#run({
 " Vim expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-" Vim wiki settings
-let g:vimwiki_list = [{"path": '/home/dileep/Dropbox/Notes', "path_html": '/home/dileep/Dropbox/Notes/exports', "syntax": 'markdown', "template_path": '/home/dileep/Dropbox/vimwiki/', "template_default": 'default', "template_ext": '.tpl', "auto_export": 0}]
-let g:vimwiki_dir_link = 'index'
-let g:vimwiki_hl_headers = 1
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_table_mappings = 0
-autocmd FileType vimwiki :RainbowToggleOff
 
 " Tmuxline settings
 " let g:tmuxline_preset = 'full'
