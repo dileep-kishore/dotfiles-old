@@ -273,9 +273,6 @@ let g:hardtime_default_on = 1
 " Tagbar toggle
 nmap <F8> :TagbarToggle<CR>
 
-" Minimap Highlight
-let g:minimap_highlight='Visual'
-
 " Colbycheeze settings
 " Autoload files
 set autoread
@@ -342,18 +339,8 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 let g:goyo_linenr=1
 
-"" Vim pencil settings
-"augroup pencil
-    "autocmd!
-    "autocmd FileType markdown,mkd call pencil#init()
-"augroup END
-"let g:pencil#wrapModeDefault = 'soft'
-
 " vim markdown settings
 let g:vim_markdown_math=1
-
-" Instant markdown settings
-let g:instant_markdown_autostart = 0
 
 "" vim flavored markdown
 "augroup markdown
