@@ -364,8 +364,8 @@ let g:rainbow_active = 1
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger='<C-j>'
 let g:UltiSnipsJumpBackwardTrigger='<C-k>'
-let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'snips']
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/custom_snippets"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'custom_snippets']
 let g:UltiSnipsUsePythonVersion = 3
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
