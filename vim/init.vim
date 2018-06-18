@@ -494,16 +494,6 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
-" Hack to make vim fugitive work  with https on neovim
-if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
-  let s:gui_askpass = system("git --exec-path")[0:-2] . "/git-gui--askpass"
-  if executable(s:gui_askpass)
-    let $SSH_ASKPASS = s:gui_askpass
-  elseif executable("ssh-askpass")
-    let $SSH_ASKPASS = "ssh-askpass"
-  endif
-endif
-
 " Setting for vim-test
 nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
 nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
