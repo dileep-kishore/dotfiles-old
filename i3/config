@@ -285,6 +285,9 @@ mode "resize" {
 # Lock screen
 bindsym $mod+Ctrl+l exec --no-startup-id ~/.dotfiles/i3/lock.sh
 
+# Automount drives
+exec --no-startup-id udisksctl mount --block-device /dev/sda1
+
 # Autostart applications
 ## adjustment of i3bar battery reading (only run at the very first login):
 #exec --no-startup-id /usr/bin/adjust_i3statusconf
