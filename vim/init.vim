@@ -110,7 +110,7 @@ let mapleader="\<SPACE>"
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:→\
 set list
 autocmd filetype html,xml set listchars-=tab:>.
 set pastetoggle=<F2>
