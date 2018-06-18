@@ -110,7 +110,7 @@ let mapleader="\<SPACE>"
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:→\
 set list
 autocmd filetype html,xml set listchars-=tab:>.
 set pastetoggle=<F2>
@@ -273,9 +273,6 @@ let g:hardtime_default_on = 1
 " Tagbar toggle
 nmap <F8> :TagbarToggle<CR>
 
-" Minimap Highlight
-let g:minimap_highlight='Visual'
-
 " Colbycheeze settings
 " Autoload files
 set autoread
@@ -342,18 +339,8 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 let g:goyo_linenr=1
 
-"" Vim pencil settings
-"augroup pencil
-    "autocmd!
-    "autocmd FileType markdown,mkd call pencil#init()
-"augroup END
-"let g:pencil#wrapModeDefault = 'soft'
-
 " vim markdown settings
 let g:vim_markdown_math=1
-
-" Instant markdown settings
-let g:instant_markdown_autostart = 0
 
 "" vim flavored markdown
 "augroup markdown
@@ -377,8 +364,8 @@ let g:rainbow_active = 1
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger='<C-j>'
 let g:UltiSnipsJumpBackwardTrigger='<C-k>'
-let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'snips']
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/custom_snippets"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'custom_snippets']
 let g:UltiSnipsUsePythonVersion = 3
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -493,16 +480,6 @@ nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
-
-" Hack to make vim fugitive work  with https on neovim
-if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
-  let s:gui_askpass = system("git --exec-path")[0:-2] . "/git-gui--askpass"
-  if executable(s:gui_askpass)
-    let $SSH_ASKPASS = s:gui_askpass
-  elseif executable("ssh-askpass")
-    let $SSH_ASKPASS = "ssh-askpass"
-  endif
-endif
 
 " Setting for vim-test
 nmap <silent> t<C-n> :TestNearest<CR> " t Ctrl+n
