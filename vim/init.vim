@@ -56,6 +56,7 @@ Plug 'tpope/vim-obsession'                " continuously update sessions (wrappe
 Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
 Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
+Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
@@ -237,6 +238,8 @@ nnoremap <Leader>fc :Commits<CR>
 nnoremap <Leader>fl :Lines<CR>
 " Search using Ag
 nnoremap <Leader>fs :Ag<CR>
+" Search marks
+nnoremap <Leader>fm :Marks<CR>
 " Load saved sessions
 nnoremap <Leader>p :SLoad 
 " Mapping selecting mappings
