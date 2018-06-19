@@ -56,6 +56,7 @@ Plug 'tpope/vim-obsession'                " continuously update sessions (wrappe
 Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
 Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
+Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 
@@ -192,6 +193,11 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 
 " ale settings
+let g:ale_sign_info = "\uf05a"
+let g:ale_sign_error = "✘"
+let g:ale_sign_warning = "\uf071"
+let g:ale_sign_style_error = "\ue009"
+let g:ale_sign_style_warning = "⚑"
 let g:airline#extensions#ale#enabled = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
@@ -232,6 +238,8 @@ nnoremap <Leader>fc :Commits<CR>
 nnoremap <Leader>fl :Lines<CR>
 " Search using Ag
 nnoremap <Leader>fs :Ag<CR>
+" Search marks
+nnoremap <Leader>fm :Marks<CR>
 " Load saved sessions
 nnoremap <Leader>p :SLoad 
 " Mapping selecting mappings
@@ -458,7 +466,7 @@ let g:grepper.quickfix      = 0
 " LanguageClient Configuration
 " Required for operations modifying multiple buffers like rename.
 set hidden
-
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
