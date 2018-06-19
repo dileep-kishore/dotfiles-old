@@ -466,7 +466,7 @@ let g:grepper.quickfix      = 0
 " LanguageClient Configuration
 " Required for operations modifying multiple buffers like rename.
 set hidden
-
+let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
