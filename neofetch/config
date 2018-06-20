@@ -609,7 +609,8 @@ image_backend="w3m"
 # NOTE: 'auto' will pick the best image source for whatever image backend is used.
 #       In ascii mode, distro ascii art will be used and in an image mode, your
 #       wallpaper will be used.
-image_source="/home/dileep/Pictures/wallpapers/imgur/19 - k8wv3zS.jpg"
+# image_source="/home/dileep/Pictures/wallpapers/imgur/19 - k8wv3zS.jpg"
+image_source="auto"
 
 
 # Ascii Options
