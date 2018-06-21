@@ -514,3 +514,14 @@ set showbreak=↪\
 
 " Loupe settings
 let g:LoupeClearHighlightMap = 1
+
+" EasyAlign keymaps
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" Setting up keyword highlighting in comments
+autocmd Syntax * syntax keyword Todo NOTE containedin=.*Comment
+autocmd Syntax * syntax keyword Todo HACK containedin=.*Comment
+autocmd Syntax * syntax keyword Todo QUESTION containedin=.*Comment
