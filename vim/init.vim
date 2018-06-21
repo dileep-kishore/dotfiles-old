@@ -520,3 +520,8 @@ let g:LoupeClearHighlightMap = 1
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Setting up keyword highlighting in comments
+autocmd Syntax * syntax keyword Todo NOTE containedin=.*Comment
+autocmd Syntax * syntax keyword Todo HACK containedin=.*Comment
+autocmd Syntax * syntax keyword Todo QUESTION containedin=.*Comment
