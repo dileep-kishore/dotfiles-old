@@ -241,8 +241,6 @@ nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fs :Ag<CR>
 " Search marks
 nnoremap <Leader>fm :Marks<CR>
-" Load saved sessions
-nnoremap <Leader>p :SLoad 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -540,3 +538,30 @@ let g:startify_lists = [
 function! StartifyEntryFormat()
     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
+
+"   :Ag  - Start fzf with hidden preview window that can be enabled with '?' key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+    \ call fzf#vim#ag(<q-args>,
+    \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+    \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \                 <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=? GFiles
+    \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" Sessions search using fzf.vim
+function! s:sessions()
+  call fzf#run({
+  \ 'source':  'ls -1 ~/.vim/session',
+  \ 'sink':    'SLoad',
+  \ 'options': '+m --prompt="Sessions> "',
+  \ 'down':    '40%'
+  \})
+endfunction
+command! Sessions call s:sessions()
+" Load saved sessions
+nnoremap <Leader>p :Sessions<CR>
