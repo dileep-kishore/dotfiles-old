@@ -536,3 +536,7 @@ let g:startify_lists = [
   \ { 'type': 'commands',  'header': [   'Commands']       },
   \ ]
 
+" Prepend icon to startify entries
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
