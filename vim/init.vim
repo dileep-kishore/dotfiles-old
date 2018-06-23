@@ -1,7 +1,8 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File browser
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " Git support for nerdtree
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " Git support for NERDTree
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' } " Highlighting for NERDTree
 Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
@@ -37,7 +38,6 @@ Plug 'SirVer/ultisnips'                   " Plugin for snippets
 Plug 'honza/vim-snippets'                 " More snippets
 Plug 'sickill/vim-pasta'                  " Paste preserves indentation
 Plug 'mhinz/vim-startify'                 " Show start-page when you open nvim
-Plug 'ryanoasis/vim-devicons'             " Icon support
 Plug 'sheerun/vim-polyglot'               " Multiple language syntax support
 Plug 'michaeljsmith/vim-indent-object'    " Defines indent as text object
 Plug 'mattn/emmet-vim'                    " Emmet support for vim
@@ -59,6 +59,7 @@ Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
+Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
 Plug 'roosta/srcery'
