@@ -525,3 +525,13 @@ nmap ga <Plug>(EasyAlign)
 autocmd Syntax * syntax keyword Todo NOTE containedin=.*Comment
 autocmd Syntax * syntax keyword Todo HACK containedin=.*Comment
 autocmd Syntax * syntax keyword Todo QUESTION containedin=.*Comment
+
+" Editing vim-startify lists
+let g:startify_lists = [
+  \ { 'type': 'sessions',  'header': [   'Sessions']       },
+  \ { 'type': 'files',     'header': [   'MRU']            },
+  \ { 'type': 'dir',       'header': [   'MRU '. getcwd()] },
+  \ { 'type': 'bookmarks', 'header': [   'Bookmarks']      },
+  \ { 'type': 'commands',  'header': [   'Commands']       },
+  \ ]
+
