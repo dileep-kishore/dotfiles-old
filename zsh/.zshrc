@@ -95,7 +95,7 @@ export ENHANCD_FILTER
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git arch python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips thefuck git-extra-commands)
+plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips thefuck git-extra-commands)
 
 # User configuration
 
