@@ -59,6 +59,7 @@ Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
+Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -565,3 +566,8 @@ endfunction
 command! Sessions call s:sessions()
 " Load saved sessions
 nnoremap <Leader>p :Sessions<CR>
+
+" Editorconfig plugin configuration
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
+let g:EditorConfig_core_mode = 'external_command'
