@@ -265,9 +265,6 @@ call esearch#map('<leader>ef', 'esearch')
 " Start esearch autofilled with a word under the cursor
 call esearch#map('<leader>ew', 'esearch-word-under-cursor')
 
-" Vim-move customization
-let g:move_key_modifier = 'C-S'
-
 " Automatically start nerdtree
 "autocmd vimenter * NERDTree
 " Automatically close NERDTree if it's the last window there
