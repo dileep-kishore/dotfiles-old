@@ -1,7 +1,8 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File browser
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " Git support for nerdtree
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " Git support for NERDTree
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' } " Highlighting for NERDTree
 Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
@@ -37,7 +38,6 @@ Plug 'SirVer/ultisnips'                   " Plugin for snippets
 Plug 'honza/vim-snippets'                 " More snippets
 Plug 'sickill/vim-pasta'                  " Paste preserves indentation
 Plug 'mhinz/vim-startify'                 " Show start-page when you open nvim
-Plug 'ryanoasis/vim-devicons'             " Icon support
 Plug 'sheerun/vim-polyglot'               " Multiple language syntax support
 Plug 'michaeljsmith/vim-indent-object'    " Defines indent as text object
 Plug 'mattn/emmet-vim'                    " Emmet support for vim
@@ -59,6 +59,8 @@ Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
+Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
+Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
 Plug 'roosta/srcery'
@@ -240,8 +242,6 @@ nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fs :Ag<CR>
 " Search marks
 nnoremap <Leader>fm :Marks<CR>
-" Load saved sessions
-nnoremap <Leader>p :SLoad 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -264,9 +264,6 @@ let g:esearch = {
 call esearch#map('<leader>ef', 'esearch')
 " Start esearch autofilled with a word under the cursor
 call esearch#map('<leader>ew', 'esearch-word-under-cursor')
-
-" Vim-move customization
-let g:move_key_modifier = 'C-S'
 
 " Automatically start nerdtree
 "autocmd vimenter * NERDTree
@@ -535,3 +532,39 @@ let g:startify_lists = [
   \ { 'type': 'commands',  'header': [   'Commands']       },
   \ ]
 
+" Prepend icon to startify entries
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
+
+"   :Ag  - Start fzf with hidden preview window that can be enabled with '?' key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+    \ call fzf#vim#ag(<q-args>,
+    \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+    \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \                 <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=? GFiles
+    \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" Sessions search using fzf.vim
+function! s:sessions()
+  call fzf#run({
+  \ 'source':  'ls -1 ~/.vim/session',
+  \ 'sink':    'SLoad',
+  \ 'options': '+m --prompt="Sessions> "',
+  \ 'down':    '40%'
+  \})
+endfunction
+command! Sessions call s:sessions()
+" Load saved sessions
+nnoremap <Leader>p :Sessions<CR>
+
+" Editorconfig plugin configuration
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
+let g:EditorConfig_core_mode = 'external_command'
