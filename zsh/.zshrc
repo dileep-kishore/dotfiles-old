@@ -95,7 +95,7 @@ export ENHANCD_FILTER
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize cp tmux extract virtualenvwrapper copydir dirhistory alias-tips thefuck git-extra-commands)
+plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands npm sudo yarn web-search)
 
 # User configuration
 
@@ -197,6 +197,7 @@ alias find="fd"
 alias todo="todo.sh -d ~/.config/todo.cfg"
 alias git="hub"
 alias howdoi="howdoi -c -n 5"
+alias curl="http"
 
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
