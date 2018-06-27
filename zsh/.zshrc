@@ -30,8 +30,13 @@ POWERLEVEL9K_HOME_ICON=$'\uf7db'
 POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_PYTHON_ICON=$'\ue235'
 
+# custom prompt plugins
+POWERLEVEL9K_CUSTOM_WATSON='~/.dotfiles/watson_plugins/watson_task.py'
+POWERLEVEL9K_CUSTOM_WATSON_BACKGROUND='yellow'
+POWERLEVEL9K_CUSTOM_WATSON_FOREGROUND='black'
+
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda background_jobs command_execution_time time vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda background_jobs command_execution_time custom_watson time vi_mode)
 POWERLEVEL9K_VI_INSERT_MODE_STRING="Ins"
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="Nor"
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\ue0b1'
