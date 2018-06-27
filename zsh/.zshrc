@@ -11,7 +11,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 source $ZSH/oh-my-zsh.sh
 
 fpath=(/home/dileep/.dotfiles/zsh/completions/_hub $fpath)
-autoload -U compinit && compinit
+fpath=(/home/dileep/.dotfiles/zsh/completions/_watson $fpath)
+autoload -Uz compinit && compinit
 
 # wal setup
 (cat ~/.cache/wal/sequences &)
