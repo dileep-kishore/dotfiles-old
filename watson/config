@@ -1,0 +1,6 @@
+[backend]
+url = https://api.crick.io/watson
+token = flYESrzVYaAQZb5WuGzWBh5jtgBEuTlLjwTPjXdciMjrhUbnZDHuug==
+
+[options]
+stop_on_start = true

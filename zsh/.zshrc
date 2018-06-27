@@ -31,7 +31,7 @@ POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_PYTHON_ICON=$'\ue235'
 
 # custom prompt plugins
-POWERLEVEL9K_CUSTOM_WATSON='~/.dotfiles/watson_plugins/watson_task.py'
+POWERLEVEL9K_CUSTOM_WATSON='~/.dotfiles/watson/plugins/watson_task.py'
 POWERLEVEL9K_CUSTOM_WATSON_BACKGROUND='yellow'
 POWERLEVEL9K_CUSTOM_WATSON_FOREGROUND='black'
 
