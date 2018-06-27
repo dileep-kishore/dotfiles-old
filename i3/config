@@ -301,6 +301,7 @@ exec_always --no-startup-id setcursor
 exec --no-startup-id rescuetime
 # exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id variety
+exec --no-startup-id aw-qt
 
 ### THEME ###
 set $base00 #101218
