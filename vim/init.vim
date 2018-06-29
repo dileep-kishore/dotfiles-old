@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File browser
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' } " Highlighting for NERDTree
 Plug 'tpope/vim-fugitive'                 " Git wrapper
+Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
