@@ -574,3 +574,9 @@ nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 " Remove cursorline on inactive window
 autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
+
+" Vim-sneak configuration
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
