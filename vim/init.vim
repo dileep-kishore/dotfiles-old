@@ -208,7 +208,7 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
-\   'python': ['black', 'autopep8'],
+\   'python': ['autopep8', 'black'],
 \}
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_python_mypy_options = '--ignore-missing-imports'
