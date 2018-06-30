@@ -183,7 +183,7 @@ let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.javascript = ['LanguageClient']
 let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
 " deoplete close preview on completion
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
 " deoplete-jedi configurations
 let g:deoplete#sources#jedi#server_timeout = 20
 let g:deoplete#sources#jedi#show_docstring = 1
