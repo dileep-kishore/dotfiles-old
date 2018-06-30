@@ -10,6 +10,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
 Plug 'junegunn/fzf.vim'                   " fzf buffer
 Plug 'bling/vim-airline'                  " Vim status bar
 Plug 'tpope/vim-commentary'               " Key bindings for commenting
+Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
