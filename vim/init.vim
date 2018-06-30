@@ -345,19 +345,6 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 let g:goyo_linenr=1
 
-" vim markdown settings
-let g:vim_markdown_math=1
-
-"" vim flavored markdown
-"augroup markdown
-    "au!
-    "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-"augroup END
-
-"Syntax highlighting in Markdown
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'r']
-
 " Overriding vim italics codes
 "  must be entered with <C-V><Esc>
 set t_ZH=[3m
@@ -582,3 +569,9 @@ map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
+
+" Vim-markdown configuration
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
