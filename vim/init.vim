@@ -3,12 +3,14 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File browser
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' } " Highlighting for NERDTree
 Plug 'tpope/vim-fugitive'                 " Git wrapper
+Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
 Plug 'junegunn/fzf.vim'                   " fzf buffer
 Plug 'bling/vim-airline'                  " Vim status bar
 Plug 'tpope/vim-commentary'               " Key bindings for commenting
+Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
@@ -182,7 +184,7 @@ let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.javascript = ['LanguageClient']
 let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
 " deoplete close preview on completion
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
 " deoplete-jedi configurations
 let g:deoplete#sources#jedi#server_timeout = 20
 let g:deoplete#sources#jedi#show_docstring = 1
@@ -207,7 +209,7 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
-\   'python': ['black', 'autopep8'],
+\   'python': ['autopep8', 'black'],
 \}
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_python_mypy_options = '--ignore-missing-imports'
@@ -342,19 +344,6 @@ let g:SimpylFold_docstring_preview = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 let g:goyo_linenr=1
-
-" vim markdown settings
-let g:vim_markdown_math=1
-
-"" vim flavored markdown
-"augroup markdown
-    "au!
-    "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-"augroup END
-
-"Syntax highlighting in Markdown
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'r']
 
 " Overriding vim italics codes
 "  must be entered with <C-V><Esc>
@@ -574,3 +563,15 @@ nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 " Remove cursorline on inactive window
 autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
+
+" Vim-sneak configuration
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+
+" Vim-markdown configuration
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
