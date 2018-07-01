@@ -6,6 +6,7 @@ Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
+Plug 'tpope/vim-abolish'                  " Makes working with variants of a word easier
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
 Plug 'junegunn/fzf.vim'                   " fzf buffer
 Plug 'bling/vim-airline'                  " Vim status bar
@@ -86,7 +87,6 @@ let g:oceanic_next_terminal_italic = 1
 set termguicolors
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
 " set noexpandtab
 set tabstop=4
@@ -243,15 +243,6 @@ nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fs :Ag<CR>
 " Search marks
 nnoremap <Leader>fm :Marks<CR>
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " vim-esearch settings
 let g:esearch = {
