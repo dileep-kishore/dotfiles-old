@@ -572,3 +572,6 @@ let g:vim_markdown_frontmatter = 1
 " Vim-windowswap configuration
 let g:windowswap_map_keys = 0
 nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
+
+" General conceal
+set concealcursor=nc
