@@ -6,6 +6,7 @@ Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
+Plug 'tpope/vim-abolish'                  " Makes working with variants of a word easier
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
 Plug 'junegunn/fzf.vim'                   " fzf buffer
 Plug 'bling/vim-airline'                  " Vim status bar
@@ -86,7 +87,6 @@ let g:oceanic_next_terminal_italic = 1
 set termguicolors
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
 " set noexpandtab
 set tabstop=4
