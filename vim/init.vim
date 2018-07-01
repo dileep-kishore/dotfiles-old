@@ -568,3 +568,7 @@ let g:vim_markdown_conceal = 0
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+
+" Vim-windowswap configuration
+let g:windowswap_map_keys = 0
+nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
