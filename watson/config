@@ -4,3 +4,5 @@ token = flYESrzVYaAQZb5WuGzWBh5jtgBEuTlLjwTPjXdciMjrhUbnZDHuug==
 
 [options]
 stop_on_start = true
+log_current = true
+report_current = true
