@@ -227,7 +227,7 @@ TERM=xterm-termite
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export BROWSER=vivaldi-stable
+export BROWSER=chromium
 
 # Anaconda path
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
