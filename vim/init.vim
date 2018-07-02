@@ -354,6 +354,7 @@ let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/custom_snippets"
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'custom_snippets']
 let g:UltiSnipsUsePythonVersion = 3
+let g:ultisnips_python_style = "numpy"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Narrow ag results in vim using fzf
