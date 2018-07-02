@@ -115,3 +115,17 @@ def ${1:method}(self) -> ${3:rettype}:
 	"""
 	${0:pass}
 endsnippet
+
+snippet @class "Custom property method definition with docstring"
+@classmethod
+def ${1:method}(cls, ${2:args}) -> ${3:rettype}:
+	"""
+		${4:Docstring for method}`!p snip.rv += '\n' + snip.mkline('', indent='')`
+		Parameters
+		----------`!p write_docstring_args(t[2], snip)``!p snip.rv += '\n' + snip.mkline('', indent='')`
+		Returns
+		-------
+		$3
+	"""
+	${0:pass}
+endsnippet
