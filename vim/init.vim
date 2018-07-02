@@ -62,6 +62,7 @@ Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -318,6 +319,8 @@ nnoremap <F5> :GundoToggle<CR>
 let g:indentLine_setColors = 0
 let g:indentLine_char = '⎸'
 " let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_concealcursor = 'nc'
+let g:indentLine_conceallevel = 2
 
 " Resizing using arrow keys
 nnoremap <left> :vertical resize +5<cr>
@@ -566,3 +569,37 @@ let g:vim_markdown_conceal = 0
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+
+" Vim-windowswap configuration
+let g:windowswap_map_keys = 0
+nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
+
+" General conceal
+set concealcursor=nc
+
+" Vim-wiki configuration
+let g:vimwiki_dir_link = 'index'
+let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_listsyms = '✗○◐●✓'
+
+let wiki_mind = {}
+let wiki_mind.path = '/home/dileep/Documents/Notes/mind'
+let wiki_mind.syntax = 'markdown'
+let wiki_mind.html_path = '/home/dileep/Documents/Notes/mind/exports'
+
+let wiki_courses = {}
+let wiki_courses.path = '/home/dileep/Documents/Notes/courses'
+let wiki_courses.syntax = 'markdown'
+let wiki_courses.html_path = '/home/dileep/Documents/Notes/courses/exports'
+
+let wiki_docking = {}
+let wiki_docking.path = '/home/dileep/Documents/Notes/docking'
+let wiki_docking.syntax = 'markdown'
+let wiki_docking.html_path = '/home/dileep/Documents/Notes/docking/exports'
+
+let g:vimwiki_list = [
+\    wiki_mind,
+\    wiki_courses,
+\    wiki_docking
+\]
