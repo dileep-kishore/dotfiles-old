@@ -103,3 +103,15 @@ def ${1:method}(${2:args}) -> ${3:rettype}:
 	"""
 	${0:pass}
 endsnippet
+
+snippet @property "Custom property method definition with docstring"
+@staticmethod
+def ${1:method}(self) -> ${3:rettype}:
+	"""
+		${4:Docstring for method}`!p snip.rv += '\n' + snip.mkline('', indent='')`
+		Returns
+		-------
+		$3
+	"""
+	${0:pass}
+endsnippet
