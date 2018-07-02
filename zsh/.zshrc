@@ -157,8 +157,8 @@ export PATH="${PATH}:${GUROBI_HOME}/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 # Nextflow path
 # export PATH="/home/dileep/nextflow:$PATH"
-# Exa path
-export PATH="/home/dileep/.cargo/bin:$PATH"
+# npm path
+export PATH="/home/dileep/.npm/bin:$PATH"
 
 # Todosh
 export TODOTXT_DEFAULT_ACTION=ls
@@ -227,7 +227,7 @@ TERM=xterm-termite
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export BROWSER=vivaldi-stable
+export BROWSER=chromium
 
 # Anaconda path
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
