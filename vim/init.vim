@@ -6,10 +6,12 @@ Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
+Plug 'tpope/vim-abolish'                  " Makes working with variants of a word easier
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
 Plug 'junegunn/fzf.vim'                   " fzf buffer
 Plug 'bling/vim-airline'                  " Vim status bar
 Plug 'tpope/vim-commentary'               " Key bindings for commenting
+Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
@@ -60,6 +62,7 @@ Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -85,7 +88,6 @@ let g:oceanic_next_terminal_italic = 1
 set termguicolors
 highlight Comment cterm=italic
 highlight Comment gui=italic
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 set expandtab
 " set noexpandtab
 set tabstop=4
@@ -183,7 +185,7 @@ let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.javascript = ['LanguageClient']
 let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
 " deoplete close preview on completion
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
 " deoplete-jedi configurations
 let g:deoplete#sources#jedi#server_timeout = 20
 let g:deoplete#sources#jedi#show_docstring = 1
@@ -242,15 +244,6 @@ nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fs :Ag<CR>
 " Search marks
 nnoremap <Leader>fm :Marks<CR>
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " vim-esearch settings
 let g:esearch = {
@@ -326,6 +319,8 @@ nnoremap <F5> :GundoToggle<CR>
 let g:indentLine_setColors = 0
 let g:indentLine_char = '⎸'
 " let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_concealcursor = 'nc'
+let g:indentLine_conceallevel = 2
 
 " Resizing using arrow keys
 nnoremap <left> :vertical resize +5<cr>
@@ -343,19 +338,6 @@ let g:SimpylFold_docstring_preview = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 let g:goyo_linenr=1
-
-" vim markdown settings
-let g:vim_markdown_math=1
-
-"" vim flavored markdown
-"augroup markdown
-    "au!
-    "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-"augroup END
-
-"Syntax highlighting in Markdown
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'handlebars', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'r']
 
 " Overriding vim italics codes
 "  must be entered with <C-V><Esc>
@@ -581,3 +563,43 @@ map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
+
+" Vim-markdown configuration
+let g:vim_markdown_conceal = 0
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+
+" Vim-windowswap configuration
+let g:windowswap_map_keys = 0
+nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
+
+" General conceal
+set concealcursor=nc
+
+" Vim-wiki configuration
+let g:vimwiki_dir_link = 'index'
+let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_listsyms = '✗○◐●✓'
+
+let wiki_mind = {}
+let wiki_mind.path = '/home/dileep/Documents/Notes/mind'
+let wiki_mind.syntax = 'markdown'
+let wiki_mind.html_path = '/home/dileep/Documents/Notes/mind/exports'
+
+let wiki_courses = {}
+let wiki_courses.path = '/home/dileep/Documents/Notes/courses'
+let wiki_courses.syntax = 'markdown'
+let wiki_courses.html_path = '/home/dileep/Documents/Notes/courses/exports'
+
+let wiki_docking = {}
+let wiki_docking.path = '/home/dileep/Documents/Notes/docking'
+let wiki_docking.syntax = 'markdown'
+let wiki_docking.html_path = '/home/dileep/Documents/Notes/docking/exports'
+
+let g:vimwiki_list = [
+\    wiki_mind,
+\    wiki_courses,
+\    wiki_docking
+\]
