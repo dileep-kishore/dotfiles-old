@@ -570,29 +570,6 @@ let g:vim_markdown_frontmatter = 1
 " General conceal
 set concealcursor=nc
 
-" Vim-wiki configuration
-let g:vimwiki_dir_link = 'index'
-let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_listsyms = '✗○◐●✓'
-
-let wiki_mind = {}
-let wiki_mind.path = '/home/dileep/Documents/Notes/mind'
-let wiki_mind.syntax = 'markdown'
-let wiki_mind.html_path = '/home/dileep/Documents/Notes/mind/exports'
-
-let wiki_courses = {}
-let wiki_courses.path = '/home/dileep/Documents/Notes/courses'
-let wiki_courses.syntax = 'markdown'
-let wiki_courses.html_path = '/home/dileep/Documents/Notes/courses/exports'
-
-let wiki_docking = {}
-let wiki_docking.path = '/home/dileep/Documents/Notes/docking'
-let wiki_docking.syntax = 'markdown'
-let wiki_docking.html_path = '/home/dileep/Documents/Notes/docking/exports'
-
-let g:vimwiki_list = [
-\    wiki_mind,
-\    wiki_courses,
-\    wiki_docking
-\]
+" Multiple cursor configuration
+let g:multi_cursor_exit_from_visual_mode = 0
+let g:multi_cursor_exit_from_insert_mode = 0
