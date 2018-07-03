@@ -62,7 +62,6 @@ Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -569,10 +568,6 @@ let g:vim_markdown_conceal = 0
 let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
-
-" Vim-windowswap configuration
-let g:windowswap_map_keys = 0
-nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
 
 " General conceal
 set concealcursor=nc
