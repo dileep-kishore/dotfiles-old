@@ -199,6 +199,7 @@ assign [class="Syncthing GTK"] $ws4
 assign [class="Code"] $ws3
 assign [class="GitKraken"] $ws5
 assign [class="Mendeley Desktop"] $ws9
+assign [class="brainfm-desktop"] $ws6
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
