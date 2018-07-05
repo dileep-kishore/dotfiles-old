@@ -62,7 +62,6 @@ Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -354,7 +353,6 @@ let g:UltiSnipsJumpBackwardTrigger='<C-k>'
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/custom_snippets"
 let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'custom_snippets']
 let g:UltiSnipsUsePythonVersion = 3
-let g:ultisnips_python_style = "numpy"
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Narrow ag results in vim using fzf
@@ -566,41 +564,12 @@ map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
 " Vim-markdown configuration
-let g:vim_markdown_conceal = 0
-let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
-
-" Vim-windowswap configuration
-let g:windowswap_map_keys = 0
-nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
 
 " General conceal
 set concealcursor=nc
 
-" Vim-wiki configuration
-let g:vimwiki_dir_link = 'index'
-let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
-let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_listsyms = '✗○◐●✓'
-
-let wiki_mind = {}
-let wiki_mind.path = '/home/dileep/Documents/Notes/mind'
-let wiki_mind.syntax = 'markdown'
-let wiki_mind.html_path = '/home/dileep/Documents/Notes/mind/exports'
-
-let wiki_courses = {}
-let wiki_courses.path = '/home/dileep/Documents/Notes/courses'
-let wiki_courses.syntax = 'markdown'
-let wiki_courses.html_path = '/home/dileep/Documents/Notes/courses/exports'
-
-let wiki_docking = {}
-let wiki_docking.path = '/home/dileep/Documents/Notes/docking'
-let wiki_docking.syntax = 'markdown'
-let wiki_docking.html_path = '/home/dileep/Documents/Notes/docking/exports'
-
-let g:vimwiki_list = [
-\    wiki_mind,
-\    wiki_courses,
-\    wiki_docking
-\]
+" Multiple cursor configuration
+let g:multi_cursor_exit_from_visual_mode = 0
+let g:multi_cursor_exit_from_insert_mode = 0
