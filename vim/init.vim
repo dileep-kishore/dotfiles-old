@@ -88,11 +88,6 @@ let g:oceanic_next_terminal_italic = 1
 set termguicolors
 highlight Comment cterm=italic
 highlight Comment gui=italic
-set expandtab
-" set noexpandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 set autoindent
 set copyindent
 set showmatch
