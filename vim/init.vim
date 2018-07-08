@@ -62,6 +62,7 @@ Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -573,3 +574,29 @@ set concealcursor=nc
 " Multiple cursor configuration
 let g:multi_cursor_exit_from_visual_mode = 0
 let g:multi_cursor_exit_from_insert_mode = 0
+
+" Vim-wiki configuration
+let g:vimwiki_dir_link = 'index'
+let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_listsyms = ' .'
+let g:vimwiki_listsym_rejected = ''
+
+let wiki_personal = {}
+let wiki_personal.path = '/home/dileep/Documents/Notes/personal'
+let wiki_personal.syntax = 'markdown'
+let wiki_personal.html_path = '/home/dileep/Documents/Notes/personal/exports'
+
+let wiki_work = {}
+let wiki_work.path = '/home/dileep/Documents/Notes/work'
+let wiki_work.syntax = 'markdown'
+let wiki_work.html_path = '/home/dileep/Documents/Notes/work/exports'
+
+let g:vimwiki_list = [
+\    wiki_work,
+\    wiki_personal,
+\]
+
+" Vim-windowswap configuration
+let g:windowswap_map_keys = 0
+nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
