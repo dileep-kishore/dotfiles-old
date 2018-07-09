@@ -61,7 +61,7 @@ class ${1:ClassName}(${2:ClassParent}):
 		`!p
 snip.rv = ''
 if t[2]:
-	snip.rv += t[2] + '.__init__(self)'`$0
+	snip.rv += 'super().__init__(' + t[4] + ')'`$0
 endsnippet
 
 snippet def" "Custom function definition with docstring"
