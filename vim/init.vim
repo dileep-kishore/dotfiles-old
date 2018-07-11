@@ -88,11 +88,6 @@ let g:oceanic_next_terminal_italic = 1
 set termguicolors
 highlight Comment cterm=italic
 highlight Comment gui=italic
-set expandtab
-" set noexpandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 set autoindent
 set copyindent
 set showmatch
@@ -565,41 +560,38 @@ map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
 " Vim-markdown configuration
-let g:vim_markdown_conceal = 0
-let g:tex_conceal = ""
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 
-" Vim-windowswap configuration
-let g:windowswap_map_keys = 0
-nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
-
 " General conceal
 set concealcursor=nc
+
+" Multiple cursor configuration
+let g:multi_cursor_exit_from_visual_mode = 0
+let g:multi_cursor_exit_from_insert_mode = 0
 
 " Vim-wiki configuration
 let g:vimwiki_dir_link = 'index'
 let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
 let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_listsyms = ' .'
+let g:vimwiki_listsym_rejected = ''
 
-let wiki_mind = {}
-let wiki_mind.path = '/home/dileep/Documents/Notes/mind'
-let wiki_mind.syntax = 'markdown'
-let wiki_mind.html_path = '/home/dileep/Documents/Notes/mind/exports'
+let wiki_personal = {}
+let wiki_personal.path = '/home/dileep/Documents/Notes/personal'
+let wiki_personal.syntax = 'markdown'
+let wiki_personal.html_path = '/home/dileep/Documents/Notes/personal/exports'
 
-let wiki_courses = {}
-let wiki_courses.path = '/home/dileep/Documents/Notes/courses'
-let wiki_courses.syntax = 'markdown'
-let wiki_courses.html_path = '/home/dileep/Documents/Notes/courses/exports'
-
-let wiki_docking = {}
-let wiki_docking.path = '/home/dileep/Documents/Notes/docking'
-let wiki_docking.syntax = 'markdown'
-let wiki_docking.html_path = '/home/dileep/Documents/Notes/docking/exports'
+let wiki_work = {}
+let wiki_work.path = '/home/dileep/Documents/Notes/work'
+let wiki_work.syntax = 'markdown'
+let wiki_work.html_path = '/home/dileep/Documents/Notes/work/exports'
 
 let g:vimwiki_list = [
-\    wiki_mind,
-\    wiki_courses,
-\    wiki_docking
+\    wiki_work,
+\    wiki_personal,
 \]
+
+" Vim-windowswap configuration
+let g:windowswap_map_keys = 0
+nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
