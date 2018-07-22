@@ -9,7 +9,7 @@ menu:
     visible: true
 markdown:
     font_size: 12px
-    css_path: '/home/dileep/.dotfiles/Shiba/tufte/tufte.css'
+    css_path: '/home/dileep/.dotfiles/Shiba/tufte_css/tufte.css'
     code_theme: 'gruvbox-dark'
 file_ext:
     markdown:
