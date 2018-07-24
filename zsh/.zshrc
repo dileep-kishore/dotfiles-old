@@ -159,6 +159,8 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 # export PATH="/home/dileep/nextflow:$PATH"
 # npm path
 export PATH="/home/dileep/.npm/bin:$PATH"
+# ruby gems path
+export PATH="/home/dileep/.gem/ruby/2.5.0/bin:$PATH"
 
 # Todosh
 export TODOTXT_DEFAULT_ACTION=ls
@@ -237,3 +239,6 @@ alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
 . /etc/profile.d/vte.sh
 
 eval $(thefuck --alias)
+
+# added by travis gem
+[ -f /home/dileep/.travis/travis.sh ] && source /home/dileep/.travis/travis.sh
