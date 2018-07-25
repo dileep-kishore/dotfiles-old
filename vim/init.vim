@@ -108,6 +108,7 @@ set hidden
 
 " Change the mapleader to \ (default)
 let mapleader="\<SPACE>"
+let maplocalleader = "\<SPACE>"
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
