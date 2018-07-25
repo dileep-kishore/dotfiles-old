@@ -596,3 +596,6 @@ let g:vimwiki_list = [
 " Vim-windowswap configuration
 let g:windowswap_map_keys = 0
 nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
+
+" Vimtex configuration
+let g:vimtex_compiler_progname = 'nvr'
