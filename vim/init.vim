@@ -63,7 +63,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
-Plug 'lervag/vimtex', { 'for':  'tex' }   " Latex support
+Plug 'lervag/vimtex',                     " Latex support
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
