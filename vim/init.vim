@@ -63,6 +63,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
+Plug 'lervag/vimtex'                      " Latex support
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -484,7 +485,7 @@ set inccommand=split
 " hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
-set showbreak=↪\ 
+set showbreak=↪\
 
 " Loupe settings
 let g:LoupeClearHighlightMap = 1
