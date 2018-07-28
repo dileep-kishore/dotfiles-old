@@ -63,6 +63,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
+Plug 'lervag/vimtex',                     " Latex support
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -107,6 +108,7 @@ set hidden
 
 " Change the mapleader to \ (default)
 let mapleader="\<SPACE>"
+let maplocalleader = "\<SPACE>"
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -484,7 +486,7 @@ set inccommand=split
 " hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
-set showbreak=↪\ 
+set showbreak=↪\
 
 " Loupe settings
 let g:LoupeClearHighlightMap = 1
@@ -595,3 +597,13 @@ let g:vimwiki_list = [
 " Vim-windowswap configuration
 let g:windowswap_map_keys = 0
 nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
+
+" Vimtex configuration
+let g:vimtex_compiler_progname = 'nvr'
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+let g:vimtex_fold_enabled = 1
+" disable LaTeX-Box included in `vim-polyglot`
+let g:polyglot_disabled = ['latex']
