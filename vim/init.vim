@@ -477,7 +477,7 @@ set inccommand=split
 " hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
-set showbreak=↪\
+set showbreak=↪\ 
 
 " Loupe settings
 let g:LoupeClearHighlightMap = 1
