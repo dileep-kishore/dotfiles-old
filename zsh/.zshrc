@@ -11,7 +11,6 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 source $ZSH/oh-my-zsh.sh
 
 fpath=(/home/dileep/.dotfiles/zsh/completions/_hub $fpath)
-fpath=(/home/dileep/.dotfiles/zsh/completions/_watson $fpath)
 autoload -Uz compinit && compinit
 
 # wal setup
@@ -24,19 +23,16 @@ POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
 
 # Defining icons
-POWERLEVEL9K_LINUX_ICON=$'\uf303'
+POWERLEVEL9K_LINUX_MANJARO_ICON=$'\uf303 '
 POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf09b'
 POWERLEVEL9K_HOME_ICON=$'\uf7db'
 POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_PYTHON_ICON=$'\ue235'
 
 # custom prompt plugins
-POWERLEVEL9K_CUSTOM_WATSON='~/.dotfiles/watson/plugins/watson_task.py'
-POWERLEVEL9K_CUSTOM_WATSON_BACKGROUND='yellow'
-POWERLEVEL9K_CUSTOM_WATSON_FOREGROUND='black'
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda background_jobs command_execution_time custom_watson time vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda background_jobs command_execution_time time vi_mode)
 POWERLEVEL9K_VI_INSERT_MODE_STRING="Ins"
 POWERLEVEL9K_VI_COMMAND_MODE_STRING="Nor"
 POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\ue0b1'
@@ -46,7 +42,7 @@ POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0d2'
 POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0d4'
 # POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M}"
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
 # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{50}%}\u250f"
 # local user_symbol="$"

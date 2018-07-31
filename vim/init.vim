@@ -152,15 +152,6 @@ nnoremap <leader>r :call NumberToggle()<CR>
 set laststatus=2
 " set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline#extensions#tabline#left_sep = '>'
-" let g:airline#extensions#tabline#left_alt_sep = '>'
-" let g:airline#extensions#tabline#right_sep = '>'
-" let g:airline#extensions#tabline#right_alt_sep = '>'
-"let g:airline_left_sep = ' '
-"let g:airline_left_alt_sep = '>'
-"let g:airline_right_sep = ' '
-"let g:airline_right_alt_sep = '>'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='oceanicnext' " old: base16_google
 let g:airline#extensions#obsession#enabled = 1
@@ -316,7 +307,7 @@ nnoremap <F5> :GundoToggle<CR>
 let g:indentLine_setColors = 0
 let g:indentLine_char = '⎸'
 " let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_concealcursor = 'nc'
+let g:indentLine_concealcursor = 'c'
 let g:indentLine_conceallevel = 2
 
 " Resizing using arrow keys
@@ -486,7 +477,7 @@ set inccommand=split
 " hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
-set showbreak=↪\
+set showbreak=↪\ 
 
 " Loupe settings
 let g:LoupeClearHighlightMap = 1
