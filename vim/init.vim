@@ -567,8 +567,6 @@ let g:multi_cursor_exit_from_insert_mode = 0
 let g:vimwiki_dir_link = 'index'
 let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
 let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_listsyms = ' .'
-let g:vimwiki_listsym_rejected = ''
 
 let wiki_personal = {}
 let wiki_personal.path = '/home/dileep/Documents/Notes/personal'
