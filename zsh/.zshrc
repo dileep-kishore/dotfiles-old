@@ -236,7 +236,5 @@ alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh
 
-eval $(thefuck --alias)
-
 # added by travis gem
 [ -f /home/dileep/.travis/travis.sh ] && source /home/dileep/.travis/travis.sh
