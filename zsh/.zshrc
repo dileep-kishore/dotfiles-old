@@ -157,6 +157,8 @@ export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 export PATH="/home/dileep/.npm/bin:$PATH"
 # ruby gems path
 export PATH="/home/dileep/.gem/ruby/2.5.0/bin:$PATH"
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
 
 # Todosh
 export TODOTXT_DEFAULT_ACTION=ls
