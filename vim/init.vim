@@ -19,7 +19,7 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' } " autocompletion for python
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
-Plug 'Yggdroot/indentLine'                " Shows indent guides on screen
+Plug 'nathanaelkane/vim-indent-guides'    " Indent guides for vim
 Plug 'raimondi/delimitmate'               " Insert mode autocompletion for delimiters
 Plug 'takac/vim-hardtime'                 " Makes it harder to use arrows and hjkl
 Plug 'thinca/vim-quickrun'                " Execute part of file
@@ -303,12 +303,10 @@ set foldmethod=indent
 " Gundo-vim mapping
 nnoremap <F5> :GundoToggle<CR>
 
-" Indent line settings
-let g:indentLine_setColors = 0
-let g:indentLine_char = '⎸'
-" let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_concealcursor = 'c'
-let g:indentLine_conceallevel = 2
+" Indent guide settings
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
 
 " Resizing using arrow keys
 nnoremap <left> :vertical resize +5<cr>
@@ -557,7 +555,8 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 
 " General conceal
-set concealcursor=nc
+set conceallevel=2
+set concealcursor=c
 
 " Multiple cursor configuration
 let g:multi_cursor_exit_from_visual_mode = 0
