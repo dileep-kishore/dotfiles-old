@@ -367,7 +367,7 @@ bindsym $mod+m bar mode toggle
 # client.urgent $base0E $base08 $base00 $base0F
 
 # Set colors from Xresources
-# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
@@ -450,7 +450,11 @@ exec albert
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Shortcuts
-bindsym $mod+Shift+f exec --no-startup-id termite -d "`xcwd`" -e ranger
-# bindsym $mod+Shift+x exec blurlock
+bindsym $mod+Shift+f exec --no-startup-id tdrop -n ranger -a -m -w 75% -x 10% -y 34 -f '-d "`xcwd`" -e ranger' termite
+bindsym $mod+Shift+x exec blurlock
 bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
+bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -h 50% -w 80% -x 10% -y 34 -s tdrop -f '-d "`xcwd`"' termite
+bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 75% -x 10% -y 50% -f '-e mpsyt' termite
+bindsym $mod+Shift+P exec --no-startup-id shiba --detach "`xcwd`"
+bindsym $mod+Shift+v exec --no-startup-id ~/.vim-anywhere/bin/run
