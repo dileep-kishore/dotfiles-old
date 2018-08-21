@@ -332,11 +332,11 @@ set $base0F #fcc09e
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 # bar {
 # 	status_command i3blocks -c ~/.i3/i3blocks.conf
-# 
+#
 #     ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #     #	tray_output primary
 #     #	tray_output eDP1
-# 
+#
 #     position top
 #     height 25
 # 	bindsym button4 nop
@@ -345,7 +345,7 @@ set $base0F #fcc09e
 #     # separator_symbol "<|<"
 #     separator_symbol ""
 # 	# strip_workspace_numbers yes
-# 
+#
 # 	colors {
 #     #	background $transparent
 # 		# separator #04fe70
@@ -372,7 +372,7 @@ bindsym $mod+m bar mode toggle
 # client.urgent $base0E $base08 $base00 $base0F
 
 # Set colors from Xresources
-# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
 # from the generated scheme.
 # NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
 # it fails to get colors from Xresources.
