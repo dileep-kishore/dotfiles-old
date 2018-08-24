@@ -54,8 +54,8 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%
 POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER"
 
-export FZF_DEFAULT_OPTS='--height 40% --reverse'
-ENHANCD_FILTER=fzf:fzy
+export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --color \"always\" {}'"
+ENHANCD_FILTER=fzy:fzf
 export ENHANCD_FILTER
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -203,8 +203,10 @@ alias find="fd"
 alias todo="todo.sh -d ~/.config/todo.cfg"
 alias git="hub"
 alias howdoi="howdoi -c -n 5"
-alias curl="http"
-
+alias ping="~/.dotfiles/zsh/prettyping.sh"
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias noti="~/.dotfiles/zsh/noti"
 
 # source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
