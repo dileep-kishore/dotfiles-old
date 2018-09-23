@@ -6,6 +6,7 @@ do
     pkill palemoon
     pkill brave
     pkill midori
+    pkill vlc
     sleep 10
 done
 
