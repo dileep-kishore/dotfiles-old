@@ -208,6 +208,8 @@ let g:ale_python_mypy_options = '--ignore-missing-imports'
 set updatetime=200
 
 " fzf settings
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
 " Remapping
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
