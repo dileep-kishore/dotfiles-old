@@ -60,6 +60,7 @@ Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
+Plug 'JuliaEditorSupport/julia-vim'       " Julia support for vim
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
@@ -599,3 +600,6 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 let g:vimtex_fold_enabled = 1
 " disable LaTeX-Box included in `vim-polyglot`
 let g:polyglot_disabled = ['latex']
+
+" Julia-vim configuration
+let g:default_julia_version = '1.0.0'
