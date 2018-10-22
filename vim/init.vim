@@ -181,8 +181,9 @@ let g:deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#sources#jedi#enable_cache = 1
 let g:deoplete#sources#jedi#worker_threads = 2
 " virtual environment setting for deoplete-jedi
-let g:python_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:deoplete#sources#jedi#python_path = '/home/dileep/.virtualenvs/neovim/bin/python3'
+let g:python_host_prog = '/home/dileep/.virtualenvs/neovim/bin/python3'
+let g:python3_host_prog = '/home/dileep/.virtualenvs/neovim/bin/python3'
 
 
 " ale settings
