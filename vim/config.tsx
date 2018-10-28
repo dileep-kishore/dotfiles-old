@@ -28,17 +28,16 @@ export const deactivate = (oni: Oni.Plugin.Api) => {
 
 export const configuration = {
     //add custom config here, such as
+    //"oni.useDefaultConfig": true,
+    //"oni.bookmarks": ["~/Documents"],
 
+    "oni.loadInitVim": true,
+
+    // UI customizations
     "ui.colorscheme": "gruvbox",
     "tabs.mode": "tabs",
     "tabs.height": "2em",
     "tabs.showIndex": true,
-
-    //"oni.useDefaultConfig": true,
-    //"oni.bookmarks": ["~/Documents"],
-    "oni.loadInitVim": true,
-
-    // UI customizations
     "editor.fontSize": "14px",
     "editor.fontFamily": "FuraCode Nerd Font",
     "editor.fontLigatures": true,
