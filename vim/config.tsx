@@ -7,15 +7,15 @@ export const activate = (oni: Oni.Plugin.Api) => {
 
     // Input
     //
+    // Remove the default bindings here by uncommenting the below line:
+    oni.input.unbind("<c-t>")
+    oni.input.unbind("<c-\\>")
+
     // Add input bindings here:
     //
     oni.input.bind("<c-enter>", () => console.log("Control+Enter was pressed"))
-
-    //
-    // Or remove the default bindings here by uncommenting the below line:
-    //
-    // oni.input.unbind("<c-p>")
-
+    oni.input.bind("<Tab>", "contextMenu.select")
+    oni.input.bind("<c-\\>", "sidebar.toggle")
 }
 
 export const deactivate = (oni: Oni.Plugin.Api) => {
