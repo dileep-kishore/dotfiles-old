@@ -54,5 +54,12 @@ export const configuration = {
     "editor.clipboard.synchronizeYank": false,
 
     "editor.textMateHighlighting.enabled": true,
-    "statusbar.enabled": false,
+
+    // Experimental settings
+    "experimental.indentLines.enabled": false,
+    "experimental.preview.enabled": true,
+    "experimental.particles.enabled": true,
+    "experimental.vcs.blame.enabled": true,
+    "experimental.colorHighlight.enabled": true,
+    "experimental.markdownPreview.enabled": true,
 }
