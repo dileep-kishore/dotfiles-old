@@ -60,6 +60,7 @@ Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
+Plug 'JuliaEditorSupport/julia-vim'       " Julia support for vim
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
@@ -171,6 +172,7 @@ let g:deoplete#sources.cpp = ['LanguageClient']
 let g:deoplete#sources.rust = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.javascript = ['LanguageClient']
+let g:deoplete#sources.julia = ['LanguageClient']
 let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
 " deoplete close preview on completion
 autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
@@ -207,6 +209,8 @@ let g:ale_python_mypy_options = '--ignore-missing-imports'
 set updatetime=200
 
 " fzf settings
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
 " Remapping
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -430,6 +434,7 @@ let g:grepper.quickfix      = 0
 
 " LanguageClient Configuration
 " Required for operations modifying multiple buffers like rename.
+let g:LanguageClient_autoStart = 1
 set hidden
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
@@ -437,6 +442,12 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['pyls'],
+    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+    \       using LanguageServer;
+    \       server = LanguageServer.LanguageServerInstance(stdin, stdout, false);
+    \       server.runlinter = true;
+    \       run(server);
+    \   '],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -597,3 +608,14 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 let g:vimtex_fold_enabled = 1
 " disable LaTeX-Box included in `vim-polyglot`
 let g:polyglot_disabled = ['latex']
+
+" Julia-vim configuration
+let g:default_julia_version = '1.0.1'
+
+" Onivim setup
+if exists("g:gui_oni")
+    autocmd VimEnter * AirlineToggle
+    autocmd VimEnter * AirlineToggle
+    let g:airline_theme='gruvbox'
+    let g:gruvbox_italic=1
+endif
