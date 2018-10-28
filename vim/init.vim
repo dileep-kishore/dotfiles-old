@@ -615,7 +615,6 @@ let g:default_julia_version = '1.0.1'
 " Onivim setup
 if exists("g:gui_oni")
     autocmd VimEnter * AirlineToggle
-    autocmd VimEnter * AirlineToggle
     let g:airline_theme='gruvbox'
     let g:gruvbox_italic=1
 endif
