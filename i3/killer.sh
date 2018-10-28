@@ -12,6 +12,7 @@ do
     pkill midori
     pkill vlc
     pkill qutebrowser
+    pkill seamonkey
     echo $MY_PASSWORD | sudo -S chattr +i /etc/resolv.conf
     sleep 10
 done
