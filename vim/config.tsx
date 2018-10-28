@@ -26,24 +26,25 @@ export const configuration = {
     //add custom config here, such as
 
     "ui.colorscheme": "gruvbox",
-    "tabs.mode": "native",
+    "tabs.mode": "tabs",
     "tabs.height": "2em",
     "tabs.showIndex": true,
 
     //"oni.useDefaultConfig": true,
     //"oni.bookmarks": ["~/Documents"],
     "oni.loadInitVim": true,
+
+    // UI customizations
     "editor.fontSize": "14px",
     "editor.fontFamily": "FuraCode Nerd Font",
     "editor.fontLigatures": true,
     "editor.renderer": "webgl",
-
-    // UI customizations
     "ui.animations.enabled": true,
     "ui.fontSmoothing": "auto",
     "sidebar.enabled": false,
     "sidebar.default.open": false,
     "oni.hideMenu": true,
+    "statusbar.enabled": true,
 
     "editor.textMateHighlighting.enabled": true,
     "statusbar.enabled": false,
