@@ -172,6 +172,7 @@ let g:deoplete#sources.cpp = ['LanguageClient']
 let g:deoplete#sources.rust = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.javascript = ['LanguageClient']
+let g:deoplete#sources.julia = ['LanguageClient']
 let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
 " deoplete close preview on completion
 autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
@@ -181,9 +182,8 @@ let g:deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#sources#jedi#enable_cache = 1
 let g:deoplete#sources#jedi#worker_threads = 2
 " virtual environment setting for deoplete-jedi
-let g:deoplete#sources#jedi#python_path = '/home/dileep/.virtualenvs/neovim/bin/python3'
-let g:python_host_prog = '/home/dileep/.virtualenvs/neovim/bin/python3'
-let g:python3_host_prog = '/home/dileep/.virtualenvs/neovim/bin/python3'
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 
 
 " ale settings
@@ -434,6 +434,7 @@ let g:grepper.quickfix      = 0
 
 " LanguageClient Configuration
 " Required for operations modifying multiple buffers like rename.
+let g:LanguageClient_autoStart = 1
 set hidden
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
@@ -441,6 +442,12 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'python': ['pyls'],
+    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+    \       using LanguageServer;
+    \       server = LanguageServer.LanguageServerInstance(stdin, stdout, false);
+    \       server.runlinter = true;
+    \       run(server);
+    \   '],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -567,7 +574,7 @@ let g:multi_cursor_exit_from_visual_mode = 0
 let g:multi_cursor_exit_from_insert_mode = 0
 
 " Vim-wiki configuration
-autocmd FileType vimiwiki :RainbowToggleOff
+autocmd FileType vimwiki :RainbowToggleOff
 let g:vimwiki_dir_link = 'index'
 let g:vimwiki_table_mappings = 0 " needed for deoplete completion using tab
 let g:vimwiki_hl_cb_checked = 1
@@ -603,4 +610,13 @@ let g:vimtex_fold_enabled = 1
 let g:polyglot_disabled = ['latex']
 
 " Julia-vim configuration
-let g:default_julia_version = '1.0.0'
+let g:default_julia_version = '1.0.1'
+
+" Onivim setup
+if exists("g:gui_oni")
+    autocmd VimEnter * AirlineToggle
+    let g:airline_theme='gruvbox'
+    let g:gruvbox_italic=1
+    " Close FZF in neovim with esc
+    au FileType fzf tnoremap <nowait><buffer> <esc> <c-g>
+endif
