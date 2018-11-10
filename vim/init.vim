@@ -205,6 +205,7 @@ let g:ale_fixers = {
 \}
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_python_mypy_options = '--ignore-missing-imports'
+let g:ale_python_black_options = '--py36'
 
 " Git gutter settings
 set updatetime=200
