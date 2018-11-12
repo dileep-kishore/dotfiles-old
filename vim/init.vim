@@ -83,13 +83,12 @@ set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
-set background=dark
-colorscheme OceanicNext
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
 set termguicolors
+set background=dark
+let g:onedark_terminal_italics=1
 highlight Comment cterm=italic
 highlight Comment gui=italic
+colorscheme onedark
 set autoindent
 set copyindent
 set showmatch
