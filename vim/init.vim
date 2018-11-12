@@ -153,8 +153,34 @@ set laststatus=2
 " set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext' " old: base16_google
+let g:airline_theme='onedark' " old: base16_google
+let g:airline#extensions#virtualenv#enabled = 0
+au VimEnter * let g:airline_section_x = airline#section#create_left(['tagbar', 'filetype']) | :AirlineRefresh
 let g:airline#extensions#obsession#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'x' ],
+    \ [ 'z', 'error', 'warning' ]
+\ ]
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'c'  : 'C',
+    \ 'i'  : 'I',
+    \ 'ic' : 'I',
+    \ 'ix' : 'I',
+    \ 'n'  : 'N',
+    \ 'ni' : 'N',
+    \ 'no' : 'N',
+    \ 'R'  : 'R',
+    \ 'Rv' : 'R',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ 't'  : 'T',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ }
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
