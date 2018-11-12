@@ -155,12 +155,14 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark' " old: base16_google
 let g:airline#extensions#virtualenv#enabled = 0
+let g:airline_left_alt_sep = "|"
+let g:airline_right_alt_sep = "|"
 au VimEnter * let g:airline_section_x = airline#section#create_left(['tagbar', 'filetype']) | :AirlineRefresh
 let g:airline#extensions#obsession#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#default#layout = [
     \ [ 'a', 'b', 'x' ],
-    \ [ 'z', 'error', 'warning' ]
+    \ [ 'y', 'z', 'error', 'warning' ]
 \ ]
 let g:airline_mode_map = {
     \ '__' : '-',
