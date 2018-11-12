@@ -159,6 +159,12 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_left_alt_sep = "|"
 let g:airline_right_alt_sep = "|"
 au VimEnter * let g:airline_section_x = airline#section#create_left(['tagbar', 'filetype']) | :AirlineRefresh
+function! AirlineLN()
+    call airline#parts#define_raw('linenr', '%l')
+    call airline#parts#define_accent('linenr', 'bold')
+    let g:airline_section_z = airline#section#create(['obsession', '%3p%% ', g:airline_symbols.linenr, 'linenr', ':%c'])
+endfunction
+autocmd VimEnter * call AirlineLN()
 let g:airline#extensions#obsession#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#default#layout = [
