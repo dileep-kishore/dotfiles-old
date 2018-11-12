@@ -291,6 +291,7 @@ call esearch#map('<leader>ew', 'esearch-word-under-cursor')
 " Automatically close NERDTree if it's the last window there
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " Enabling Hardmode
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
