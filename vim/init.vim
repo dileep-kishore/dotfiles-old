@@ -155,6 +155,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark' " old: base16_google
 let g:airline#extensions#virtualenv#enabled = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_left_alt_sep = "|"
 let g:airline_right_alt_sep = "|"
 au VimEnter * let g:airline_section_x = airline#section#create_left(['tagbar', 'filetype']) | :AirlineRefresh
