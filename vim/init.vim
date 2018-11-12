@@ -187,6 +187,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 
 " ale settings
+let g:ale_fix_on_save = 1
 let g:ale_sign_info = "\uf05a"
 let g:ale_sign_error = "✘"
 let g:ale_sign_warning = "\uf071"
@@ -200,10 +201,11 @@ let g:ale_linters = {
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
-\   'python': ['autopep8', 'black'],
+\   'python': ['black'],
 \}
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_python_mypy_options = '--ignore-missing-imports'
+let g:ale_python_black_options = '--py36'
 
 " Git gutter settings
 set updatetime=200
