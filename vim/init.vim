@@ -618,6 +618,7 @@ if exists("g:gui_oni")
     autocmd VimEnter * AirlineToggle
     let g:airline_theme='gruvbox'
     let g:gruvbox_italic=1
+    let g:onedark_terminal_italics=1
     " Close FZF in neovim with esc
     au FileType fzf tnoremap <nowait><buffer> <esc> <c-g>
 endif
