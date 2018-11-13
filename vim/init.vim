@@ -649,6 +649,13 @@ let g:polyglot_disabled = ['latex']
 " Julia-vim configuration
 let g:default_julia_version = '1.0.1'
 
+" gitgutter configuration
+let g:gitgutter_sign_added              = "\uf067"
+let g:gitgutter_sign_removed           = "\uf068"
+let g:gitgutter_sign_modified            = "\ufc23"
+let g:gitgutter_sign_removed_first_line = "\uf068"
+let g:gitgutter_sign_modified_removed   = "\uf876"
+
 " Onivim setup
 if exists("g:gui_oni")
     let g:LanguageClient_autoStart = 0
