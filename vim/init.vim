@@ -206,7 +206,7 @@ let g:deoplete#sources.cpp = ['LanguageClient']
 let g:deoplete#sources.rust = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.javascript = ['LanguageClient']
-let g:deoplete#sources.julia = ['LanguageClient']
+let g:deoplete#sources.julia = ['around', 'buffer', 'file', 'utlisnips', 'LanguageClient']
 let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
 " deoplete close preview on completion
 autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
