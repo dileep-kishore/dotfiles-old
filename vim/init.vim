@@ -83,13 +83,12 @@ set number
 "set numberwidth=3
 " Relative line numbering
 syntax enable
-set background=dark
-colorscheme OceanicNext
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
 set termguicolors
+set background=dark
+let g:onedark_terminal_italics=1
 highlight Comment cterm=italic
 highlight Comment gui=italic
+colorscheme onedark
 set autoindent
 set copyindent
 set showmatch
@@ -154,8 +153,43 @@ set laststatus=2
 " set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext' " old: base16_google
+let g:airline_theme='onedark' " old: base16_google
+let g:airline#extensions#virtualenv#enabled = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline_left_alt_sep = "｜"
+let g:airline_right_alt_sep = "｜"
+au VimEnter * let g:airline_section_x = airline#section#create_left(['tagbar', 'filetype']) | :AirlineRefresh
+function! AirlineLN()
+    call airline#parts#define_raw('linenr', '%l')
+    call airline#parts#define_accent('linenr', 'bold')
+    let g:airline_section_z = airline#section#create(['obsession', '%3p%% ', g:airline_symbols.linenr, 'linenr', ':%c'])
+endfunction
+autocmd VimEnter * call AirlineLN()
 let g:airline#extensions#obsession#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'x' ],
+    \ [ 'y', 'z', 'error', 'warning' ]
+\ ]
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'c'  : 'C',
+    \ 'i'  : 'I',
+    \ 'ic' : 'I',
+    \ 'ix' : 'I',
+    \ 'n'  : 'N',
+    \ 'ni' : 'N',
+    \ 'no' : 'N',
+    \ 'R'  : 'R',
+    \ 'Rv' : 'R',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ 't'  : 'T',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ }
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -257,6 +291,7 @@ call esearch#map('<leader>ew', 'esearch-word-under-cursor')
 " Automatically close NERDTree if it's the last window there
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeHijackNetrw = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " Enabling Hardmode
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
@@ -620,6 +655,7 @@ if exists("g:gui_oni")
     autocmd VimEnter * AirlineToggle
     let g:airline_theme='gruvbox'
     let g:gruvbox_italic=1
+    let g:onedark_terminal_italics=1
     " Close FZF in neovim with esc
     au FileType fzf tnoremap <nowait><buffer> <esc> <c-g>
 endif
