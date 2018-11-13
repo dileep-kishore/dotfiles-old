@@ -34,11 +34,11 @@ export const configuration = {
     "oni.loadInitVim": true,
 
     // UI customizations
-    "ui.colorscheme": "gruvbox",
+    "ui.colorscheme": "onedark",
     "tabs.mode": "tabs",
     "tabs.height": "2em",
     "tabs.showIndex": true,
-    "editor.fontSize": "14px",
+    "editor.fontSize": "13px",
     "editor.fontFamily": "FuraCode Nerd Font",
     "editor.fontLigatures": true,
     "editor.renderer": "webgl",
