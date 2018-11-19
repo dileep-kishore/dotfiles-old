@@ -223,7 +223,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 " ale settings
 let g:ale_fix_on_save = 1
 let g:ale_sign_info = "\uf05a"
-let g:ale_sign_error = "✘"
+let g:ale_sign_error = "\uf467"
 let g:ale_sign_warning = "\uf071"
 let g:ale_sign_style_error = "\ue009"
 let g:ale_sign_style_warning = "⚑"
@@ -240,7 +240,7 @@ let g:ale_fixers = {
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 let g:ale_python_black_options = '--py36'
-let g:airline#extensions#ale#error_symbol = "✘ "
+let g:airline#extensions#ale#error_symbol = "\uf467 "
 let g:airline#extensions#ale#warning_symbol = "\uf071 "
 
 " Git gutter settings
