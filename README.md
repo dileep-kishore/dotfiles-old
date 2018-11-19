@@ -21,7 +21,7 @@ zsh configuration files
 * syntax highlighting
 * powerlevel9k (theme)
 
-[tmux_zsh](assets/images/shell.png)
+![tmux_zsh](assets/images/shell.png)
 
 tmux configuration files
 * tmux plugin manager
@@ -36,7 +36,7 @@ neovim configuration files
     * ctags
     * clang
 
-[neovim](assets/images/neovim.png)
+![neovim](assets/images/neovim.png)
 
 ## rofi
 
