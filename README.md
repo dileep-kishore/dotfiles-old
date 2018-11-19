@@ -6,18 +6,22 @@ Lightweight, CLI-focused, functional and beautiful desktop configuration.
 
 ### Desktop
 
-1. [`Manjaro Linux`](https://manjaro.org/) (Any Arch based distribution should be good!)
+1. [`Manjaro Linux`](https://manjaro.org/) (Any Arch based distribution should work well!)
 2. [`zsh`](http://www.zsh.org/) as the shell
 3. [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and [`powerlevel9k`](https://github.com/bhilburn/powerlevel9k) to create a custom theme and prompt
-4. `oni` vim stuff
+4. `pywal` to change window manager colors based on wallpaper
+5. GUI editor: `oni` vim
 
 ![i3wm desktop](assets/images/desktop_screenshot.png)
 
 ## terminal - zsh and tmux
+
 zsh configuration files
 * z
 * syntax highlighting
 * powerlevel9k (theme)
+
+[tmux_zsh](assets/images/shell.png)
 
 tmux configuration files
 * tmux plugin manager
@@ -31,6 +35,8 @@ neovim configuration files
     * ag
     * ctags
     * clang
+
+[neovim](assets/images/neovim.png)
 
 ## rofi
 
