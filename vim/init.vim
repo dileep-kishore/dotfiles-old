@@ -223,7 +223,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 " ale settings
 let g:ale_fix_on_save = 1
 let g:ale_sign_info = "\uf05a"
-let g:ale_sign_error = "✘"
+let g:ale_sign_error = "\uf467"
 let g:ale_sign_warning = "\uf071"
 let g:ale_sign_style_error = "\ue009"
 let g:ale_sign_style_warning = "⚑"
