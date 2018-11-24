@@ -156,8 +156,8 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='onedark' " old: base16_google
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline_left_alt_sep = "｜"
-let g:airline_right_alt_sep = "｜"
+let g:airline_left_alt_sep = "\ue0b1"
+let g:airline_right_alt_sep = "\ue0b3"
 au VimEnter * let g:airline_section_x = airline#section#create_left(['tagbar', 'filetype']) | :AirlineRefresh
 function! AirlineLN()
     call airline#parts#define_raw('linenr', '%l')
@@ -223,7 +223,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 " ale settings
 let g:ale_fix_on_save = 1
 let g:ale_sign_info = "\uf05a"
-let g:ale_sign_error = "✘"
+let g:ale_sign_error = "\uf467"
 let g:ale_sign_warning = "\uf071"
 let g:ale_sign_style_error = "\ue009"
 let g:ale_sign_style_warning = "⚑"
@@ -240,7 +240,7 @@ let g:ale_fixers = {
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 let g:ale_python_black_options = '--py36'
-let g:airline#extensions#ale#error_symbol = "✘ "
+let g:airline#extensions#ale#error_symbol = "\uf467 "
 let g:airline#extensions#ale#warning_symbol = "\uf071 "
 
 " Git gutter settings
