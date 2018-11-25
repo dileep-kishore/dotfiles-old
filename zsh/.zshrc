@@ -190,13 +190,6 @@ alias la="exa -lag --color-scale"
 alias lsa="exa -lag --color-scale -h"
 # k aliases
 alias k="k -h"
-# coconut aliases
-alias icoconut="coconut --jupyter console"
-cocowatch() { coconut -pswt 36 --no-tco "$1" "$2"}
-cocowatch-mypy() { coconut -pswt 36 --no-tco "$1" "$2" --mypy --ignore-missing-imports }
-cococompile() { coconut -pst 36 --no-tco "$1" "$2" }
-cococompile-mypy() { coconut -pst 36 --no-tco "$1" "$2" --mypy --ignore-missing-imports }
-cococompile-wtco() { coconut -pst 36 "$1" "$2" }
 # fd aliases
 alias find="fd"
 # todo alias
