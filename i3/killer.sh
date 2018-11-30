@@ -14,6 +14,7 @@ do
     pkill qutebrowser
     pkill seamonkey
     pkill opera-beta
+    pkill opera
     echo $MY_PASSWORD | sudo -S chattr +i /etc/resolv.conf
     echo $MY_PASSWORD | sudo -S chattr +i /etc/hosts
     sleep 10
