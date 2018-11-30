@@ -17,6 +17,7 @@ do
     pkill opera
     echo $MY_PASSWORD | sudo -S chattr +i /etc/resolv.conf
     echo $MY_PASSWORD | sudo -S chattr +i /etc/hosts
+    python $HOME/.dotfiles/i3/shutter.py /etc/resolv.conf /etc/hosts
     sleep 10
 done
 
