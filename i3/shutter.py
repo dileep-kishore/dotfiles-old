@@ -10,7 +10,7 @@ def main(files):
     for file in files:
         stats = os.stat(file)
         last_modfied = time.time() - stats.st_mtime
-        if last_modfied < 60:
+        if last_modfied < (3 * 60 * 60):
             subprocess.run(["shutdown", "-P"])
 
 
