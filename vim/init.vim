@@ -65,6 +65,7 @@ Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wra
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'lervag/vimtex',                     " Latex support
+Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
