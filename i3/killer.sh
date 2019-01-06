@@ -18,7 +18,8 @@ do
     echo $MY_PASSWORD | sudo -S chattr +i /etc/resolv.conf
     echo $MY_PASSWORD | sudo -S chattr +i /etc/hosts
     echo $MY_PASSWORD | sudo -S chattr +i ~/.dotfiles/i3/shutter.py
-    python $HOME/.dotfiles/i3/shutter.py /etc/resolv.conf /etc/hosts
+    echo $MY_PASSWORD | sudo -S chattr +i ~/.dotfiles/i3/killer.sh
+    python $HOME/.dotfiles/i3/shutter.py /etc/resolv.conf /etc/hosts $HOME/.dotfiles/i3/killer.sh
     sleep 10
 done
 
