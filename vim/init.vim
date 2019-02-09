@@ -551,6 +551,9 @@ autocmd Syntax * syntax keyword Todo NOTE containedin=.*Comment
 autocmd Syntax * syntax keyword Todo HACK containedin=.*Comment
 autocmd Syntax * syntax keyword Todo QUESTION containedin=.*Comment
 
+" Startify session location
+let g:startify_session_dir = "~/.vim/session"
+
 " Editing vim-startify lists
 let g:startify_lists = [
   \ { 'type': 'sessions',  'header': [   'Sessions']       },
