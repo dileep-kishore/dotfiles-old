@@ -65,6 +65,7 @@ Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wra
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'lervag/vimtex',                     " Latex support
+Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
 Plug 'ryanoasis/vim-devicons'             " Icon support
 
 " Themes
@@ -549,6 +550,9 @@ nmap ga <Plug>(EasyAlign)
 autocmd Syntax * syntax keyword Todo NOTE containedin=.*Comment
 autocmd Syntax * syntax keyword Todo HACK containedin=.*Comment
 autocmd Syntax * syntax keyword Todo QUESTION containedin=.*Comment
+
+" Startify session location
+let g:startify_session_dir = "~/.vim/session"
 
 " Editing vim-startify lists
 let g:startify_lists = [
