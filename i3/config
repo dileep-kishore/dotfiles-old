@@ -306,7 +306,7 @@ exec --no-startup-id variety
 exec --no-startup-id synergy
 exec --no-startup-id syncthing-gtk
 exec --no-startup-id aw-qt
-exec_always --no-startup-id ~/..dotfiles/i3/killer.sh || shutdown -h now
+exec_always --no-startup-id ~/.dotfiles/i3/killer.sh || shutdown -h now
 
 ### THEME ###
 set $base00 #101218
