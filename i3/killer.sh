@@ -15,6 +15,7 @@ do
     pkill seamonkey
     pkill opera-beta
     pkill opera
+    pkill steam
     echo $MY_PASSWORD | sudo -S chattr +i /etc/resolv.conf
     echo $MY_PASSWORD | sudo -S chattr +i /etc/hosts
     echo $MY_PASSWORD | sudo -S chattr +i ~/.dotfiles/i3/shutter.py
