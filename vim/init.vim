@@ -27,7 +27,7 @@ Plug 'tpope/vim-repeat'                   " Supports repeat of complex motions
 Plug 'junegunn/vim-peekaboo'              " Peek into registers
 Plug 'vim-airline/vim-airline-themes'     " Collection of airline themes
 Plug 'matze/vim-move'                     " Move visually selected lines
-Plug 'eugen0329/vim-esearch'              " Search all files in project for keyword
+Plug 'wincent/ferret'                     " Enhanced multi-file search and replace
 Plug 'tmhedberg/SimpylFold'               " Better python code folding
 Plug 'terryma/vim-expand-region'          " Expand selected region
 Plug 'wellle/targets.vim'                 " Supports more text-objects
@@ -275,19 +275,6 @@ nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fs :Ag<CR>
 " Search marks
 nnoremap <Leader>fm :Marks<CR>
-
-" vim-esearch settings
-let g:esearch = {
-    \ 'adapter': 'ag',
-    \ 'backend': 'nvim',
-    \ 'out': 'win',
-    \ 'batch_size': 1000,
-    \ 'use': ['visual', 'hlsearch', 'last', 'word_under_cursor'],
-    \}
-" Start esearch prompt autofilled with one of g:esearch.use initial patterns
-call esearch#map('<leader>ef', 'esearch')
-" Start esearch autofilled with a word under the cursor
-call esearch#map('<leader>ew', 'esearch-word-under-cursor')
 
 " Automatically start nerdtree
 "autocmd vimenter * NERDTree
@@ -681,3 +668,8 @@ if exists("g:gui_oni")
     " Close FZF in neovim with esc
     au FileType fzf tnoremap <nowait><buffer> <esc> <c-g>
 endif
+
+" Ferret setup
+let g:FerretMap = 0
+nmap <leader>ef <Plug>(FerretAck)
+nmap <leader>es <Plug>(FerretAcks)
