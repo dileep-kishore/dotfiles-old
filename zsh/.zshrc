@@ -134,7 +134,7 @@ tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
 gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
 shufflecopy() { shuf -zn10 -e "$1" | xargs -0 cp -vt "$2" }
 getcurrwal() { cat /home/dileep/.cache/wal/wal | rev | cut -c 1- | rev }
-walcolor() { wal --backend $1 -g -n -i $(getcurrwal)}
+walcolor() { wal --backend $1 -n -i $(getcurrwal) }
 man() {
     env \
       LESS_TERMCAP_mb=$(printf "\e[1;31m") \
@@ -189,9 +189,12 @@ alias ls="exa --color-scale"
 alias lt="exa --tree --color-scale"
 alias la="exa -lag --color-scale"
 alias lsa="exa -lag --color-scale -h"
-alias k="k -h" # k alias
-alias find="fd" # fd alias
-alias todo="todo.sh -d ~/.config/todo.cfg" # todo alias
+# k aliases
+alias k="k -h"
+# fd aliases
+alias find="fd"
+# todo alias
+alias todo="todo.sh -d ~/.config/todo.cfg"
 alias git="hub"
 alias howdoi="howdoi -c -n 5"
 alias ping="~/.dotfiles/zsh/prettyping.sh"
