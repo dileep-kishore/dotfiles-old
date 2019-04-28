@@ -10,8 +10,9 @@
     urgent_on_bell = true
     clickable_url = true
     # font = FantasqueSansMono Nerd Font 11
-    # font = FuraCode Nerd Font 10
-    font = Hasklug Nerd Font 10
+    font = FuraCode Nerd Font 10
+    # font = Hack Nerd Font 9
+    # font = Hasklug Nerd Font 10
     # font = Monofur Nerd Font 12
     scrollback_lines = 1000
     search_wrap = true
