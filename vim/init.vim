@@ -73,10 +73,10 @@ Plug 'roosta/srcery'
 Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'dylanaraps/wal.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
+Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 set encoding=utf-8
@@ -86,10 +86,10 @@ set number
 syntax enable
 set termguicolors
 set background=dark
-let g:onedark_terminal_italics=1
+let g:palenight_terminal_italics=1
 highlight Comment cterm=italic
 highlight Comment gui=italic
-colorscheme onedark
+colorscheme palenight
 set autoindent
 set copyindent
 set showmatch
