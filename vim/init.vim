@@ -15,7 +15,7 @@ Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
-Plug 'zchee/deoplete-jedi', { 'for': 'python' } " autocompletion for python
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' } " autocompletion for python
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
