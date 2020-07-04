@@ -97,7 +97,7 @@ export ENHANCD_FILTER
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands npm sudo yarn web-search)
+plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands git-extras npm sudo yarn web-search)
 
 # User configuration
 
@@ -181,14 +181,15 @@ alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
 alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph --date=short"
 alias zc="z -c"
 alias zt="z -t"
-# exa aliases
-alias l="exa -lg -s modified --color-scale"
-alias ll="exa -lag -s modified --color-scale -h"
+# lsd aliases
+alias l="lsd -lt --color always --icon always"
+alias ll="lsd -lhAt --color always --icon always"
+# Use k instead of lg
 alias lg="exa -lag -s modified --git --color-scale"
-alias ls="exa --color-scale"
-alias lt="exa --tree --color-scale"
-alias la="exa -lag --color-scale"
-alias lsa="exa -lag --color-scale -h"
+alias ls="lsd --color always --icon always"
+alias lt="lsd --tree --color always --icon always"
+alias la="lsd -la --color always --icon always"
+alias lsa="lsd -lah --color always --icon always"
 # k aliases
 alias k="k -h"
 # fd aliases
@@ -223,7 +224,7 @@ TERM=xterm-termite
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-export BROWSER=chromium
+export BROWSER=brave
 
 # Anaconda path
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
