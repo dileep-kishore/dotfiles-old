@@ -67,9 +67,10 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'lervag/vimtex',                     " Latex support
 Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
 Plug 'ryanoasis/vim-devicons'             " Icon support
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Allows nvim to edit browser text areas
 
 " Themes
-Plug 'roosta/srcery'
+Plug 'srcery-colors/srcery-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'tyrannicaltoucan/vim-quantum'
@@ -77,6 +78,8 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'endel/vim-github-colorscheme'
+Plug 'overcache/NeoSolarized'
 call plug#end()
 
 set encoding=utf-8
@@ -670,3 +673,38 @@ endif
 let g:FerretMap = 0
 nmap <leader>ef <Plug>(FerretAck)
 nmap <leader>es <Plug>(FerretAcks)
+
+" Firenvim setup
+let g:firenvim_config = { 
+    \ 'globalSettings': {
+        \ 'alt': 'all',
+    \  },
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'cmdline': 'neovim',
+            \ 'priority': 0,
+            \ 'selector': 'textarea',
+            \ 'takeover': 'never',
+        \ },
+    \ }
+\ }
+if exists('g:started_by_firenvim')
+    set termguicolors
+    set guifont=VictorMono_Nerd_Font:h11
+    set background=light
+    colorscheme NeoSolarized
+    highlight Comment cterm=italic
+    highlight Comment gui=italic
+    let g:neosolarized_contrast = "high"
+    let g:neosolarized_visibility = "normal"
+    let g:neosolarized_italic = 1
+    let g:airline_theme='solarized'
+    let g:airline#extensions#tabline#enabled = 0
+    set nocursorline
+    " set nolist
+    set colorcolumn=
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+    au BufEnter github.com_*.txt set filetype=markdown
+endif
