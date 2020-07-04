@@ -26,4 +26,4 @@ def killer_shutter():
 if __name__ == "__main__":
     FILES = sys.argv[1:]
     internet_blocker(FILES)
-    # killer_shutter()
+    killer_shutter()
