@@ -29,7 +29,7 @@ font pango:Font Awesome 5,Fantasque Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite -d "`xcwd`"
+bindsym $mod+Return exec kitty -d "`xcwd`"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -60,7 +60,7 @@ exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec vivaldi-stable
 bindsym $mod+F3 exec pcmanfm
-#bindsym $mod+F3 exec termite -e ranger
+#bindsym $mod+F3 exec kitty -e ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
@@ -460,12 +460,12 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec shutdown -h 22:30
 
 # Shortcuts
-# bindsym $mod+Shift+f exec --no-startup-id termite -d "`xcwd`" -e ranger
-bindsym $mod+Shift+f exec --no-startup-id tdrop -n ranger -a -m -w 75% -x 10% -y 34 -f '-d "`xcwd`" -e ranger' termite
+bindsym $mod+Shift+f exec --no-startup-id kitty -d "`xcwd`" -e ranger
+bindsym $mod+Shift+f exec --no-startup-id tdrop -n ranger -a -m -w 75% -x 10% -y 34 -f '-d "`xcwd`" -e ranger' kitty
 bindsym $mod+Shift+x exec blurlock
 bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
-bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -h 50% -w 80% -x 10% -y 34 -s tdrop -f '-d "`xcwd`"' termite
-bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 75% -x 10% -y 50% -f '-e mpsyt' termite
+bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -h 50% -w 80% -x 10% -y 34 -s tdrop -f '-d "`xcwd`"' kitty
+bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 75% -x 10% -y 50% -f '-e mpsyt' kitty
 bindsym $mod+Shift+P exec --no-startup-id shiba --detach "`xcwd`"
 bindsym $mod+Shift+v exec --no-startup-id ~/.vim-anywhere/bin/run
