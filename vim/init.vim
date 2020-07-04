@@ -194,21 +194,22 @@ let g:airline_mode_map = {
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#file#enable_buffer_path = 1
+call deoplete#custom#option('smart_case', v:true)
+call deoplete#custom#var('file', 'enable_buffer_path', 1)
 " Let TAB also do autocompletion
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " set sources
 call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
 call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-let g:deoplete#sources = {}
-let g:deoplete#sources.gitcommit = ['github']
-let g:deoplete#sources.cpp = ['LanguageClient']
-let g:deoplete#sources.rust = ['LanguageClient']
-let g:deoplete#sources.c = ['LanguageClient']
-let g:deoplete#sources.javascript = ['LanguageClient']
-let g:deoplete#sources.julia = ['around', 'buffer', 'file', 'utlisnips', 'LanguageClient']
-let g:deoplete#sources.vim = ['around', 'buffer', 'member', 'file', 'ultisnips']
+call deoplete#custom#option('sources', {
+    \ 'gitcommit': ['github'],
+    \ 'cpp': ['LanguageClient'],
+    \ 'rust': ['LanguageClient'],
+    \ 'c': ['LanguageClient'],
+    \ 'javascript': ['LanguageClient'],
+    \ 'julia': ['around', 'buffer', 'file', 'utlisnips', 'LanguageClient'],
+    \ 'vim': ['around', 'buffer', 'member', 'file', 'ultisnips'],
+    \ })
 " deoplete close preview on completion
 autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
 " deoplete-jedi configurations
@@ -639,10 +640,7 @@ nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
 " Vimtex configuration
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_progname = 'nvr'
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+call deoplete#custom#var('omni', 'input_patterns', {'tex': g:vimtex#re#deoplete})
 let g:vimtex_fold_enabled = 1
 " disable LaTeX-Box included in `vim-polyglot`
 let g:polyglot_disabled = ['latex']
