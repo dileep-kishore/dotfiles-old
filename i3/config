@@ -465,7 +465,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec shutdown -h 22:30
 
 # Shortcuts
-bindsym $mod+Shift+f exec --no-startup-id kitty -d "`xcwd`" -e ranger
+# bindsym $mod+Shift+f exec --no-startup-id kitty -d "`xcwd`" -e ranger
 bindsym $mod+Shift+f exec --no-startup-id tdrop -n ranger -a -m -w 75% -x 10% -y 34 -f '-d "`xcwd`" -e ranger' kitty
 bindsym $mod+Shift+x exec blurlock
 bindsym $mod+Shift+Left move workspace to output left
