@@ -15,13 +15,13 @@ def internet_blocker(files):
             subprocess.run(["shutdown", "-P", "now"])
 
 def killer_shutter():
+    flag = False
     for pid in psutil.pids():
         p = psutil.Process(pid)
-        flag = False
         if len(p.cmdline()) > 1 and "killer.sh" in p.cmdline()[1]:
             flag = True
-        if not flag:
-            subprocess.run(["shutdown", "-P", "now"])
+    if not flag:
+        subprocess.run(["shutdown", "-P", "now"])
 
 if __name__ == "__main__":
     FILES = sys.argv[1:]
