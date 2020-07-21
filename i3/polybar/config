@@ -33,7 +33,7 @@ pgreen = #84b6bd
 pcream = #d1d0ef
 ppurple = #a385cb
 lpink = #cc83b5
-dpink = #b34980 
+dpink = #b34980
 
 tblack   = #948A74
 tred     = #DC8068
@@ -62,6 +62,7 @@ height = 18
 ; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
+enable-ipc = true
 
 background = ${colors.transparent}
 foreground = ${colors.black}
@@ -106,8 +107,8 @@ font-6 = Siji:size=11;2
 ; separator = |
 
 modules-center = i3
-modules-left = mpd
-modules-right = volume date powermenu
+modules-left = toggl-polybar mpd
+modules-right = system-bluetooth-bluetoothctl volume date powermenu
 
 tray-detached = false
 ; tray-background = #cc131313
@@ -124,6 +125,7 @@ height = 18
 ; clickareas = 100
 ; offset-x = 16
 ; offset-y = 68
+enable-ipc = true
 
 background = ${colors.transparent}
 foreground = ${colors.black}
@@ -420,7 +422,7 @@ label-muted-background = #66
 label-volume-background  = ${colors.tmagenta}
 format-volume-prefix            = 
 format-volume-prefix-foreground = ${self.label-volume-background}
-; format-volume-prefix-background = ${colors.transparent}
+format-volume-prefix-background = ${colors.tred}
 format-volume-suffix            = 
 format-volume-suffix-background = ${self.label-volume-background}
 format-volume-suffix-foreground = ${module/date.label-background}
@@ -462,13 +464,6 @@ bar-volume-empty-foreground = #444444
 ; Only applies if <ramp-volume> is used
 ramp-headphones-0 = 
 ramp-headphones-1 = 
-
-;=====================================================
-[module/spotify]
-type = custom/script
-exec = ~/.i3/spotify.py
-tail = true
-maxlen = 10
 
 ;=====================================================
 [module/mpd]
@@ -564,13 +559,13 @@ interval = 3.0
 
 ; format-connected-underline = ${colors.yellow}
 format-connected-background = ${colors.yellow}
-format-connected-prefix = 
+format-connected-prefix =
 ; format-connected-foreground-foreground = ${colors.yellow}
 ; label-connected = "%local_ip%%{u#dc322f +u}%{F#dc322f}%{F-}%upspeed%%{u-}%{u#2aa198 +u}%{F#2aa198}%{F-}%downspeed%%{u-}"
 label-connected = "%local_ip%%{F#dc322f}%{F-}%{B#dc322f}%upspeed%%{B-}%{B#dc322f F#2aa198}%{B- F-}%{B#2aa198}%downspeed%%{B-}"
 ; label-connected-foreground = ${colors.yellow}
 
-; format-disconnected-underline = 
+; format-disconnected-underline =
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.pink}
 
@@ -684,6 +679,64 @@ exec = ~/.config/polybar/getpacmanupdates
 format-foreground = #c6e600
 format-underline = #c6e600
 interval = 360
+
+;=====================================================
+[module/system-bluetooth-bluetoothctl]
+type = custom/script
+exec = ~/.config/polybar/system-bluetooth-bluetoothctl.sh
+tail = true
+click-left = ~/polybar-scripts/system-bluetooth-bluetoothctl.sh --toggle &
+label-background = ${colors.tred}
+; format-suffix = 
+format-suffix = 
+format-suffix-foreground = ${colors.tred}
+format-suffix-background = ${colors.tred}
+format-prefix = 
+label-prefix = ""
+format-prefix-foreground = ${colors.tred}
+label-padding = 1
+
+;=====================================================
+[module/toggl-polybar]
+type = custom/script
+exec = ~/.config/polybar/toggl-polybar.py
+interval = 30.00
+format = <label>
+format-padding = 1
+click-left = "xdg-open https://toggl.com/app/timer"
+tail = true
+label-background = ${colors.tcyan}
+format-suffix = 
+format-suffix-foreground = ${colors.tcyan}
+format-prefix = 
+format-prefix-foreground = ${colors.tcyan}
+
+;=====================================================
+[module/spotify]
+type = custom/script
+tail = true
+format-prefix = "  "
+format = <label>
+exec = ~/.config/polybar/scroll_spotify_status.sh
+
+[module/spotify-prev]
+type = custom/script
+exec = echo "玲"
+format = <label>
+click-left = playerctl previous spotify
+
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = echo "契"
+initial = 1
+click-left = playerctl play-pause spotify
+
+[module/spotify-next]
+type = custom/script
+exec = echo "怜"
+format = <label>
+click-left = playerctl next spotify
 
 
 ; vim:ft=dosini
