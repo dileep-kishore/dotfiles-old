@@ -97,7 +97,7 @@ export ENHANCD_FILTER
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands git-extras npm sudo yarn web-search)
+plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands git-extras npm sudo yarn web-search poetry)
 
 # User configuration
 
@@ -160,6 +160,8 @@ export PATH="/home/dileep/.npm/bin:$PATH"
 export PATH="/home/dileep/.gem/ruby/2.5.0/bin:$PATH"
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
+# poetry
+export PATH="/home/dileep/.poetry/bin:$PATH"
 
 # Todosh
 export TODOTXT_DEFAULT_ACTION=ls
@@ -202,6 +204,10 @@ alias ping="~/.dotfiles/zsh/prettyping.sh"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias noti="~/.dotfiles/zsh/noti"
+# devour aliases
+alias vlc="devour vlc"
+alias mpv="devour mpv"
+alias zathura="devour zathura"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -237,3 +243,10 @@ eval "$(pyenv init -)"
 
 # added by travis gem
 [ -f /home/dileep/.travis/travis.sh ] && source /home/dileep/.travis/travis.sh
+#compdef toggl
+_toggl() {
+  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _TOGGL_COMPLETE=complete-zsh  toggl)
+}
+if [[ "$(basename -- ${(%):-%x})" != "_toggl" ]]; then
+  compdef _toggl toggl
+fi
