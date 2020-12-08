@@ -81,6 +81,7 @@ Plug 'morhetz/gruvbox'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'overcache/NeoSolarized'
+Plug 'franbach/miramare'
 call plug#end()
 
 set encoding=utf-8
@@ -90,10 +91,12 @@ set number
 syntax enable
 set termguicolors
 set background=dark
-let g:palenight_terminal_italics=1
+let g:miramare_enable_italic = 1
+let g:miramare_enable_italic_string = 1
+let g:miramare_enable_bold = 1
 highlight Comment cterm=italic
 highlight Comment gui=italic
-colorscheme palenight
+colorscheme miramare
 set autoindent
 set copyindent
 set showmatch
