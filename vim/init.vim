@@ -664,17 +664,6 @@ let g:gitgutter_sign_modified            = "\ufc23"
 let g:gitgutter_sign_removed_first_line = "\uf068"
 let g:gitgutter_sign_modified_removed   = "\uf876"
 
-" Onivim setup
-if exists("g:gui_oni")
-    let g:LanguageClient_autoStart = 0
-    autocmd VimEnter * AirlineToggle
-    let g:airline_theme='gruvbox'
-    let g:gruvbox_italic=1
-    let g:onedark_terminal_italics=1
-    " Close FZF in neovim with esc
-    au FileType fzf tnoremap <nowait><buffer> <esc> <c-g>
-endif
-
 " Ferret setup
 let g:FerretMap = 0
 nmap <leader>ef <Plug>(FerretAck)
