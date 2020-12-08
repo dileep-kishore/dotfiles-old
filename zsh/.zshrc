@@ -223,7 +223,7 @@ setopt CORRECT
 
 # make sure that if a program wants you to edit
 # text, that Vim is going to be there for you
-TERM=xterm-termite
+TERM=xterm-256color
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
