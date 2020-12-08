@@ -208,6 +208,7 @@ alias noti="~/.dotfiles/zsh/noti"
 alias vlc="devour vlc"
 alias mpv="devour mpv"
 alias zathura="devour zathura"
+alias has="curl -sL https://git.io/_has | bash -s"
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
