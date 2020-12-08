@@ -244,7 +244,6 @@ let g:ale_fixers = {
 \}
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_python_mypy_options = '--ignore-missing-imports'
-let g:ale_python_black_options = '--py36'
 let g:airline#extensions#ale#error_symbol = "\uf467 "
 let g:airline#extensions#ale#warning_symbol = "\uf071 "
 
