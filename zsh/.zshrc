@@ -164,6 +164,9 @@ export PATH="/home/dileep/.poetry/bin:$PATH"
 # Todosh
 export TODOTXT_DEFAULT_ACTION=ls
 
+# default git pager
+export GIT_PAGER='delta'
+
 # Example aliases
 alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
 alias youtube="youtube-viewer"
