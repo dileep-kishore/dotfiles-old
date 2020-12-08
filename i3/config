@@ -23,13 +23,14 @@ bindsym $mod+n border pixel 4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Font Awesome 5,Fantasque Sans Mono 12
+# font pango:Font Awesome 5,Fantasque Sans Mono 12
+font pango:Font Awesome 5,Alegreya Sans 12
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty -d "`xcwd`"
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -60,7 +61,7 @@ exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec brave
 bindsym $mod+F3 exec pcmanfm
-#bindsym $mod+F3 exec kitty -e ranger
+#bindsym $mod+F3 exec alacritty -e ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
@@ -312,7 +313,8 @@ exec --no-startup-id barrier
 exec --no-startup-id syncthing-gtk
 exec --no-startup-id sleep 10 && aw-qt
 exec_always --no-startup-id flashfocus -c /home/dileep/.config/flashfocus/flashfocus.yml
-exec_always --no-startup-id ~/.dotfiles/i3/killer.sh || shutdown -h now
+# exec_always --no-startup-id ~/.dotfiles/i3/killer.sh || shutdown -h now
+exec --no-startup-id TogglDesktop
 
 # Opacity for flashfocus
 # opacity-rule = ["0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"];
@@ -465,12 +467,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec shutdown -h 22:30
 
 # Shortcuts
-# bindsym $mod+Shift+f exec --no-startup-id kitty -d "`xcwd`" -e ranger
-bindsym $mod+Shift+f exec --no-startup-id tdrop -n ranger -a -m -w 75% -x 10% -y 34 -f '-d "`xcwd`" -e ranger' kitty
+bindsym $mod+Shift+f exec --no-startup-id tdrop -n ranger -a -m -w 75% -x 10% -y 34 -C 'ranger' kitty
 bindsym $mod+Shift+x exec blurlock
 bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
-bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -h 50% -w 80% -x 10% -y 34 -s tdrop -f '-d "`xcwd`"' kitty
-bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 75% -x 10% -y 50% -f '-e mpsyt' kitty
-bindsym $mod+Shift+P exec --no-startup-id shiba --detach "`xcwd`"
+bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -h 50% -w 80% -x 10% -y 34 -s tdrop kitty
+bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 75% -x 10% -y 50% -C 'mpsyt' kitty
 bindsym $mod+Shift+v exec --no-startup-id ~/.vim-anywhere/bin/run
