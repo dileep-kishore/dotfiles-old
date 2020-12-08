@@ -300,6 +300,9 @@ set autoread
 au FocusGained,BufEnter * :silent! !
 set visualbell
 set cursorline
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+		  \,sm:block-blinkwait175-blinkoff150-blinkon175
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu
 function! ToggleNumbersOn()
