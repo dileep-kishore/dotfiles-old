@@ -1,5 +1,3 @@
-
-. ~/z.sh
 source ~/.dotfiles/zsh/enhancd/./init.sh
 
 # Path to your oh-my-zsh installation.
@@ -97,7 +95,7 @@ export ENHANCD_FILTER
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(k git archlinux python z vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands git-extras npm sudo yarn web-search poetry)
+plugins=(k git archlinux python vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands git-extras npm sudo yarn web-search poetry)
 
 # User configuration
 
@@ -181,8 +179,6 @@ alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
 alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph --date=short"
-alias zc="z -c"
-alias zt="z -t"
 # lsd aliases
 alias l="lsd -lt --color always --icon always"
 alias ll="lsd -lhAt --color always --icon always"
@@ -239,6 +235,9 @@ alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . /etc/profile.d/vte.sh
+
+# Zoxide config
+eval "$(zoxide init zsh)"
 
 eval "$(pyenv init -)"
 
