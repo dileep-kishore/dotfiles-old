@@ -68,6 +68,7 @@ Plug 'lervag/vimtex',                     " Latex support
 Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
 Plug 'ryanoasis/vim-devicons'             " Icon support
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Allows nvim to edit browser text areas
+Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 
 " Themes
 Plug 'srcery-colors/srcery-vim'
