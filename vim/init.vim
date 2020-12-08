@@ -72,16 +72,17 @@ Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 
 " Themes
 Plug 'srcery-colors/srcery-vim'
-Plug 'joshdick/onedark.vim'
+Plug 'sainnhe/edge'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mhartington/oceanic-next'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'overcache/NeoSolarized'
 Plug 'franbach/miramare'
+Plug 'sainnhe/sonokai'
 call plug#end()
 
 set encoding=utf-8
@@ -91,12 +92,14 @@ set number
 syntax enable
 set termguicolors
 set background=dark
-let g:miramare_enable_italic = 1
-let g:miramare_enable_italic_string = 1
-let g:miramare_enable_bold = 1
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_disable_italic_comment = 0
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_palette = 'material'
 highlight Comment cterm=italic
 highlight Comment gui=italic
-colorscheme miramare
+colorscheme gruvbox-material
 set autoindent
 set copyindent
 set showmatch
@@ -161,7 +164,7 @@ set laststatus=2
 " set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark' " old: base16_google
+let g:airline_theme='gruvbox_material' " old: base16_google
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_left_alt_sep = "\ue0b1"
