@@ -473,4 +473,3 @@ bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
 bindsym $mod+Shift+Return exec --no-startup-id tdrop -n general -a -m -h 50% -w 80% -x 10% -y 34 -s tdrop kitty
 bindsym $mod+Shift+m exec --no-startup-id tdrop -n music -a -m -w 75% -x 10% -y 50% -C 'mpsyt' kitty
-bindsym $mod+Shift+v exec --no-startup-id ~/.vim-anywhere/bin/run
