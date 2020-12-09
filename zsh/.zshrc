@@ -3,6 +3,9 @@ source ~/.dotfiles/zsh/enhancd/./init.sh
 # Path to your oh-my-zsh installation.
 export ZSH=/home/dileep/.oh-my-zsh
 
+# XDG_DATA_HOME
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
@@ -49,7 +52,7 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%
 POWERLEVEL9K_STATUS_VERBOSE=false
 export DEFAULT_USER="$USER"
 
-export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --color \"always\" {}'"
+export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 ENHANCD_FILTER=fzy:fzf
 export ENHANCD_FILTER
 # Uncomment the following line to use case-sensitive completion.
