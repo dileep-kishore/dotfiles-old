@@ -191,9 +191,7 @@ zinit as"null" wait"3" lucid for \
     sbin  arzzen/git-quick-stats \
     make"PREFIX=$ZPFX" tj/git-extras
 
-# TODO: Cheatsheats from the cli
-zinit ice as"program" mv"*cht.sh -> cht.sh" pick"cht.sh"
-zinit snippet "https://cht.sh/:cht.sh"
+zinit wait as"program" sbin"*cht.sh -> cht.sh" for "https://cht.sh/:cht.sh"
 
 ################################################################################
 # zsh-autosuggestions completion Keybinding
