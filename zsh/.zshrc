@@ -1,132 +1,210 @@
-source ~/.dotfiles/zsh/enhancd/./init.sh
+#!/bin/zsh
 
-# Path to your oh-my-zsh installation.
-export ZSH=/home/dileep/.oh-my-zsh
+# Shell exports aliases and functions
 
-# XDG_DATA_HOME
-export XDG_DATA_HOME="$HOME/.local/share"
+# Basic exports
+TERM=xterm-256color
+export EDITOR="nvim"
+export USE_EDITOR=$EDITOR
+export VISUAL=$EDITOR
+export BROWSER=brave
 
-# Set name of the theme to load.
-ZSH_THEME="powerlevel9k/powerlevel9k"
 
-source $ZSH/oh-my-zsh.sh
+# Set XDG directories.
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_BIN_HOME="${HOME}/.local/bin"
+export XDG_LIB_HOME="${HOME}/.local/lib"
+export XDG_CACHE_HOME="${HOME}/.cache"
 
-fpath=(/home/dileep/.dotfiles/zsh/completions/_hub $fpath)
-autoload -Uz compinit && compinit
 
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator time context dir vcs)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode load ram background_jobs)
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Defining icons
-POWERLEVEL9K_LINUX_MANJARO_ICON=$'\uf303 '
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf09b'
-POWERLEVEL9K_HOME_ICON=$'\uf7db'
-POWERLEVEL9K_FOLDER_ICON=''
-POWERLEVEL9K_PYTHON_ICON=$'\ue235'
+################################################################################
+# ZINIT INIT                                                                   #
+################################################################################
 
-# custom prompt plugins
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status os_icon root_indicator context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv anaconda background_jobs command_execution_time time vi_mode)
-POWERLEVEL9K_VI_INSERT_MODE_STRING="Ins"
-POWERLEVEL9K_VI_COMMAND_MODE_STRING="Nor"
-POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR=$'\ue0b1'
-POWERLEVEL9K_DIR_PATH_SEPARATOR=$'\ue0b1 '
-POWERLEVEL9K_DIR_SHOW_WRITABLE=true
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\ue0d2'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\ue0d4'
-# POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{50}%}\u250f"
-# local user_symbol="$"
-# if [[ $(print -P "%#") =~ "#" ]]; then
-# 	user_symbol = "#"
-# fi
-# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517\ue0b0%{%F{default}%}"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%F{050}%}\u2517%{%F{003}%}%{%F{001}%} "
-POWERLEVEL9K_STATUS_VERBOSE=false
-export DEFAULT_USER="$USER"
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+### End of Zinit's installer chunk
+
+################################################################################
+# PROMPT                                                                       #
+################################################################################
+
+# Theme the prompt with Powerlevel10k
+zinit ice depth"1"
+zinit light romkatv/powerlevel10k
+
+
+################################################################################
+# OMZ Libs and Plugins                                                         #
+################################################################################
+# NOTE:
+# Ohmyzsh plugins and libs are loaded first as some these sets some defaults which are required later on.
+# Otherwise something will look messed up
+# ie. some settings help zsh-autosuggestions to clear after tab completion
+setopt promptsubst
+
+zinit lucid for \
+    OMZP::tmux \
+    OMZL::history.zsh
+
+# Git
+# Source: https://zdharma.org/zinit/wiki/Example-Oh-My-Zsh-setup/
+zinit wait lucid for \
+    OMZL::git.zsh \
+    OMZP::git
+
+# important libraries
+zinit wait lucid for \
+    OMZL::clipboard.zsh \
+    OMZL::compfix.zsh \
+    OMZL::completion.zsh \
+    OMZL::correction.zsh \
+    atload"
+        alias ..='cd ..'
+        alias ...='cd ../..'
+        alias ....='cd ../../..'
+        alias .....='cd ../../../..'
+    " \
+    OMZL::directories.zsh \
+    OMZL::key-bindings.zsh \
+    OMZL::spectrum.zsh
+
+# important plugins
+zinit wait lucid for \
+    OMZP::asdf \
+    OMZP::archlinux \
+    OMZP::colored-man-pages \
+    OMZP::copydir \
+    OMZP::direnv \
+    OMZP::extract \
+    OMZP::npm \
+    OMZP::pipenv \
+    OMZP::pyenv \
+    OMZP::python \
+    OMZP::git-extras \
+    OMZP::vi-mode \
+    OMZP::web-search
+
+################################################################################
+# PLUGINS                                                                      #
+################################################################################
+
+# Fast-syntax-highlighting & autosuggestions & completions
+# Source: zdharma/fast-syntax-highlighting
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
+    zdharma/fast-syntax-highlighting \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions \
+ blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions
+
+# Interactive `cd`
+zinit wait lucid for b4b4r07/enhancd
+
+# forgit
+zinit wait"2" lucid for wfxr/forgit
+
+# fast alias-tips
+zinit wait lucid from"gh-r" as"program" for sei40kr/fast-alias-tips-bin
+zinit wait lucid for sei40kr/zsh-fast-alias-tips
+
+# Automatically switch virtualenvs in pipenv and poetry projects
+zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
+
+################################################################################
+# PROGRAMS                                                                     #
+################################################################################
+
+# Automatically load env variables based on directory
+# Source: https://zdharma.org/zinit/wiki/Direnv-explanation/
+zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+    atpull'%atclone' pick"direnv" src"zhook.zsh" for \
+        direnv/direnv
+
+# LS_COLORS
+zinit pack for ls_colors
+
+# fzf and fzy
+zplugin pack"default+keys" for fzf
+zplugin pack=bgn atclone="cp fzy.1 $ZPFX/man/man1" for fzy
+
+# TODO: Add autocompletions for the following
+# fd, bat and exa
+# Source: https://zdharma.org/zinit/wiki/GALLERY/
+zinit wait"1" lucid from"gh-r" as"null" for \
+     sbin"**/fd"        @sharkdp/fd \
+     sbin"**/bat"       @sharkdp/bat \
+     sbin"exa* -> exa"  ogham/exa \
+     sbin"noti"         variadico/noti
+
+# lsd
+zinit wait lucid from"gh-r" as"null" for \
+    sbin"**/lsd"        Peltoche/lsd
+
+# zoxide and delta
+zinit wait lucid from"gh-r" as"null" for \
+    sbin"**/delta"          dandavison/delta \
+    sbin"zoxide* -> zoxide" ajeetdsouza/zoxide
+
+# ripgrep
+zinit wait lucid from"gh-r" as"null" for \
+    sbin"**/rg"         BurntSushi/ripgrep
+
+# yank
+zinit ice as"program" wait lucid pick"yank" make
+zinit light mptre/yank
+
+# Useful git programs
+# Source: https://zdharma.org/zinit/wiki/For-Syntax/
+zinit as"null" wait"3" lucid for \
+    sbin  Fakerr/git-recall \
+    sbin  paulirish/git-open \
+    sbin  paulirish/git-recent \
+    sbin  davidosomething/git-my \
+    sbin  arzzen/git-quick-stats \
+    make"PREFIX=$ZPFX" tj/git-extras
+
+# TODO: Cheatsheats from the cli
+zinit ice as"program" mv"*cht.sh -> cht.sh" pick"cht.sh"
+zinit snippet "https://cht.sh/:cht.sh"
+
+################################################################################
+# fzf config
 export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+# TODO: Keybinding for backwards search
+
+# TODO: enhancd config
 ENHANCD_FILTER=fzy:fzf
 export ENHANCD_FILTER
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(k git archlinux python vi-mode zsh-autosuggestions colorize tmux extract virtualenvwrapper copydir dirhistory alias-tips git-extra-commands git-extras npm sudo yarn web-search poetry)
-
-# User configuration
-
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-
-# Example functions
+# Functions
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
 tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
 gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
@@ -161,23 +239,16 @@ export PYENV_ROOT="$HOME/.pyenv"
 # poetry
 export PATH="/home/dileep/.poetry/bin:$PATH"
 
-# Todosh
-export TODOTXT_DEFAULT_ACTION=ls
-
 # default git pager
 export GIT_PAGER='delta'
 
 # Example aliases
-alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc"
 alias youtube="youtube-viewer"
-alias vimrc="nvim ~/.dotfiles/vim/init.vim"
-alias i3config="cd ~/.dotfiles/i3/"
-alias tmuxconf="nvim ~/.dotfiles/tmux/.tmux.conf"
-alias tnew="tmux new -s"
-alias tattach="tmux attach"
-alias tdetach="tmux detach"
-alias tkill="tmux kill-session -t"
-alias tlist="tmux ls"
+# alias tnew="tmux new -s"
+# alias tattach="tmux attach"
+# alias tdetach="tmux detach"
+# alias tkill="tmux kill-session -t"
+# alias tlist="tmux ls"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
@@ -191,28 +262,17 @@ alias ls="lsd --color always --icon always"
 alias lt="lsd --tree --color always --icon always"
 alias la="lsd -la --color always --icon always"
 alias lsa="lsd -lah --color always --icon always"
-# k aliases
-alias k="k -h"
 # fd aliases
 alias find="fd"
-# todo alias
-alias todo="todo.sh -d ~/.config/todo.cfg"
-alias git="hub"
 alias howdoi="howdoi -c -n 5"
 alias ping="~/.dotfiles/zsh/prettyping.sh"
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
-alias noti="~/.dotfiles/zsh/noti"
 # devour aliases
 alias vlc="devour vlc"
 alias mpv="devour mpv"
 alias zathura="devour zathura"
 alias has="curl -sL https://git.io/_has | bash -s"
-
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Making tmux use proper colors
-#[[ $TMUX = "" ]] && export TERM="xterm-256color"
 
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
@@ -224,28 +284,10 @@ setopt interactivecomments
 # Zsh has a spelling corrector
 setopt CORRECT
 
-# make sure that if a program wants you to edit
-# text, that Vim is going to be there for you
-TERM=xterm-256color
-export EDITOR="nvim"
-export USE_EDITOR=$EDITOR
-export VISUAL=$EDITOR
-export BROWSER=brave
-
 # Anaconda path
 # export PATH="/home/dileep/anaconda3/bin:$PATH"
 alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. /etc/profile.d/vte.sh
-
-# Zoxide config
-eval "$(zoxide init zsh)"
-
-eval "$(pyenv init -)"
-
-# added by travis gem
-[ -f /home/dileep/.travis/travis.sh ] && source /home/dileep/.travis/travis.sh
 #compdef toggl
 _toggl() {
   eval $(env COMMANDLINE="${words[1,$CURRENT]}" _TOGGL_COMPLETE=complete-zsh  toggl)
@@ -253,3 +295,16 @@ _toggl() {
 if [[ "$(basename -- ${(%):-%x})" != "_toggl" ]]; then
   compdef _toggl toggl
 fi
+
+
+# Zoxide config
+eval "$(zoxide init zsh)"
+
+# Pyenv config
+eval "$(pyenv init -)"
+
+# added by travis gem
+[ -f /home/dileep/.travis/travis.sh ] && source /home/dileep/.travis/travis.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
