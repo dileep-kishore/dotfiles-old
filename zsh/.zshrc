@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Shell exports aliases and functions
+# Shell important exports
 
 # Basic exports
 TERM=xterm-256color
@@ -80,13 +80,11 @@ zinit wait lucid for \
     OMZP::git
 
 # important libraries
-zinit wait lucid for \
+zinit lucid for \
     OMZL::clipboard.zsh \
     OMZL::compfix.zsh \
-    OMZL::completion.zsh \
-    OMZL::correction.zsh \
-    OMZL::key-bindings.zsh \
-    OMZL::spectrum.zsh
+    OMZL::spectrum.zsh \
+    atload"" OMZP::fzf
 
 # important plugins
 zinit wait lucid for \
@@ -102,6 +100,7 @@ zinit wait lucid for \
     OMZP::python \
     OMZP::git-extras \
     OMZP::vi-mode \
+    OMZP::virtualenvwrapper \
     OMZP::web-search
 
 ################################################################################
@@ -113,7 +112,7 @@ zinit wait lucid for \
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
     zdharma/fast-syntax-highlighting \
- atload"!_zsh_autosuggest_start" \
+ atload"_zsh_autosuggest_start; bindkey '^ ' autosuggest-accept" \
     zsh-users/zsh-autosuggestions \
  blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions
@@ -129,7 +128,7 @@ zinit wait lucid from"gh-r" as"program" for sei40kr/fast-alias-tips-bin
 zinit wait lucid for sei40kr/zsh-fast-alias-tips
 
 # Automatically switch virtualenvs in pipenv and poetry projects
-zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
+zinit wait"2" lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 ################################################################################
 # PROGRAMS                                                                     #
@@ -142,29 +141,34 @@ zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
         direnv/direnv
 
 # LS_COLORS
-zinit pack for ls_colors
+zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
+    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+zinit light trapd00r/LS_COLORS
 
-# fzf and fzy
-zplugin pack"default+keys" for fzf
-zplugin pack=bgn atclone="cp fzy.1 $ZPFX/man/man1" for fzy
+# NOTE: fzf program and completions installed using AUR
 
-# TODO: Add autocompletions for the following
 # fd, bat and exa
 # Source: https://zdharma.org/zinit/wiki/GALLERY/
-zinit wait"1" lucid from"gh-r" as"null" for \
+zinit wait"2" lucid from"gh-r" as"null" for \
      sbin"**/fd"        @sharkdp/fd \
      sbin"**/bat"       @sharkdp/bat \
      sbin"exa* -> exa"  ogham/exa \
      sbin"noti"         variadico/noti
 
+zinit wait lucid as"completion" for \
+    https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd \
+    https://raw.githubusercontent.com/BurntSushi/ripgrep/master/complete/_rg \
+    https://github.com/ogham/exa/blob/master/completions/completions.zsh
+
 # lsd
 zinit wait lucid from"gh-r" as"null" for \
-    sbin"**/lsd"        Peltoche/lsd
+    sbin"**/lsd"        Peltoche/lsd \
+    sbin"zoxide* -> zoxide" ajeetdsouza/zoxide
 
 # zoxide and delta
-zinit wait lucid from"gh-r" as"null" for \
-    sbin"**/delta"          dandavison/delta \
-    sbin"zoxide* -> zoxide" ajeetdsouza/zoxide
+zinit wait"2" lucid from"gh-r" as"null" for \
+    sbin"**/delta"          dandavison/delta
 
 # ripgrep
 zinit wait lucid from"gh-r" as"null" for \
@@ -176,7 +180,7 @@ zinit light mptre/yank
 
 # Useful git programs
 # Source: https://zdharma.org/zinit/wiki/For-Syntax/
-zinit as"null" wait"3" lucid for \
+zinit as"null" wait"2" lucid for \
     sbin  Fakerr/git-recall \
     sbin  paulirish/git-open \
     sbin  paulirish/git-recent \
@@ -184,21 +188,12 @@ zinit as"null" wait"3" lucid for \
     sbin  arzzen/git-quick-stats \
     make"PREFIX=$ZPFX" tj/git-extras
 
-zinit wait as"program" sbin"*cht.sh -> cht.sh" for "https://cht.sh/:cht.sh"
+zinit wait"1" as"program" lucid sbin"*cht.sh -> cht.sh" for "https://cht.sh/:cht.sh"
 
 ################################################################################
-# zsh-autosuggestions completion Keybinding
-bindkey '^ ' autosuggest-accept
+# FUNCTIONS                                                                   #
+################################################################################
 
-# fzf config
-export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-# TODO: Keybinding for backwards search
-
-# TODO: enhancd config
-ENHANCD_FILTER=fzy:fzf
-export ENHANCD_FILTER
-
-# Functions
 showcsv() { column -s, -t < "$1" | less -#2 -N -S; }
 tohardlink() { ln -f "$(readlink -m "$1")" "$1"; }
 gitrecadd() { git ls-files "$1" | grep "$2" | xargs git add }
@@ -217,6 +212,19 @@ man() {
       man "$@"
 }
 
+
+################################################################################
+# SOURCE, EXPORTS and ALIASES                                                  #
+################################################################################
+
+# fzf config
+export FZF_BASE="$HOME/.fzf"
+# bindkey '^R' fzf-history-widget
+# bindkey '^T' fzf-completion
+# bindkey '^I' $fzf_default_completion
+export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
+
 # Gurobi envs
 export TERMINFO="/usr/lib/terminfo"
 export GUROBI_HOME="/opt/gurobi752/linux64"
@@ -232,17 +240,16 @@ export PATH="/home/dileep/.gem/ruby/2.5.0/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 # poetry
 export PATH="/home/dileep/.poetry/bin:$PATH"
-
 # default git pager
 export GIT_PAGER='delta'
 
 # Example aliases
 alias youtube="youtube-viewer"
-# alias tnew="tmux new -s"
-# alias tattach="tmux attach"
-# alias tdetach="tmux detach"
-# alias tkill="tmux kill-session -t"
-# alias tlist="tmux ls"
+alias tnew="tmux new -s"
+alias tattach="tmux attach"
+alias tdetach="tmux detach"
+alias tkill="tmux kill-session -t"
+alias tlist="tmux ls"
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 alias tdrophide="bash ~/.dotfiles/i3/tdrophide.sh"
 alias seagate="cd /run/media/dileep/Seagate\ Expansion\ Drive/"
@@ -250,7 +257,6 @@ alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cre
 # lsd aliases
 alias l="lsd -lt --color always --icon always"
 alias ll="lsd -lhAt --color always --icon always"
-# Use k instead of lg
 alias lg="exa -lag -s modified --git --color-scale"
 alias ls="lsd --color always --icon always"
 alias lt="lsd --tree --color always --icon always"
@@ -267,6 +273,8 @@ alias vlc="devour vlc"
 alias mpv="devour mpv"
 alias zathura="devour zathura"
 alias has="curl -sL https://git.io/_has | bash -s"
+# Anaconda path alias
+alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
 
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
@@ -278,27 +286,16 @@ setopt interactivecomments
 # Zsh has a spelling corrector
 setopt CORRECT
 
-# Anaconda path
-# export PATH="/home/dileep/anaconda3/bin:$PATH"
-alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
-
-#compdef toggl
-_toggl() {
-  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _TOGGL_COMPLETE=complete-zsh  toggl)
-}
-if [[ "$(basename -- ${(%):-%x})" != "_toggl" ]]; then
-  compdef _toggl toggl
-fi
-
-
-# Zoxide config
-eval "$(zoxide init zsh)"
-
 # Pyenv config
 eval "$(pyenv init -)"
 
 # added by travis gem
 [ -f /home/dileep/.travis/travis.sh ] && source /home/dileep/.travis/travis.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Zoxide config
+eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
