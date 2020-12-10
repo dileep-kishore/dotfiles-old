@@ -189,7 +189,7 @@ cursor:
 #
 bell:
   animation: EaseOutExpo
-  duration: 5
+  duration: 0
 
 # Key bindings
 #
