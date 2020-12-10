@@ -196,6 +196,9 @@ zinit ice as"program" mv"*cht.sh -> cht.sh" pick"cht.sh"
 zinit snippet "https://cht.sh/:cht.sh"
 
 ################################################################################
+# zsh-autosuggestions completion Keybinding
+bindkey '^ ' autosuggest-accept
+
 # fzf config
 export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 # TODO: Keybinding for backwards search
