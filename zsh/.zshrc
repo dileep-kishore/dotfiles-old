@@ -69,9 +69,8 @@ zinit light romkatv/powerlevel10k
 # ie. some settings help zsh-autosuggestions to clear after tab completion
 setopt promptsubst
 
-zinit lucid for \
-    OMZP::tmux \
-    OMZL::history.zsh
+zinit lucid svn for \
+    OMZP::tmux
 
 # Git
 # Source: https://zdharma.org/zinit/wiki/Example-Oh-My-Zsh-setup/
@@ -83,6 +82,7 @@ zinit wait lucid for \
 zinit lucid for \
     OMZL::clipboard.zsh \
     OMZL::compfix.zsh \
+    OMZL::history.zsh \
     OMZL::spectrum.zsh
 
 # important plugins
