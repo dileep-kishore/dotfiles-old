@@ -83,8 +83,7 @@ zinit wait lucid for \
 zinit lucid for \
     OMZL::clipboard.zsh \
     OMZL::compfix.zsh \
-    OMZL::spectrum.zsh \
-    atload"" OMZP::fzf
+    OMZL::spectrum.zsh
 
 # important plugins
 zinit wait lucid for \
@@ -102,6 +101,8 @@ zinit wait lucid for \
     OMZP::vi-mode \
     OMZP::virtualenvwrapper \
     OMZP::web-search
+
+zinit wait"2" lucid atload"bindkey '^R' fzf-history-widget" for OMZP::fzf
 
 ################################################################################
 # PLUGINS                                                                      #
@@ -219,9 +220,6 @@ man() {
 
 # fzf config
 export FZF_BASE="$HOME/.fzf"
-# bindkey '^R' fzf-history-widget
-# bindkey '^T' fzf-completion
-# bindkey '^I' $fzf_default_completion
 export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 
