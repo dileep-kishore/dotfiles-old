@@ -85,13 +85,6 @@ zinit wait lucid for \
     OMZL::compfix.zsh \
     OMZL::completion.zsh \
     OMZL::correction.zsh \
-    atload"
-        alias ..='cd ..'
-        alias ...='cd ../..'
-        alias ....='cd ../../..'
-        alias .....='cd ../../../..'
-    " \
-    OMZL::directories.zsh \
     OMZL::key-bindings.zsh \
     OMZL::spectrum.zsh
 
