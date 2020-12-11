@@ -654,8 +654,8 @@ let g:tex_flavor = 'latex'
 let g:vimtex_compiler_progname = 'nvr'
 call deoplete#custom#var('omni', 'input_patterns', {'tex': g:vimtex#re#deoplete})
 let g:vimtex_fold_enabled = 1
-" disable LaTeX-Box included in `vim-polyglot`
-let g:polyglot_disabled = ['latex']
+" " disable LaTeX-Box included in `vim-polyglot`
+" let g:polyglot_disabled = ['latex']
 
 " Julia-vim configuration
 let g:default_julia_version = '1.0.1'
