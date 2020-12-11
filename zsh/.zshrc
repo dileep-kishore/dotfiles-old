@@ -141,7 +141,7 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zinit light trapd00r/LS_COLORS
 
-# NOTE: fzf program and completions installed using AUR
+# NOTE: fzf, bindings and completions installed manually using git
 
 # fd, bat and exa
 # Source: https://zdharma.org/zinit/wiki/GALLERY/
@@ -236,6 +236,11 @@ export PATH="/home/dileep/.poetry/bin:$PATH"
 export GIT_PAGER='delta'
 
 # Example aliases
+
+# super user alias
+alias _="sudo "
+# clear alias
+alias clear="clear -x"
 alias youtube="youtube-viewer"
 alias tnew="tmux new -s"
 alias tattach="tmux attach"
