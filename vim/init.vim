@@ -44,6 +44,7 @@ Plug 'sheerun/vim-polyglot'               " Multiple language syntax support
 Plug 'michaeljsmith/vim-indent-object'    " Defines indent as text object
 Plug 'mattn/emmet-vim'                    " Emmet support for vim
 Plug 'justinmk/vim-sneak'                 " Sneak for vim
+Plug 'unblevable/quick-scope'             " Highlight text navigation
 Plug 'tpope/vim-rhubarb'                  " Remote source control support
 Plug 'tpope/vim-dispatch'                 " Async builder
 Plug 'janko-m/vim-test'                   " Makes testing easier
@@ -608,12 +609,6 @@ nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
 
-" Vim-sneak configuration
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
-
 " Vim-markdown configuration
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
@@ -723,3 +718,9 @@ let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
 " Link CursorLine into RnvimrNormal highlight in the Floating window
 highlight link RnvimrNormal CursorLine
 nnoremap <silent> <M-o> :RnvimrToggle<CR>
+
+" quick-scope configuration
+let g:qs_max_chars=120
+let g:qs_buftype_blacklist = ['terminal', 'nofile']
+let g:qs_lazy_highlight = 1
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
