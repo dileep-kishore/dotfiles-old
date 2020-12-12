@@ -7,7 +7,7 @@ Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
 Plug 'tpope/vim-abolish'                  " Makes working with variants of a word easier
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fzf plugin
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " fzf plugin
 Plug 'junegunn/fzf.vim'                   " fzf buffer
 Plug 'bling/vim-airline'                  " Vim status bar
 Plug 'tpope/vim-commentary'               " Key bindings for commenting
