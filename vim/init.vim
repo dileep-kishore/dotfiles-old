@@ -1,7 +1,5 @@
 " Managing plugins using vim-plug
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File browser
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' } " Highlighting for NERDTree
 Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'w0rp/ale'                           " Async linting engine
@@ -288,13 +286,6 @@ nnoremap <Leader>fl :Lines<CR>
 nnoremap <Leader>fs :Ag<CR>
 " Search marks
 nnoremap <Leader>fm :Marks<CR>
-
-" Automatically start nerdtree
-"autocmd vimenter * NERDTree
-" Automatically close NERDTree if it's the last window there
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeHijackNetrw = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
 " Enabling Hardmode
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
