@@ -204,6 +204,7 @@ man() {
       LESS_TERMCAP_us=$(printf "\e[1;36m") \
       man "$@"
 }
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 
 ################################################################################
