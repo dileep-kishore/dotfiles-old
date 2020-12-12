@@ -12,7 +12,6 @@ Plug 'bling/vim-airline'                  " Vim status bar
 Plug 'tpope/vim-commentary'               " Key bindings for commenting
 Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
-Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conqueror of Completion
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
@@ -745,13 +744,6 @@ nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
 
 " Latex configuration
 let g:tex_flavor = 'latex'
-
-" gitgutter configuration
-let g:gitgutter_sign_added              = "\uf067"
-let g:gitgutter_sign_removed           = "\uf068"
-let g:gitgutter_sign_modified            = "\ufc23"
-let g:gitgutter_sign_removed_first_line = "\uf068"
-let g:gitgutter_sign_modified_removed   = "\uf876"
 
 " Ferret setup
 let g:FerretMap = 0
