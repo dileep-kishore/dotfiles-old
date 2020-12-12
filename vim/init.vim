@@ -13,6 +13,7 @@ Plug 'tpope/vim-commentary'               " Key bindings for commenting
 Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conqueror of Completion
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}  " fzf window for CoC
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
@@ -33,7 +34,6 @@ Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
 Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
 Plug 'luochen1990/rainbow'                " Rainbow paranthesis
-Plug 'SirVer/ultisnips'                   " Plugin for snippets
 Plug 'honza/vim-snippets'                 " More snippets
 Plug 'sickill/vim-pasta'                  " Paste preserves indentation
 Plug 'mhinz/vim-startify'                 " Show start-page when you open nvim
@@ -188,6 +188,13 @@ function! AirlineLN()
     let g:airline_section_z = airline#section#create(['obsession', '%3p%% ', g:airline_symbols.linenr, 'linenr', ':%c'])
 endfunction
 autocmd VimEnter * call AirlineLN()
+" coc
+let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = 'E:'
+let airline#extensions#coc#warning_symbol = 'W:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+" obsession
 let g:airline#extensions#obsession#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#default#layout = [
@@ -352,17 +359,21 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" " Mappings for CoCList NOTE: Leaving these commented for now
-" " Show all diagnostics.
-" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions.
-" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands.
-" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document.
-" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" " Search workspace symbols.
-" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Mappings for CoCList
+" Main list
+nnoremap <silent><nowait> <space>ca  :<C-u>CocFzfList<cr>
+" Show diagnostics for current file
+nnoremap <silent><nowait> <space>cd  :<C-u>CocFzfList diagnostics --current-buf<cr>
+" Manage extensions
+nnoremap <silent><nowait> <space>ce  :<C-u>CocFzfList extensions<cr>
+" Show commands
+nnoremap <silent><nowait> <space>cc  :<C-u>CocFzfList commands<cr>
+" Show location
+nnoremap <silent><nowait> <space>cl  :<C-u>CocFzfList location<cr>
+" Find symbol of current document
+nnoremap <silent><nowait> <space>co  :<C-u>CocFzfList outline<cr>
+" Search workspace symbols
+nnoremap <silent><nowait> <space>cs  :<C-u>CocFzfList symbols<cr>
 " " Do default action for next item.
 " nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " " Do default action for previous item.
@@ -370,42 +381,59 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " " Resume latest coc list.
 " nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" List of extensions to install
+let g:coc_global_extensions = [
+    \ 'coc-json',
+    \ 'coc-tsserver',
+    \ 'coc-eslint',
+    \ 'coc-sh',
+    \ 'coc-clangd',
+    \ 'coc-css',
+    \ 'coc-html',
+    \ 'coc-julia',
+    \ 'coc-texlab',
+    \ 'coc-pyright',
+    \ 'coc-r-lsp',
+    \ 'coc-rust-analyzer',
+    \ 'coc-vimlsp',
+    \ 'coc-prettier',
+    \ 'coc-yaml',
+    \ 'coc-markdownlint',
+    \ 'coc-explorer',
+    \ 'coc-yank',
+    \ 'coc-marketplace',
+    \ 'coc-highlight',
+    \ 'coc-tasks',
+    \ 'coc-git',
+    \ 'coc-snippets',
+  \ ]
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" virtual environment setting for deoplete-jedi
-let g:python_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/usr/bin/python3'
-
-" TODO: FIXME: Delete deoplete, ale and LanguageClient configurations
-
-"" Deoplete config
-" smart_case
-" LanguageClient
-" Ultisnippets
-" github
-" c/cpp
-" rust
-" javascript
-" julia
+" Languages that use language server config directly in coc-settings.json
+" docker
 " haskell
-" python/jedi
-" vim
 
-"" LanguageClient config
-" diagnostics
-" rustup
-" js/jsx/typescript
-" pyls
-" julia
+" coc-prettier config
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-"" ale config
-" format on save
-" error in gutter
-" airline support
-" linters: eslint, styllint, pylint, mypy, flake8
-" fixers: prettier, eslint, black
+" coc-explorer config
+nmap <leader>\ :CocCommand explorer<CR>
+let g:indent_guides_exclude_filetypes = ['coc-explorer']
 
-" Git gutter settings
+" coc-yank config
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<CR>
+
+" coc-git config
+" navigate chunks of current buffer
+nmap [c <Plug>(coc-git-prevchunk)
+nmap ]c <Plug>(coc-git-nextchunk)
+" preview a chunk
+nnoremap <silent> <leader>hp :<C-u>CocCommand git.chunkInfo<CR>
+" stage a chunk
+nnoremap <silent> <leader>hs :<C-u>CocCommand git.chunkStage<CR>
+" undo a chunk
+nnoremap <silent> <leader>hu :<C-u>CocCommand git.chunkUndo<CR>
+
+" Gutter and diagnostics settings
 set updatetime=200
 
 " fzf settings
@@ -520,15 +548,6 @@ set t_ZR=[23m
 
 " Rainbow parentheses
 let g:rainbow_active = 1
-
-" Ultisnippet settings
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger='<C-j>'
-let g:UltiSnipsJumpBackwardTrigger='<C-k>'
-let g:UltiSnipsSnippetsDir = "~/.config/nvim/custom_snippets"
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'custom_snippets']
-let g:UltiSnipsUsePythonVersion = 3
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Narrow ag results in vim using fzf
 function! s:ag_to_qf(line)
