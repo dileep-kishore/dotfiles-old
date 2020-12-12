@@ -1,4 +1,6 @@
-" Managing plugins using vim-plug
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Managing plugins using vim-plug                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'junegunn/gv.vim'                    " A git commit browser
@@ -42,7 +44,8 @@ Plug 'mattn/emmet-vim'                    " Emmet support for vim
 Plug 'justinmk/vim-sneak'                 " Sneak for vim
 Plug 'unblevable/quick-scope'             " Highlight text navigation
 Plug 'tpope/vim-rhubarb'                  " Remote source control support
-Plug 'tpope/vim-dispatch'                 " Async builder
+Plug 'skywind3000/asynctasks.vim'         " Modern task system
+Plug 'skywind3000/asyncrun.vim'           " Run commands asynchronously
 Plug 'janko-m/vim-test'                   " Makes testing easier
 Plug 'Wakatime/vim-wakatime'              " Wakatime
 Plug 'edkolev/tmuxline.vim'               " Tmux line sync with airline
@@ -65,7 +68,9 @@ Plug 'kevinhwang91/rnvimr'                " Show ranger in a floating window
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Allows nvim to edit browser text areas
 Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 
-" Themes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Themes                                                                       "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'srcery-colors/srcery-vim'
 Plug 'sainnhe/edge'
 Plug 'tyrannicaltoucan/vim-deep-space'
@@ -86,6 +91,11 @@ call plug#end()
 " virtual environment setting for deoplete-jedi
 let g:python_host_prog = '/usr/bin/python3'
 let g:python3_host_prog = '/usr/bin/python3'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AsyncRun config                                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:asyncrun_open = 6
 
 
 set encoding=utf-8
@@ -631,8 +641,8 @@ nmap <silent> t<C-f> :TestFile<CR>    " t Ctrl+f
 nmap <silent> t<C-s> :TestSuite<CR>   " t Ctrl+s
 nmap <silent> t<C-l> :TestLast<CR>    " t Ctrl+l
 nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
-" make test commands execute using dispatch.vim
-let test#strategy = "dispatch"
+" make test commands execute using AsyncRun.vim
+let test#strategy = "asyncrun"
 " test to be used for python
 let test#python#runner = 'pytest'
 
