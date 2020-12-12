@@ -781,7 +781,7 @@ let g:firenvim_config = {
 if exists('g:started_by_firenvim')
     set termguicolors
     set guifont=VictorMono_Nerd_Font:h11
-    set background=light
+    set background=dark
     colorscheme NeoSolarized
     highlight Comment cterm=italic
     highlight Comment gui=italic
