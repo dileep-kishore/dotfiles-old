@@ -56,7 +56,6 @@ Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
 Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'kshenoy/vim-signature'              " Plugin to display marks
-Plug 'JuliaEditorSupport/julia-vim'       " Julia support for vim
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
@@ -736,9 +735,6 @@ nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
 
 " Latex configuration
 let g:tex_flavor = 'latex'
-
-" Julia-vim configuration
-let g:default_julia_version = '1.0.1'
 
 " gitgutter configuration
 let g:gitgutter_sign_added              = "\uf067"
