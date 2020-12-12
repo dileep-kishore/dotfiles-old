@@ -9,7 +9,6 @@ export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export BROWSER=brave
 
-
 # Set XDG directories.
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
@@ -84,7 +83,6 @@ zinit lucid for OMZP::vi-mode
 zinit wait lucid for \
     OMZP::asdf \
     OMZP::archlinux \
-    OMZP::colored-man-pages \
     OMZP::copydir \
     OMZP::direnv \
     OMZP::extract \
