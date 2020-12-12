@@ -2,7 +2,6 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'junegunn/gv.vim'                    " A git commit browser
-Plug 'w0rp/ale'                           " Async linting engine
 Plug 'tpope/vim-surround'                 " Surround text objects
 Plug 'tpope/vim-abolish'                  " Makes working with variants of a word easier
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " fzf plugin
@@ -12,8 +11,7 @@ Plug 'tpope/vim-commentary'               " Key bindings for commenting
 Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'airblade/vim-gitgutter'             " Git diffs in gutter
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autcompletion
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' } " autocompletion for python
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conqueror of Completion
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
@@ -58,7 +56,6 @@ Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
 Plug 'wesQ3/vim-windowswap'               " Swap two windows easily
 Plug 'wincent/loupe'                      " Enhances vim's `search-commands`
 Plug 'kshenoy/vim-signature'              " Plugin to display marks
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Language client support
 Plug 'JuliaEditorSupport/julia-vim'       " Julia support for vim
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
@@ -202,57 +199,192 @@ let g:airline_mode_map = {
     \ '' : 'V',
     \ }
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('smart_case', v:true)
-call deoplete#custom#var('file', 'enable_buffer_path', 1)
-" Let TAB also do autocompletion
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" set sources
-call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-call deoplete#custom#option('sources', {
-    \ 'gitcommit': ['github'],
-    \ 'cpp': ['LanguageClient'],
-    \ 'rust': ['LanguageClient'],
-    \ 'c': ['LanguageClient'],
-    \ 'javascript': ['LanguageClient'],
-    \ 'julia': ['around', 'buffer', 'file', 'utlisnips', 'LanguageClient'],
-    \ 'vim': ['around', 'buffer', 'member', 'file', 'ultisnips'],
-    \ })
-" deoplete close preview on completion
-autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
-" deoplete-jedi configurations
-let g:deoplete#sources#jedi#server_timeout = 20
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#enable_cache = 1
-let g:deoplete#sources#jedi#worker_threads = 2
-" virtual environment setting for deoplete-jedi
-let g:python_host_prog = '/usr/bin/python3'
-let g:python3_host_prog = '/usr/bin/python3'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CoC configuration                                                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Update time already set by git-gutter
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>=  <Plug>(coc-format-selected)
+nmap <leader>=  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" " Mappings for CoCList NOTE: Leaving these commented for now
+" " Show all diagnostics.
+" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" " Manage extensions.
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" " Show commands.
+" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" " Find symbol of current document.
+" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" " Search workspace symbols.
+" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" " Do default action for next item.
+" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" " Do default action for previous item.
+" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" " Resume latest coc list.
+" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
-" ale settings
-let g:ale_fix_on_save = 1
-let g:ale_sign_info = "\uf05a"
-let g:ale_sign_error = "\uf467"
-let g:ale_sign_warning = "\uf071"
-let g:ale_sign_style_error = "\ue009"
-let g:ale_sign_style_warning = "⚑"
-let g:airline#extensions#ale#enabled = 1
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'jsx': ['stylelint', 'eslint'],
-\   'python': ['pylint', 'mypy', 'flake8'],
-\}
-let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
-\   'python': ['black'],
-\}
-let g:ale_linter_aliases = {'jsx': 'css'}
-let g:ale_python_mypy_options = '--ignore-missing-imports'
-let g:airline#extensions#ale#error_symbol = "\uf467 "
-let g:airline#extensions#ale#warning_symbol = "\uf071 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TODO: FIXME: Delete deoplete, ale and LanguageClient configurations
+
+"" Deoplete config
+" smart_case
+" LanguageClient
+" Ultisnippets
+" github
+" c/cpp
+" rust
+" javascript
+" julia
+" haskell
+" python/jedi
+" vim
+
+"" LanguageClient config
+" diagnostics
+" rustup
+" js/jsx/typescript
+" pyls
+" julia
+
+"" ale config
+" format on save
+" error in gutter
+" airline support
+" linters: eslint, styllint, pylint, mypy, flake8
+" fixers: prettier, eslint, black
 
 " Git gutter settings
 set updatetime=200
@@ -474,30 +606,6 @@ let g:grepper.next_tool     = '<leader>g'
 let g:grepper.simple_prompt = 0
 let g:grepper.quickfix      = 0
 
-" LanguageClient Configuration
-" Required for operations modifying multiple buffers like rename.
-let g:LanguageClient_autoStart = 1
-set hidden
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['pyls'],
-    \ 'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
-    \       using LanguageServer;
-    \       server = LanguageServer.LanguageServerInstance(stdin, stdout, false);
-    \       server.runlinter = true;
-    \       run(server);
-    \   '],
-    \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
 " Git fugitive configuration
 
 nnoremap <leader>gc :Gcommit --verbose<CR>
@@ -616,9 +724,9 @@ let g:windowswap_map_keys = 0
 nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
 
 " Vimtex configuration
+" TODO: Update config
 let g:tex_flavor = 'latex'
 let g:vimtex_compiler_progname = 'nvr'
-call deoplete#custom#var('omni', 'input_patterns', {'tex': g:vimtex#re#deoplete})
 let g:vimtex_fold_enabled = 1
 " " disable LaTeX-Box included in `vim-polyglot`
 " let g:polyglot_disabled = ['latex']
