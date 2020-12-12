@@ -67,6 +67,8 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' } " Notes plugin for vim
 Plug 'lervag/vimtex',                     " Latex support
 Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
 Plug 'ryanoasis/vim-devicons'             " Icon support
+Plug 'bryanmylee/vim-colorscheme-icons'   " Colors for icons
+Plug 'kevinhwang91/rnvimr'                " Show ranger in a floating window
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Allows nvim to edit browser text areas
 Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 
@@ -706,3 +708,18 @@ if exists('g:started_by_firenvim')
     set expandtab
     au BufEnter github.com_*.txt set filetype=markdown
 endif
+
+" Rnvimr configuration
+" Make Ranger replace Netrw and be the file explorer
+let g:rnvimr_enable_ex = 1
+" Hide the files included in gitignore
+let g:rnvimr_hide_gitignore = 1
+" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
+let g:rnvimr_enable_bw = 1
+" Add a shadow window, value is equal to 100 will disable shadow
+let g:rnvimr_shadow_winblend = 70
+" Draw border with both
+let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+" Link CursorLine into RnvimrNormal highlight in the Floating window
+highlight link RnvimrNormal CursorLine
+nnoremap <silent> <M-o> :RnvimrToggle<CR>
