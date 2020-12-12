@@ -29,7 +29,6 @@ Plug 'wincent/ferret'                     " Enhanced multi-file search and repla
 Plug 'tmhedberg/SimpylFold'               " Better python code folding
 Plug 'terryma/vim-expand-region'          " Expand selected region
 Plug 'wellle/targets.vim'                 " Supports more text-objects
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " Markdown support for vim
 Plug 'junegunn/goyo.vim'                  " Distraction-free writing in vim
 Plug 'junegunn/limelight.vim'             " Hyperfocus-writing in vim
 Plug 'christoomey/vim-system-copy'        " Support system copy-paste (Install xsel)
@@ -744,10 +743,6 @@ nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 " Remove cursorline on inactive window
 autocmd WinEnter * set cursorline
 autocmd WinLeave * set nocursorline
-
-" Vim-markdown configuration
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
 
 " General conceal
 set conceallevel=2
