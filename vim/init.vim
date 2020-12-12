@@ -59,7 +59,6 @@ Plug 'kshenoy/vim-signature'              " Plugin to display marks
 Plug 'JuliaEditorSupport/julia-vim'       " Julia support for vim
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " Wrapper around multiple grep tools
 Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
-Plug 'lervag/vimtex',                     " Latex support
 Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
 Plug 'ryanoasis/vim-devicons'             " Icon support
 Plug 'bryanmylee/vim-colorscheme-icons'   " Colors for icons
@@ -735,13 +734,8 @@ let g:multi_cursor_exit_from_insert_mode = 0
 let g:windowswap_map_keys = 0
 nnoremap <silent> <Leader>yw :call WindowSwap#EasyWindowSwap()<CR>
 
-" Vimtex configuration
-" TODO: Update config
+" Latex configuration
 let g:tex_flavor = 'latex'
-let g:vimtex_compiler_progname = 'nvr'
-let g:vimtex_fold_enabled = 1
-" " disable LaTeX-Box included in `vim-polyglot`
-" let g:polyglot_disabled = ['latex']
 
 " Julia-vim configuration
 let g:default_julia_version = '1.0.1'
