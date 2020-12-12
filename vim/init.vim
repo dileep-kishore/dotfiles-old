@@ -123,7 +123,7 @@ let maplocalleader = "\<SPACE>"
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:→\
+set listchars=tab:→\ ,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 set list
 autocmd filetype html,xml set listchars-=tab:>.
 set pastetoggle=<F2>
@@ -535,7 +535,7 @@ set inccommand=split
 " hi HighlightedyankRegion cterm=reverse gui=reverse
 
 " show break character at the beginning of wrapped lines
-set showbreak=↪\ 
+set showbreak=⋯\ 
 
 " Loupe settings
 let g:LoupeClearHighlightMap = 1
