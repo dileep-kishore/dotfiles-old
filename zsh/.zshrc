@@ -204,12 +204,15 @@ man() {
       LESS_TERMCAP_us=$(printf "\e[1;36m") \
       man "$@"
 }
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat --theme gruvbox -l man -p'"
 
 
 ################################################################################
 # SOURCE, EXPORTS and ALIASES                                                  #
 ################################################################################
+
+# bat config
+alias bat="bat --theme gruvbox"
 
 # fzf config
 export FZF_BASE="$HOME/.fzf"
