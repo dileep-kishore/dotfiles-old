@@ -82,6 +82,14 @@ Plug 'franbach/miramare'
 Plug 'sainnhe/sonokai'
 call plug#end()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set up default python used by neovim                                         "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" virtual environment setting for deoplete-jedi
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
+
+
 set encoding=utf-8
 set number
 "set numberwidth=3
@@ -357,6 +365,10 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" virtual environment setting for deoplete-jedi
+let g:python_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
+
 " TODO: FIXME: Delete deoplete, ale and LanguageClient configurations
 
 "" Deoplete config
