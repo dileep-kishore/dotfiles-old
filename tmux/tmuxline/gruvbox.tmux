@@ -16,7 +16,7 @@ setw -g window-status-activity-style "none,fg=#d79921,bg=#32302f"
 setw -g window-status-separator ""
 setw -g window-status-style "none,fg=#fbf1c7,bg=#32302f"
 set -g status-left "\
-#[fg=#282828,bg=#d79921,italics]  #S #[fg=#d79921,bg=#32302f,nobold,nounderscore,noitalics]\
+#[fg=#282828,bg=#d79921,italics,BOLD]  #S #[fg=#d79921,bg=#32302f,BOLD,nounderscore,italics]\
 "
 set -g status-right "\
 #[fg=#32302f,bg=#32302f,nobold,nounderscore,italics]\
@@ -25,9 +25,9 @@ set -g status-right "\
 #[fg=#282828,bg=#d79921]  #H \
 "
 setw -g window-status-format "\
-#[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]#[default] #I #W #[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]\
+#[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]#[default] #I #W#[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]\
 "
 setw -g window-status-current-format "\
-#[fg=#32302f,bg=#cc241d,nobold,nounderscore,noitalics]#[fg=#fbf1c7,bg=#cc241d] #I #W \
-#F #[fg=#cc241d,bg=#32302f,nobold,nounderscore,noitalics]\
+#[fg=#32302f,bg=#cc241d,BOLD,nounderscore,noitalics]#[fg=#fbf1c7,bg=#cc241d,BOLD] #I #W \
+#F #[fg=#cc241d,bg=#32302f,BOLD,nounderscore,noitalics]\
 "
