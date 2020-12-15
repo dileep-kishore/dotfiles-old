@@ -2,6 +2,8 @@
 
 Lightweight, CLI-focused, functional and beautiful desktop configuration.
 
+:warning: New update coming soon
+
 ## wm - i3, polybar and wal
 
 ### Desktop
